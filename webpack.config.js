@@ -15,10 +15,10 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, './src'),
     filename: 'bundle.js',
-    publicPath: __dirname + './src'
+    publicPath: path.resolve(__dirname, './src')
   },
   devServer: {
-    contentBase: path.resolve(__dirname, './src'),  // New
+    contentBase: path.resolve(__dirname, './src'),
   },
   module:  {
     loaders: [
@@ -28,16 +28,33 @@ module.exports = {
           'style-loader',
           'css-loader?sourceMap',
           'sass-loader?sourceMap'
-        ]
+        ],
+        include: __dirname + '/src'
       },
       {
         test: /\.js/,
         loader: 'babel-loader',
         include: __dirname + '/src',
-       }
-    ]
+      }
+    ],
+    // rules: [
+    // {
+    //   test: /\.scss$/,
+    //   use: ExtractTextPlugin.extract({
+    //     fallback: "style-loader",
+    //     use: "css-loader!sass-loader"
+    //   })
+    // }
+    // ]
 
   },
   target: 'node',
-  plugins: []
+  plugins: [
+    // new ExtractTextPlugin("./styles/css/styles.css"),
+    // new OptimizeCssAssetsPlugin({
+    // assetNameRegExp: /\.css$/,
+    // cssProcessorOptions: {
+    //   discardComments: { removeAll: true }}
+    // })
+  ]
 };
