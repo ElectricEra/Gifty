@@ -8,17 +8,17 @@ var PROD = JSON.parse(process.env.PROD_ENV || '0');
 module.exports = {
   context: path.resolve(__dirname, './src'),
   entry: {
-    app: './index.js'
+    app: './app.js'
   },
 
   devtool: 'source-map',
   output: {
-    path: path.resolve(__dirname, './dist'),
+    path: path.resolve(__dirname, './src'),
     filename: 'bundle.js',
-    publicPath: __dirname + './dist'
+    publicPath: __dirname + './src'
   },
   devServer: {
-    contentBase: path.resolve(__dirname, './dist'),  // New
+    contentBase: path.resolve(__dirname, './src'),  // New
   },
   module:  {
     loaders: [
@@ -29,7 +29,12 @@ module.exports = {
           'css-loader?sourceMap',
           'sass-loader?sourceMap'
         ]
-      }
+      },
+      {
+        test: /\.js/,
+        loader: 'babel-loader',
+        include: __dirname + '/src',
+       }
     ]
 
   },
