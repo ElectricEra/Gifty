@@ -3,8 +3,6 @@ var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
-var PROD = JSON.parse(process.env.PROD_ENV || '0');
-
 module.exports = {
   context: path.resolve(__dirname, './src'),
   entry: {
