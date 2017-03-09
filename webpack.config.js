@@ -32,10 +32,13 @@ module.exports = {
         include: __dirname + '/src'
       },
       {
-        test: /\.js/,
+        test: /.js?$/,
         loader: 'babel-loader',
-        include: __dirname + '/src',
-      }
+        exclude: /node_modules/,
+        query: {
+          presets: ['es2015', 'react']
+        }
+    }
     ],
     // rules: [
     // {
@@ -48,7 +51,6 @@ module.exports = {
     // ]
 
   },
-  target: 'node',
   plugins: [
     // new ExtractTextPlugin("./styles/css/styles.css"),
     // new OptimizeCssAssetsPlugin({
