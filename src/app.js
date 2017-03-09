@@ -1,11 +1,14 @@
-import styles from './styles/scss/styes.scss'
 import React from 'react';
-import ReactDOM from 'react-dom';
+import  ReactDOM from 'react-dom';
+import { createStore, applyMiddleware } from 'redux';
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+import { Provider } from 'react-redux';
 
-class World extends React.Component {
-  render() {
-    return <h1>World</h1>
-  }
-}
+import Layout from './components/Layout.js'
 
-ReactDOM.render(<World/>, document.getElementById('app'));
+ReactDOM.render((
+  <Router history={browserHistory}>
+    <Route path="/" component={Layout}>
+
+    </Route>
+  </Router>), document.getElementById('app'));
