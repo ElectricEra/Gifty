@@ -1,13 +1,15 @@
 import React from "react";
+import {GiftyForm, GiftyLogo} from './gifty'
 
-export default class App extends React.Component {
+export default class GiftyApp extends React.Component {
   constructor(props) {
     super(props);
   }
   render() {
     return (
       <div className="gifty-app">
-        <p>aaaap </p>
+        <GiftyLogo />
+        <GiftyForm> hey </GiftyForm>
       </div>
     );
   }
