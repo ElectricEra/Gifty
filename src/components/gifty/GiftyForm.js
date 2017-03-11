@@ -51,7 +51,7 @@ export default class GiftyForm extends React.Component {
                     <option value="gadgets">Gadgets</option>
                 </select>
             </div>
-            <div className="input-field col s12 center" onClick={this.generateGift()}>
+            <div className="input-field col s12 center" onClick={this.generateGift}>
                 <a className="waves-effect waves-light btn my-theme-color">Generate</a>
             </div>
          </div>

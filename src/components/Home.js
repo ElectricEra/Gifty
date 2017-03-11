@@ -9,11 +9,11 @@ export default class Home extends React.Component {
     super(props);
   }
   render() {
+
     return (
       <div className="home">
         <BasicWrapper>
-          {/*<Login />*/}
-          <GiftyApp />
+        {this.props.children}
         </BasicWrapper>
       </div>
     );

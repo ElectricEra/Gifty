@@ -3,7 +3,6 @@ import {IndexLink, Link} from 'react-router';
 import {NavbarWrapper, BasicWrapper} from './materialize';
 import { connect } from 'react-redux';
 
-
 export default class Navbar extends React.Component {
   constructor(props) {
     super(props);
@@ -11,15 +10,18 @@ export default class Navbar extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div className="navbar">
         <NavbarWrapper>
           <BasicWrapper>
-            <Link href="#" className="brand-logo">Gifty</Link>
+            <Link to="app" className="brand-logo">GIFTY</Link>
             <ul id="nav-mobile" className="right hide-on-med-and-down">
-                <li><Link href="#">Profile</Link></li>
-                <li><Link href="#">Settings</Link></li>
+                <li><Link href="profile">Profile</Link></li>
+                <li><Link href="history">History</Link></li>
+                <li><Link href="friends">Friends</Link></li>
 
-                <li><Link href="#">Log in</Link></li>
+                <li><Link href="settings">Settings</Link></li>
+
+                <li><Link to="login">Log in</Link></li>
             </ul>
           </BasicWrapper>
         </NavbarWrapper>

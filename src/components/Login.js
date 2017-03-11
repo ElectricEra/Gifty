@@ -16,9 +16,6 @@ export default class Login extends React.Component {
          <div className="row center">
              <img src="images/gifty.png" alt="Gifty" className="valign my-profile-image-login" />
          </div>
-         <div className="row center">
-             <span className="black-text">Welcome to gifty!</span>
-         </div>
          <div className="row">
              <div className="input-field col s6">
                  <input id="first_name" type="text" className="validate" />
@@ -28,8 +25,8 @@ export default class Login extends React.Component {
                  <input id="last_name" type="text" className="validate" />
                  <label htmlFor="last_name">Last Name</label>
              </div>
-             <div claclassNamess="input-field col s12">
-                 <input id="email" type="email" cclassNamelass="validate" />
+             <div className="input-field col s12">
+                 <input id="email" type="email" className="validate" />
                  <label htmlFor="email" data-error="Look's like you made a mistake">Email</label>
              </div>
              <div className="input-field col s12">
