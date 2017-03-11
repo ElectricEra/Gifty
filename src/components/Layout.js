@@ -1,8 +1,8 @@
 import React from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import Header from "./Header";
-import GiftyApp from "./GiftyApp";
+import Home from "./Home";
+
 
 export default class Layout extends React.Component {
   constructor(props) {
@@ -11,10 +11,9 @@ export default class Layout extends React.Component {
 
   render() {
     return (
-      <div className="main-container">
+      <div className="content">
         <Navbar />
-        <Header />
-        <GiftyApp />
+        <Home />
         <Footer />
       </div>
     )

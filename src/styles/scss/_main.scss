@@ -1,11 +1,74 @@
+/*Default declarations*/
+* {
+	box-sizing: border-box;
+}
+
+html {
+	height: 100%;
+}
+
 body {
-  background: cyan;
+	min-height: 100%;
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
+}
+
+/*My styles*/
+.my-login-box {
+	max-width: 500px;
+	margin: 60px auto;
+}
+
+.my-profile-box {
+	max-width: 700px;
+	margin: 60px auto;
+}
+
+.my-profile-image-login {
+	height: 100px;
+	width: auto;
+}
+
+.my-theme-color {
+	background: #ee6e73;
+}
+
+.my-main-page {
+	min-height: calc(100vh - 157px);
+}
+
+.my-footer {
+	margin-bottom: 0px;
+}
+
+.my-checkbox-padding {
+	padding-right:10px;
+}
+
+.my-user-text {
+	font-size: 16px;
+}
+
+.my-profile-pic {
+	width: 250px;
+}
+
+.my-profile-pictures-wanted {
+	width: 200px;
+}
+
+/*Overriding defaults*/
+footer.page-footer {
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	padding-top: 0px;
 }
 
 
-.footer {
-  width: 100%;
-  padding: 50px;
-  text-align: center;
-  background: green;
+/*Helper classes*/
+.helper-my-image-140 {
+	max-height: 140px;
+	width: auto;
 }

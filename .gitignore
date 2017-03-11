@@ -7,3 +7,8 @@ node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+#bundles
+bundle.js
+bundle.js.map
+bundle.min.js
