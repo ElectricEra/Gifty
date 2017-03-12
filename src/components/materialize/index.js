@@ -3,3 +3,7 @@ export {BasicWrapper} from './BasicWrapper';
 export {LoginWrapper} from './LoginWrapper';
 export {InputWrapper} from './InputWrapper';
 export {InputWrapperSmall} from './InputWrapperSmall';
+export {Logo} from './Logo';
+export {Text} from './Text';
+export {Row} from './Row';
+export {TextInput} from './TextInput';

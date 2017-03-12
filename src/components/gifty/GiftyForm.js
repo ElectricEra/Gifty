@@ -1,14 +1,13 @@
 import React from "react";
 import {IndexLink, Link} from 'react-router';
 import { connect } from 'react-redux';
-import {LoginWrapper, InputWrapper} from '../materialize';
+import {LoginWrapper, InputWrapper, Logo, Text} from '../materialize';
+import {Row, TextInput} from '../materialize';
+
 
 export default class GiftyForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      value: "What your friend likes?"
-    }
 
     this.handleGenerate = this.handleGenerate.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -24,17 +23,10 @@ export default class GiftyForm extends React.Component {
   render() {
     return (
       <LoginWrapper>
-        <div className="row center gifty-form">
-            <img src="images/gifty-blue.svg" alt="Gifty" className="valign my-profile-image-login" />
-        </div>
-        <div className="row center">
-            <span>Describe a person, who will recieve a gift</span>
-        </div>
-        <div className="row">
-          <InputWrapper>
-            <label htmlFor="name">Name</label>
-            <input id="name" type="text" className="validate" />
-          </InputWrapper>
+        <Logo imgSrc="images/gifty-blue.svg" />
+        <Text txtPosition="center">Describe a person, who will recieve a gift</Text>
+        <Row>
+            <TextInput inputId="name">Name</TextInput>
             <InputWrapper>
               <span className="my-checkbox-padding">
                   <input name="group1" type="radio" id="male" />
@@ -98,7 +90,7 @@ export default class GiftyForm extends React.Component {
             <InputWrapper onClick={this.handleGenerate} className="center">
               <Link to="generated" className="waves-effect waves-light btn my-theme-color my-button">Generate</Link>
             </InputWrapper>
-         </div>
+         </Row>
        </LoginWrapper>
     )}
 };
