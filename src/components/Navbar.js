@@ -17,13 +17,13 @@ export default class Navbar extends React.Component {
               <img className="logo" src="images/gifty-white.svg" alt="Gifty"/>
             </Link>
             <ul id="nav-mobile" className="right hide-on-med-and-down">
-              <li><Link href="profile">Profile</Link></li>
-              <li><Link href="history">History</Link></li>
-              <li><Link href="friends">Friends</Link></li>
+                <li><Link href="profile">Profile</Link></li>
+                <li><Link href="history">History</Link></li>
+                <li><Link href="friends">Friends</Link></li>
 
-              <li><Link href="settings">Settings</Link></li>
+                <li><Link href="settings">Settings</Link></li>
 
-              <li><Link to="login">Log in</Link></li>
+                <li><Link to="login">Log in</Link></li>
             </ul>
           </BasicWrapper>
         </NavbarWrapper>

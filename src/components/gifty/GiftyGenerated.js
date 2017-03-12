@@ -1,7 +1,7 @@
 import React from "react";
 import {IndexLink, Link} from 'react-router';
 import { connect } from 'react-redux';
-import {LoginWrapper} from '../materialize';
+import {BasicWrapper} from '../materialize';
 
 export default class GiftyForm extends React.Component {
   constructor(props) {
@@ -12,6 +12,8 @@ export default class GiftyForm extends React.Component {
 
   render() {
     return (
-
+      <BasicWrapper>
+        <p>Gifts</p>
+      </BasicWrapper>
     )}
 };
