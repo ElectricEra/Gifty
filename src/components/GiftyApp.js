@@ -7,12 +7,16 @@ import {BasicWrapper, LoginWrapper} from './materialize';
 export default class GiftyApp extends React.Component {
   constructor(props) {
     super(props);
+    this.handleGenerate = this.handleGenerate.bind(this)
+  }
 
+  handleGenerate() {
+    console.log('yeee');
   }
 
   render() {
     return (
-      <GiftyForm />
+      <GiftyForm onGenerate = {this.handleGenerate}/>
     );
   }
 

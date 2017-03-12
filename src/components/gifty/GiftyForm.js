@@ -7,23 +7,21 @@ export default class GiftyForm extends React.Component {
   constructor(props) {
     super(props);
 
-    this.generateGift = this.generateGift.bind(this)
   }
-
-  generateGift() {
-    console.log('wow');
-  }
-
   render() {
     return (
       <LoginWrapper>
         <div className="row center gifty-form">
-            <img src="images/gifty.png" alt="Gifty" className="valign my-profile-image-login" />
+            <img src="images/gifty-blue.svg" alt="Gifty" className="valign my-profile-image-login" />
         </div>
-        <div claclassNamess="row center">
+        <div className="row center">
             <span>Describe a person, who will recieve a gift</span>
         </div>
         <div className="row">
+          <div className="input-field col s12">
+              <label htmlFor="name">Name</label>
+              <input id="name" type="text" className="validate" />
+          </div>
             <div className="input-field col s12">
                 <div className="center">
                     <span className="my-checkbox-padding">
@@ -51,8 +49,8 @@ export default class GiftyForm extends React.Component {
                     <option value="gadgets">Gadgets</option>
                 </select>
             </div>
-            <div className="input-field col s12 center" onClick={this.generateGift}>
-                <a className="waves-effect waves-light btn my-theme-color">Generate</a>
+            <div className="input-field col s12 center" onClick={this.props.onGenerate}>
+                <a className="waves-effect waves-light btn my-theme-color my-button">Generate</a>
             </div>
          </div>
        </LoginWrapper>
