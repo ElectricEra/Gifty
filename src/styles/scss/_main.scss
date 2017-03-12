@@ -1,27 +1,34 @@
-/*Default declarations*/
+$bodyBackground: null !default;
+$bodyColor: null !default;
+$navbarBackground: null !default;
+$footerBackground: null !default;
+$navbarColor: null !default;
+$footerColor: null !default;
+$buttonBackground: null !default;
+$blueShadow: null !default;
+
 * {
 	box-sizing: border-box;
 }
 
 html {
 	height: 100%;
+
+	body {
+		background: $bodyBackground;
+		min-height: 100%;
+		margin: 0;
+		padding: 0;
+	}
 }
 
-body {
-	min-height: 100%;
-	margin: 0px;
-	padding: 0px;
-	box-sizing: border-box;
-}
-
-/*My styles*/
 .my-login-box {
 	max-width: 400px;
 	min-height: 600px;
 	margin: 100px auto;
-	box-shadow: 0 0 30px #64b3f4;
+	box-shadow: $blueShadow;
 
-	@media (max-width: 400px) { // or #{$retina}
+	@media (max-width: 450px) {
 		margin: 0 auto;
 		box-shadow: none;
 	}
@@ -36,10 +43,6 @@ body {
 	height: 100px;
 	width: auto;
 	margin: 20px 0 50px;
-}
-
-.my-theme-color {
-	background: #ee6e73;
 }
 
 .my-main-page {
@@ -66,42 +69,36 @@ body {
 	width: 200px;
 }
 
+.my-button {
+	background: $buttonBackground;
+}
+
 .logo {
-	width: 50px;
+	width: 100px;
 	color: #fff;
 }
 
-/*Overriding defaults*/
-.page-footer {
-	color: #fff;
-	width: 100%;
-	position: fixed;
-	bottom: 0;
-	background: linear-gradient(to left, #c2e59c , #64b3f4);
-	z-index: 100;
-		p {
-		padding: 0;
-		margin: 0;
-	}
-}
 
-.nav-wrapper{
-	background: linear-gradient(to left, #c2e59c , #64b3f4);
-}
-
-/*Helper classes*/
 .helper-my-image-140 {
 	max-height: 140px;
 	width: auto;
 }
 
 
+.nav-wrapper {
+	background: $navbarBackground;
+}
 
-/*
-// linear-gradient(to left, #4568DC , #B06AB3);
-//  linear-gradient(to left, #C33764 , #1D2671);
-// background: linear-gradient(to left, #e96443 , #904e95);
-background: linear-gradient(to left, #C9FFBF , #FFAFBD);
-background: linear-gradient(to left, #30E8BF , #FF8235);
-background: linear-gradient(to left, #c2e59c , #64b3f4)
-*/
+
+footer {
+	color: $footerColor;
+	width: 100%;
+	position: fixed;
+	bottom: 0;
+	background: $footerBackground;
+	z-index: 100;
+		p {
+		padding: 0;
+		margin: 0;
+	}
+}
