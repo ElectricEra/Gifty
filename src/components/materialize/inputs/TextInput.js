@@ -1,5 +1,5 @@
 import React from 'react'
-import {InputWrapper} from './'
+import {InputWrapper} from '../'
 
 export const TextInput = (props) => {
   return (
