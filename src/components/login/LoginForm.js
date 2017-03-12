@@ -1,5 +1,5 @@
 import React from "react";
-import {LoginWrapper} from '../materialize';
+import {LoginWrapper, InputWrapper, InputWrapperSmall} from '../materialize';
 
 export default class LoginForm extends React.Component {
   constructor(props) {
@@ -34,25 +34,25 @@ export default class LoginForm extends React.Component {
             <img src="images/gifty-blue.svg" alt="Gifty" className="valign my-profile-image-login" />
         </div>
         <div className="row">
-            <div className="input-field col s6">
+            <InputWrapperSmall>
                 <input id="firstName" type="text" className="validate" onChange={this.handleInputChange}/>
                 <label htmlFor="firstName">First Name</label>
-            </div>
-            <div className="input-field col s6">
+            </InputWrapperSmall>
+            <InputWrapperSmall>
                 <input id="lastName" type="text" className="validate" onChange={this.handleInputChange}/>
                 <label htmlFor="lastName">Last Name</label>
-            </div>
-            <div className="input-field col s12">
+            </InputWrapperSmall>
+            <InputWrapper>
                 <input id="email" type="email" className="validate" onChange={this.handleInputChange}/>
                 <label htmlFor="email" data-error="Look's like you made a mistake">Email</label>
-            </div>
-            <div className="input-field col s12">
+            </InputWrapper>
+            <InputWrapper>
                 <input id="password" type="password" className="validate" onChange={this.handleInputChange}/>
                 <label htmlFor="password">Password</label>
-            </div>
-            <div className="input-field col s12 center">
+            </InputWrapper>
+            <InputWrapper>
                 <a className="waves-effect waves-light btn my-theme-color my-button" onClick = {this.handleSubmitForm}>Register</a>
-            </div>
+            </InputWrapper>
         </div>
        </LoginWrapper>
     )}
