@@ -1,7 +1,7 @@
 import React from "react";
-import {LoginWrapper, InputWrapper, Logo, Text} from '../materialize';
-import {SmallWrapper, Form, Checkbox, Button} from '../materialize';
-import {Row, TextInput, RadioInput, NumberInput} from '../materialize';
+import {Logo, Text} from '../materialize';
+import {Button} from '../materialize';
+import {Row, TextInput, LoginWrapper} from '../materialize';
 
 
 
