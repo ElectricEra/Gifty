@@ -3,8 +3,6 @@ import {Logo, Text} from '../materialize';
 import {Button} from '../materialize';
 import {Row, TextInput, LoginWrapper} from '../materialize';
 
-
-
 export default class LoginForm extends React.Component {
   constructor(props) {
     super(props);

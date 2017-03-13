@@ -28,7 +28,7 @@ export default class GiftyForm extends React.Component {
     return (
       <LoginWrapper>
         <Logo imgSrc="images/gifty-blue.svg" />
-        <Text txtPosition="center">Describe a person, who will recieve a gift</Text>
+        {<Text txtPosition="center">Describe your friend!</Text>}
         <Row>
           <TextInput inputId="name">Name</TextInput>
           <RadioInput inputId="male">Male</RadioInput>
