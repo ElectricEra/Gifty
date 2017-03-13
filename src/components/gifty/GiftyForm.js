@@ -38,14 +38,14 @@ export default class GiftyForm extends React.Component {
             <SmallWrapper>
               <Checkbox inputId="sport">Sport</Checkbox>
               <Checkbox inputId="travel">Travel</Checkbox>
-              <Checkbox inputId="gandgets">Gadgets</Checkbox>
+              <Checkbox inputId="gadgets">Gadgets</Checkbox>
               <Checkbox inputId="reading">Reading</Checkbox>
             </SmallWrapper>
             <SmallWrapper>
               <Checkbox inputId="gaming">Gaming</Checkbox>
               <Checkbox inputId="music">Music</Checkbox>
-              <Checkbox inputId="Art">Art</Checkbox>
-              <Checkbox inputId="Cooking">Cooking</Checkbox>
+              <Checkbox inputId="art">Art</Checkbox>
+              <Checkbox inputId="cooking">Cooking</Checkbox>
             </SmallWrapper>
           </Form>
           <Button onClick={this.handleGenerate} to="generated">Generate</Button>
