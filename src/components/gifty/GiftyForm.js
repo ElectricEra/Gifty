@@ -1,9 +1,9 @@
 import React from "react";
 import {IndexLink, Link} from 'react-router';
 import { connect } from 'react-redux';
-import {LoginWrapper, InputWrapper, Logo, Text} from '../materialize';
-import {SmallWrapper, Form, Checkbox, Button} from '../materialize';
-import {Row, TextInput, RadioInput, NumberInput} from '../materialize';
+import {Logo, Text} from '../materialize';
+import {Button} from '../materialize';
+import {Row, TextInput} from '../materialize';
 
 
 export default class GiftyForm extends React.Component {
@@ -22,7 +22,7 @@ export default class GiftyForm extends React.Component {
     this.setState({value: event.target.value});
   }
 
-  
+
   render() {
     return (
       <LoginWrapper>
