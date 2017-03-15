@@ -1,8 +1,13 @@
 import { combineReducers } from 'redux'
-import form from "./form";
+import form from "./reducer_form";
+import gifts from './reducer_gifts';
+import currentGift from './reducer_current_gift';
 
-const GiftyApp = combineReducers({
+
+const App = combineReducers({
   form,
+  gifts,
+  currentGift
 })
 
-export default GiftyApp
+export default App

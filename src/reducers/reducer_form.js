@@ -1,4 +1,4 @@
-const items = (state = 'signIn', action) => {
+const items = (state = {}, action) => {
 
   switch (action.type) {
     case 'TOGGLE_FORM':

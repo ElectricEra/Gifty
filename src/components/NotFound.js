@@ -1,7 +1,6 @@
 import React from 'react'
 import {BasicWrapper} from './materialize';
 
-
 export default class Navbar extends React.Component {
   constructor(props) {
     super(props);
@@ -18,5 +17,4 @@ export default class Navbar extends React.Component {
       </div>
     );
   }
-
 };

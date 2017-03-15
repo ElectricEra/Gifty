@@ -6,8 +6,8 @@ import { connect } from 'react-redux';
 export default class Navbar extends React.Component {
   constructor(props) {
     super(props);
-
   }
+  
   render() {
     return (
       <div className="navbar">
@@ -30,5 +30,4 @@ export default class Navbar extends React.Component {
       </div>
     );
   }
-
 };

@@ -6,9 +6,7 @@ import {BasicWrapper} from '../materialize';
 export default class GiftyForm extends React.Component {
   constructor(props) {
     super(props);
-
   }
-
 
   render() {
     return (

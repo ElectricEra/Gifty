@@ -5,8 +5,6 @@ import {LoginWrapper, InputWrapper, Logo, Text} from '../materialize';
 import {SmallWrapper, Form, Checkbox, Button} from '../materialize';
 import {Row, TextInput, RadioInput, NumberInput} from '../materialize';
 
-
-
 export default class GiftyForm extends React.Component {
   constructor(props) {
     super(props);
@@ -22,7 +20,6 @@ export default class GiftyForm extends React.Component {
   handleChange(event) {
     this.setState({value: event.target.value});
   }
-
 
   render() {
     return (
