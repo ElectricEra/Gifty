@@ -1,11 +1,14 @@
 import React from "react";
 import {IndexLink, Link} from 'react-router';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux'
+import { generateGifts } from '../../actions/index'
+
 import {LoginWrapper, InputWrapper, Logo, Text} from '../materialize';
 import {SmallWrapper, Form, Checkbox, Button} from '../materialize';
 import {Row, TextInput, RadioInput, NumberInput} from '../materialize';
 
-export default class GiftyForm extends React.Component {
+class GiftyForm extends React.Component {
   constructor(props) {
     super(props);
 
@@ -15,6 +18,7 @@ export default class GiftyForm extends React.Component {
 
   handleGenerate(event) {
     console.log(event.target.inneHTML);
+    this.props.generateGifts('bla');
   }
 
   handleChange(event) {
@@ -51,3 +55,9 @@ export default class GiftyForm extends React.Component {
        </LoginWrapper>
     )}
 };
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ generateGifts }, dispatch);
+}
+
+export default connect(null, mapDispatchToProps)(GiftyForm);

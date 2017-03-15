@@ -28,7 +28,7 @@ export default class LoginForm extends React.Component {
           <TextInput inputId="lastName" size="small">Last Name</TextInput>
           <TextInput inputId="email">Email</TextInput>
           <TextInput inputId="password">Password</TextInput>
-          <Button to="profile">Register</Button>
+          <Button to="profile" onClick={this.handleSubmitForm}>Register</Button>
         </Row>
        </LoginWrapper>
     )}

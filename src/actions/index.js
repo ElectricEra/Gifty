@@ -2,11 +2,30 @@ import axios from 'axios';
 
 export const GENERATE_GIFTS = 'GENERATE_GIFTS';
 export const SELECT_GIFT = 'SELECT_GIFT';
+export const GET_GIFTS = 'GET_GIFTS'
 
-export const generateGifts = (gifts) => ({
-  type: GENERATE_GIFTS,
-  payload: gifts
-});
+// export const generateGifts = (description) => ({
+//   type: GENERATE_GIFTS,
+//   payload: description
+// });
+
+export function generateGifts(description) {
+  console.log('hey');
+
+  return {
+    type: GENERATE_GIFTS,
+    payload: description
+  }
+}
+
+// export const getGifts = () => (
+//   const url = '/data/response.json';
+//   const request = axios.get(url);
+//   return {
+//     type: GET_GIFTS,
+//     payload:
+// })
+
 
 export const selectGift = (gift) => ({
   type: SELECT_GIFT,
