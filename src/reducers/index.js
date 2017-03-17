@@ -5,12 +5,9 @@ import currentGift from './reducer_current_gift';
 import generatedGifts from './reducer_generated_gifts';
 
 
-
 const App = combineReducers({
-  form,
-  gifts,
   currentGift,
-  generatedGifts
+  gifts: generatedGifts
 })
 
 export default App

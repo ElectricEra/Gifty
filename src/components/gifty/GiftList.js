@@ -3,10 +3,10 @@ import {GiftItem} from './GiftItem'
 
 export const GiftList = (props) => {
   return (
-    <div>
-      <ul>
-        {props.gifts.map(gift => <GiftItem key={gift.id} {...gift}/>)}
-      </ul>
-    </div>
+    <ul>
+      {console.log(props.gifts)}
+    </ul>
   )
 }
+
+//  {props.gifts.map((gift, index) => <GiftItem key={index} {...gift}/>)}

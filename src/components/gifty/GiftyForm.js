@@ -3,6 +3,7 @@ import {IndexLink, Link} from 'react-router';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'
 import { generateGifts } from '../../actions/index'
+import { getGifts } from '../../actions/index'
 
 import {LoginWrapper, InputWrapper, Logo, Text} from '../materialize';
 import {SmallWrapper, Form, Checkbox, Button} from '../materialize';
@@ -17,7 +18,7 @@ class GiftyForm extends React.Component {
   }
 
   handleGenerate(event) {
-    this.props.generateGifts();
+    this.props.getGifts();
   }
 
   handleChange(event) {
@@ -28,7 +29,7 @@ class GiftyForm extends React.Component {
     return (
       <LoginWrapper>
         <Logo imgSrc="images/gifty-blue.svg" />
-        {<Text txtPosition="center">Describe your friend!</Text>}
+        <Text txtPosition="center">Describe your friend!</Text>
         <Row>
           <TextInput inputId="name">Name</TextInput>
           <RadioInput inputId="male">Male</RadioInput>
@@ -56,7 +57,7 @@ class GiftyForm extends React.Component {
 };
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ generateGifts }, dispatch);
+  return bindActionCreators({ generateGifts, getGifts }, dispatch);
 }
 
 export default connect(null, mapDispatchToProps)(GiftyForm);

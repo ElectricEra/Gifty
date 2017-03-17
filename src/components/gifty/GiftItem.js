@@ -3,7 +3,7 @@ import React from 'react';
 export const GiftItem = (props) => {
   return (
     <li>
-      <h2>{props.name}</h2>
+      <h2>{props.gift.name}</h2>
     </li>
   )
 }

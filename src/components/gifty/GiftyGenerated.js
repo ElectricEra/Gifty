@@ -1,17 +1,26 @@
 import React from "react";
 import {IndexLink, Link} from 'react-router';
-import { connect } from 'react-redux';
 import {BasicWrapper} from '../materialize';
+import { connect } from 'react-redux';
+import { GiftList } from './GiftList';
 
-export default class GiftyForm extends React.Component {
+class GiftyGenerated extends React.Component {
   constructor(props) {
     super(props);
   }
-
+  
   render() {
     return (
       <BasicWrapper>
-        <p>Gifts</p>
+        <GiftList gifts={this.props.gifts[0]} />
       </BasicWrapper>
     )}
 };
+
+
+function mapStateToProps({ gifts }) {
+  return { gifts };
+}
+
+
+export default connect(mapStateToProps)(GiftyGenerated);
