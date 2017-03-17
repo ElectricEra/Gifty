@@ -8,11 +8,15 @@ class GiftyGenerated extends React.Component {
   constructor(props) {
     super(props);
   }
-  
+
   render() {
+    if(this.props.gifts.length === 0) {
+      console.log('Loading...');
+      return <div>Loading...</div>
+    }
     return (
       <BasicWrapper>
-        <GiftList gifts={this.props.gifts[0]} />
+        <GiftList gifts={this.props.gifts} />
       </BasicWrapper>
     )}
 };
