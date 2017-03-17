@@ -5,15 +5,21 @@ $white: #ffffff;
 $black: #000000;
 $lightGrey: #9E9EAD;
 
+$pink: #C33764;
+$purple: #1D2671;
+
+$lightPink: #3494E6;
+$lightPurple: #EC6EAD;
+
 //Functional color names
 $bodyBackground: $white;
 $bodyColor: $black;
-$navbarBackground: linear-gradient(to left, $lightGreen , $blue);
-$footerBackground: linear-gradient(to left, $lightGreen , $blue);
+$navbarBackground: linear-gradient(to left,  $lightGreen , $blue);
+$footerBackground: linear-gradient(to left,  $lightGreen , $blue);
 $navbarColor: $white;
 $footerColor: $white;
 $buttonBackground: $blue;
 
 
 //Common styles
-$blueShadow: 0 0 30px $blue; 
+$blueShadow: 0 0 30px $blue;

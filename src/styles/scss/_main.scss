@@ -25,7 +25,7 @@ html {
 .my-login-box {
 	max-width: 400px;
 	min-height: 600px;
-	margin: 20px auto;
+	margin: 20px auto 100px;
 	box-shadow: $blueShadow;
 
 	@media (max-width: 450px) {
