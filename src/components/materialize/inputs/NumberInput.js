@@ -5,7 +5,7 @@ export const NumberInput = (props) => {
   return (
     <InputWrapper>
         <label htmlFor={props.inputId}>{props.children}</label>
-        <input id={props.inputId} type="number" className="validate" />
+        <input onChange={props.onChange} id={props.inputId} type="number" className="validate" />
     </InputWrapper>
   )
 }

@@ -7,7 +7,7 @@ export const GET_GIFTS = 'GET_GIFTS'
 export function generateGifts(description) {
   return {
     type: GENERATE_GIFTS,
-    payload: description
+    payload: request
   }
 }
 
@@ -23,7 +23,7 @@ export function getGifts() {
 
 export const selectGift = (gift) => ({
   type: SELECT_GIFT,
-  paload: gift
+  payload: gift
 })
 
 export const logIn = (data) => ({
