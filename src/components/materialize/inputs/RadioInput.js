@@ -5,8 +5,8 @@ export const RadioInput = (props) => {
   return (
     <InputWrapperSmall>
       <span className="my-checkbox-padding">
-          <input name="group1" type="radio" id={props.inputId} />
-          <label htmlFor={props.inputId}>{props.children}</label>
+          <input name="group1" type="radio" id={props.id} />
+          <label htmlFor={props.id}>{props.children}</label>
       </span>
     </InputWrapperSmall>
   )

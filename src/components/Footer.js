@@ -9,9 +9,9 @@ export default class Footer extends React.Component {
     return (
       <footer className="page-footer">
         <BasicWrapper>
-            <p>© 2017 EPAM FrontendLab6</p>
+          <p>© 2017 EPAM FrontendLab6</p>
         </BasicWrapper>
-    </footer>
+      </footer>
     );
   }
 };

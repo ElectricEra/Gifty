@@ -21,10 +21,8 @@ class GiftyGenerated extends React.Component {
     )}
 };
 
-
 function mapStateToProps({ gifts }) {
   return { gifts };
 }
-
 
 export default connect(mapStateToProps)(GiftyGenerated);

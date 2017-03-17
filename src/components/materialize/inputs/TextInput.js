@@ -7,8 +7,8 @@ export const TextInput = (props) => {
   let Wrapper = props.size === 'small' ? InputWrapperSmall : InputWrapper;
   return (
     <Wrapper>
-      <label htmlFor={props.inputId}>{props.children}</label>
-      <input onChange={props.onChange} id={props.inputId} type="text" className="validate" />
+      <label htmlFor={props.id}>{props.children}</label>
+      <input onChange={props.onChange} id={props.id} type="text" className="validate" />
     </Wrapper>
   )
 }

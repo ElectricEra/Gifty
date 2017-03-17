@@ -24,10 +24,10 @@ export default class LoginForm extends React.Component {
       <LoginWrapper>
         <Logo imgSrc="images/gifty-blue.svg" />
         <Row>
-          <TextInput inputId="firstName" size="small">First Name</TextInput>
-          <TextInput inputId="lastName" size="small">Last Name</TextInput>
-          <TextInput inputId="email">Email</TextInput>
-          <TextInput inputId="password">Password</TextInput>
+          <TextInput id="firstName" size="small">First Name</TextInput>
+          <TextInput id="lastName" size="small">Last Name</TextInput>
+          <TextInput id="email">Email</TextInput>
+          <TextInput id="password">Password</TextInput>
           <Button to="profile" onClick={this.handleSubmitForm}>Register</Button>
         </Row>
        </LoginWrapper>

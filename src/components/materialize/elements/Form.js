@@ -6,7 +6,7 @@ import {Row} from '../'
 export const Form = (props) => {
   return (
     <InputWrapper>
-      <form id={props.formId}>
+      <form id={props.id}>
         <Row>
           {props.children}
         </Row>

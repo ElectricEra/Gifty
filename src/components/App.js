@@ -1,7 +1,8 @@
 import React from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import Home from "./Home";
+import { BasicWrapper } from "./materialize/index"
+
 
 export default class Layout extends React.Component {
   constructor(props) {
@@ -12,10 +13,11 @@ export default class Layout extends React.Component {
     return (
       <div className="content">
         <Navbar />
-        {this.props.children}
+          <BasicWrapper>
+            {this.props.children}
+          </BasicWrapper>
         <Footer />
       </div>
     )
   }
-
 }

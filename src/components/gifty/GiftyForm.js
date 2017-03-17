@@ -31,23 +31,23 @@ class GiftyForm extends React.Component {
         <Logo imgSrc="images/gifty-blue.svg" />
         <Text txtPosition="center">Describe your friend!</Text>
         <Row>
-          <TextInput inputId="name" onChange={this.handleChange}>Name</TextInput>
-          <RadioInput inputId="male">Male</RadioInput>
-          <RadioInput inputId="female">Female</RadioInput>
-          <NumberInput inputId="number">Age</NumberInput>
-          <NumberInput inputId="price">Price</NumberInput>
-          <Form inputId="tags">
+          <TextInput id="name" onChange={this.handleChange}>Name</TextInput>
+          <RadioInput id="male">Male</RadioInput>
+          <RadioInput id="female">Female</RadioInput>
+          <NumberInput id="number">Age</NumberInput>
+          <NumberInput id="price">Price</NumberInput>
+          <Form id="tags">
             <SmallWrapper>
-              <Checkbox inputId="sport">Sport</Checkbox>
-              <Checkbox inputId="travel">Travel</Checkbox>
-              <Checkbox inputId="gadgets">Gadgets</Checkbox>
-              <Checkbox inputId="reading">Reading</Checkbox>
+              <Checkbox id="sport">Sport</Checkbox>
+              <Checkbox id="travel">Travel</Checkbox>
+              <Checkbox id="gadgets">Gadgets</Checkbox>
+              <Checkbox id="reading">Reading</Checkbox>
             </SmallWrapper>
             <SmallWrapper>
-              <Checkbox inputId="gaming">Gaming</Checkbox>
-              <Checkbox inputId="music">Music</Checkbox>
-              <Checkbox inputId="art">Art</Checkbox>
-              <Checkbox inputId="cooking">Cooking</Checkbox>
+              <Checkbox id="gaming">Gaming</Checkbox>
+              <Checkbox id="music">Music</Checkbox>
+              <Checkbox id="art">Art</Checkbox>
+              <Checkbox id="cooking">Cooking</Checkbox>
             </SmallWrapper>
           </Form>
           <Button onClick={this.handleGenerate} to="generated">Generate</Button>
