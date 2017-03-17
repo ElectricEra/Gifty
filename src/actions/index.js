@@ -4,27 +4,23 @@ export const GENERATE_GIFTS = 'GENERATE_GIFTS';
 export const SELECT_GIFT = 'SELECT_GIFT';
 export const GET_GIFTS = 'GET_GIFTS'
 
-// export const generateGifts = (description) => ({
-//   type: GENERATE_GIFTS,
-//   payload: description
-// });
-
 export function generateGifts(description) {
-  console.log('hey');
-
+  console.log('action: GENERATE_GIFTS');
   return {
     type: GENERATE_GIFTS,
     payload: description
   }
 }
 
-// export const getGifts = () => (
-//   const url = '/data/response.json';
-//   const request = axios.get(url);
-//   return {
-//     type: GET_GIFTS,
-//     payload:
-// })
+export function getGifts() {
+  console.log('action: GET_GIFTS');
+  const url = '/data/response.json';
+  const request = axios.get(url);
+  return {
+    type:  GET_GIFTS,
+    payload: request
+  }
+}
 
 
 export const selectGift = (gift) => ({

@@ -1,12 +1,11 @@
 import React from 'react';
 import  ReactDOM from 'react-dom';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
-
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
-
 import reducers from './reducers';
 import thunk from 'redux-thunk';
+import ReduxPromise from 'redux-promise'
 
 //Styles
 import styles from './styles/scss/styles.scss'
@@ -21,7 +20,7 @@ import Login from './components/Login.js'
 import NotFound from './components/NotFound.js'
 
 //Store
-let store = applyMiddleware(thunk)(createStore)(reducers);
+let store = applyMiddleware(ReduxPromise)(createStore)(reducers);
 
 //Routing
 ReactDOM.render(<Provider store={store}>

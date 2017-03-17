@@ -17,8 +17,7 @@ class GiftyForm extends React.Component {
   }
 
   handleGenerate(event) {
-    console.log(event.target.inneHTML);
-    this.props.generateGifts('bla');
+    this.props.generateGifts();
   }
 
   handleChange(event) {
