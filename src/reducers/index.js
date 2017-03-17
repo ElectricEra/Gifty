@@ -10,7 +10,7 @@ const App = combineReducers({
   form,
   gifts,
   currentGift,
-  generateGifts
+  generatedGifts
 })
 
 export default App
