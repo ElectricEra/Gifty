@@ -13,9 +13,8 @@ app.get('*', function (request, response){
   response.sendFile(path.resolve(__dirname, 'src', 'index.html'))
 })
 
-app.post('app/submit',function(res){
-  console.log('submited');
-  fs.writeFileSync('papa.json', JSON.stringify(res));
+app.post('/submit',function(res){
+  
 });
 
 app.listen(port)

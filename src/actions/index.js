@@ -12,6 +12,7 @@ export function generateGifts(description) {
 }
 
 export function getGifts() {
+  //request on /submit 
   const url = '/data/response.json';
   const request = axios.get(url);
   return {

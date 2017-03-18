@@ -1,13 +1,13 @@
 import { combineReducers } from 'redux'
-import form from "./reducer_form";
-import generation from './reducer_generate_gifts';
 import currentGift from './reducer_current_gift';
 import generatedGifts from './reducer_gifts';
+import { reducer as formReducer } from 'redux-form'
 
 
 const App = combineReducers({
-  generation,
-  gifts: generatedGifts
+  gifts: generatedGifts,
+  form: formReducer,
+  currentGift
 })
 
 export default App

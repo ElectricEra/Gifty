@@ -8,7 +8,7 @@ export const TextInput = (props) => {
   return (
     <Wrapper>
       <label htmlFor={props.id}>{props.children}</label>
-      <input onChange={props.onChange} id={props.id} type="text" className="validate" />
+      <input onChange={props.onChange} id={props.id} name={props.name} type="text" className="validate" />
     </Wrapper>
   )
 }
