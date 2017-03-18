@@ -12,7 +12,7 @@ module.exports = function (idea, maxPrice) {
       {name: 'MinPrice', value: idea.price},
       {name: 'MaxPrice', value: maxPrice},
       {name: 'buyItNowAvailable', value: true},
-      {name: 'shipToLocations', value: 'UA'}
+      {name: 'shipToLocations', value: 'Worldwide'}
     ]
 
   };
@@ -30,7 +30,13 @@ module.exports = function (idea, maxPrice) {
       function itemsCallback(error, itemsResponse) {
         if (error) reject(error);
         if (itemsResponse){
-          idea.ebay = itemsResponse.searchResult.item;
+          idea.ebay = itemsResponse.searchResult.item.reduce((prev, curr) => {
+            return prev.concat({
+              url: curr.viewItemURL,
+              img: curr.galleryURL,
+              price: curr.sellingStatus.currentPrice.amount
+            });
+          }, []);
         }
         resolve(idea);
       }
