@@ -2,7 +2,7 @@ import React from "react";
 import {IndexLink, Link} from 'react-router';
 import {BasicWrapper} from '../materialize';
 import { connect } from 'react-redux';
-import { GiftList } from './GiftList';
+import GiftList from './GiftList';
 
 class GiftyGenerated extends React.Component {
   constructor(props) {
@@ -15,9 +15,7 @@ class GiftyGenerated extends React.Component {
       return <div>Loading...</div>
     }
     return (
-      <BasicWrapper>
         <GiftList gifts={this.props.gifts} />
-      </BasicWrapper>
     )}
 };
 

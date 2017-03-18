@@ -20,15 +20,13 @@ module.exports = {
   },
   module:  {
     loaders: [
-      {
+      {       
         test: /\.scss$/,
-        loaders: [
-          'style-loader',
-          'css-loader?sourceMap',
-          'sass-loader?sourceMap'
-        ],
-        include: __dirname + '/src'
+        loaders: ['style-loader', 'css-loader?importLoaders=1?sourceMap', 'sass-loader?sourceMap'],
+        exclude: ['node_modules']
       },
+
+
       {
         test: /.js?$/,
         loader: 'babel-loader',
@@ -37,7 +35,7 @@ module.exports = {
           presets: ['es2015', 'react']
         }
     }
-    ],
+    ]
     // rules: [
     // {
     //   test: /\.scss$/,
