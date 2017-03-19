@@ -1,8 +1,8 @@
 import React from "react";
 import {Logo, Text} from '../materialize';
-import {Button} from '../materialize';
-import {Row, TextInput, LoginWrapper} from '../materialize';
-import { reduxForm } from 'redux-form'
+import {Button, SubmitButton} from '../materialize';
+import {Row, TextInput, LoginWrapper, Form} from '../materialize';
+import { Field, reduxForm } from 'redux-form'
 import { validate } from '../../utils/index'
 
 class LoginForm extends React.Component {
@@ -17,40 +17,58 @@ class LoginForm extends React.Component {
     console.log(changes);
   }
 
-  handleSubmitForm() {
-    console.log('sumited');
+  handleSubmitForm(event) {
+
+    console.log('submit');
+  }
+
+  renderField ({ input, label, type, meta: { touched, error } }) {
+    return (
+      <div>
+        {console.log(error)}
+        <TextInput {...input} type={type}>{label}</TextInput>
+        {touched && error && <span className="field-error col s12">{error}</span>}
+      </div>
+    )
   }
 
   render() {
-    const { fields: { name, surname, email } } = this.props;
+    const { handleSubmit, pristine, reset, submitting } = this.props
 
     return (
       <LoginWrapper>
         <Logo imgSrc="images/gifty-blue.svg" />
-
         <Row>
-          <TextInput
-            name="name"
-            id="name"
-            size="small">
-            First Name
-          </TextInput>
+          <Form onSubmit={handleSubmit(this.handleSubmitForm)}>
+            <Field
+              name="name"
+              id="name"
+              type="text"
+              component={this.renderField}
+              label="Name"/>
 
-          <TextInput
-            name="surname"
-            id="surname"
-            size="small">
-            Last Name
-          </TextInput>
+            <Field
+              name="surname"
+              id="surname"
+              type="text"
+              component={this.renderField}
+              label="Surname"/>
 
-          <TextInput
-            name="email"
-            id="email">
-            Email
-          </TextInput>
+            <Field
+              name="email"
+              id="email"
+              type="email"
+              component={this.renderField}
+              label="Email"/>
 
-          <TextInput name="password" id="password">Password</TextInput>
-          <Button to="profile" onClick={this.handleSubmitForm}>Register</Button>
+            <Field
+              name="password"
+              id="password"
+              type="password"
+              component={this.renderField}
+              label="Password"/>
+            <SubmitButton disabled={submitting}>Register</SubmitButton>
+           </Form>
         </Row>
        </LoginWrapper>
     )}
@@ -58,6 +76,5 @@ class LoginForm extends React.Component {
 
 export default reduxForm({
   form: 'LoginReduxForm',
-  fields: ['name', 'surname', 'password'],
   validate,
 })(LoginForm)

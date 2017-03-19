@@ -76,6 +76,19 @@ html {
 	margin-top: 20px;
 }
 
+.submit-button {
+	background: $buttonBackground;
+	margin-top: 20px;
+}
+
+.field-error {
+	color: red;
+}
+
+.field-error.small {
+	
+}
+
 .logo {
 	width: 100px;
 	color: #fff;

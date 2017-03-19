@@ -9,7 +9,13 @@ export const TextInput = (props) => {
   return (
     <Wrapper>
       <label htmlFor={props.id}>{props.children}</label>
-      <input onChange={props.onChange} name={props.name} id={props.id} type="text" className={props.className}/>
+      <input
+        onChange={props.onChange}
+        onBlur={props.onBlur}
+        name={props.name}
+        id={props.id}
+        type={props.type}
+        className={props.className}/>
     </Wrapper>
   )
 }
