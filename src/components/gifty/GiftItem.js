@@ -1,17 +1,20 @@
-import React from 'react';
+import React from 'react'
+import { CarouselItem } from './CarouselItem'
 
 export const GiftItem = (props) => {
-  $(".carousel").carousel();
   return (
-      <div className="card-panel my-our-propositions">
-        <a href={props.name}>
-          {console.log(props.name)}
+      <div>
+        <div className="card-panel my-our-propositions center" onClick={props.displayCarousel.bind(this,props.index)}>
           <div className="row center">
-          	<img src='../../images/gifty-blue.svg' className="helper-my-image-140" />
-            {props.name}
+          	<img src={props.img} className="helper-my-image-140" />
           </div>
-          <p className="center">{props.id}</p>
-        </a>
+          <p className="center">{props.name}</p>
+        </div>
+
+        <div className="carousel display-none">
+          {props.ebay.map((gift,index) => <CarouselItem key={index} {...gift} />)}
+        </div>
+
       </div>
   )
 }
