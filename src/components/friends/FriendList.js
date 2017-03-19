@@ -1,12 +1,16 @@
 import React from "react";
 import {IndexLink, Link} from 'react-router';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { generateGifts } from '../../actions/index';
+import { getGifts } from '../../actions/index';
 
-import {LoginWrapper, Logo, } from '../materialize';
+import {LoginWrapper, Logo} from '../materialize';
 import {Row} from '../materialize';
-import FriendList from './user-list'
+import FriendList from './user-list';
 
-export default class FriendListView extends React.Component {
+
+class FriendListView extends React.Component {
   constructor(props) {
     super(props);
     this.handleFriend = this.handleFriend.bind(this);
@@ -45,7 +49,10 @@ export default class FriendListView extends React.Component {
   
 
   handleFriend(id) {
-    getQuery(id)
+    getQuery(id).then(query => {
+      this.props.getGifts(query)
+    })
+    
   }  
   
 
@@ -61,3 +68,10 @@ export default class FriendListView extends React.Component {
     
     )}
 };
+
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ generateGifts, getGifts }, dispatch);
+}
+
+export default connect(null, mapDispatchToProps)(FriendListView);
