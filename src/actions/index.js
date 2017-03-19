@@ -11,16 +11,14 @@ export function generateGifts(description) {
   }
 }
 
-export function getGifts() {
-  //request on /submit 
-  const url = '/data/response.json';
-  const request = axios.get(url);
+export function getGifts(personDescription) {
+  const url = '/submit';
+  const request = axios.post(url, personDescription);
   return {
     type:  GET_GIFTS,
     payload: request
   }
 }
-
 
 export const selectGift = (gift) => ({
   type: SELECT_GIFT,

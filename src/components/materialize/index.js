@@ -12,6 +12,8 @@ export {Row} from './elements/Row';
 export {Form} from './elements/Form';
 export {Checkbox} from './elements/Checkbox';
 export {Button} from './elements/Button';
+export {SubmitButton} from './elements/SubmitButton';
+
 
 
 export {TextInput} from './inputs/TextInput';

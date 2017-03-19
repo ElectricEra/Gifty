@@ -11,6 +11,8 @@ $purple: #1D2671;
 $lightPink: #3494E6;
 $lightPurple: #EC6EAD;
 
+$red: red;
+
 //Functional color names
 $bodyBackground: $white;
 $bodyColor: $black;
@@ -19,7 +21,9 @@ $footerBackground: linear-gradient(to left,  $lightGreen , $blue);
 $navbarColor: $white;
 $footerColor: $white;
 $buttonBackground: $blue;
+$loaderBackground: $blue;
 
 
 //Common styles
 $blueShadow: 0 0 30px $blue;
+$redShadow: 0 0 30px $red;

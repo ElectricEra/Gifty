@@ -11,8 +11,7 @@ class GiftyGenerated extends React.Component {
 
   render() {
     if(this.props.gifts.length === 0) {
-      console.log('Loading...');
-      return <div>Loading...</div>
+      return <div className="loader">Loading...</div>
     }
     return (
         <GiftList gifts={this.props.gifts} />

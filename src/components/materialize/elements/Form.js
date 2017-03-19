@@ -7,9 +7,7 @@ export const Form = (props) => {
   return (
     <InputWrapper>
       <form id={props.id}>
-        <Row>
           {props.children}
-        </Row>
       </form>
     </InputWrapper>
   )

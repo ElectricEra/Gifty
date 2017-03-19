@@ -18,41 +18,45 @@ class GiftyForm extends React.Component {
   }
 
   handleGenerate(event) {
-    this.props.getGifts();
+    let description = {age: 25, gender:'male', price: 125, tags:['art', 'music']};
+
+    this.props.getGifts(description);
   }
 
   handleChange(event) {
-    console.log(event.target.value);
   }
 
   render() {
     return (
-      <LoginWrapper>
-        <Logo imgSrc="images/gifty-blue.svg" />
-        <Text txtPosition="center">Describe your friend!</Text>
-        <Row>
-          <TextInput id="name" onChange={this.handleChange}>Name</TextInput>
-          <RadioInput id="male">Male</RadioInput>
-          <RadioInput id="female">Female</RadioInput>
-          <NumberInput id="number">Age</NumberInput>
-          <NumberInput id="price">Price</NumberInput>
-          <Form id="tags">
-            <SmallWrapper>
-              <Checkbox id="sport">Sport</Checkbox>
-              <Checkbox id="travel">Travel</Checkbox>
-              <Checkbox id="gadgets">Gadgets</Checkbox>
-              <Checkbox id="reading">Reading</Checkbox>
-            </SmallWrapper>
-            <SmallWrapper>
-              <Checkbox id="gaming">Gaming</Checkbox>
-              <Checkbox id="music">Music</Checkbox>
-              <Checkbox id="art">Art</Checkbox>
-              <Checkbox id="cooking">Cooking</Checkbox>
-            </SmallWrapper>
-          </Form>
-          <Button onClick={this.handleGenerate} to="generated">Generate</Button>
-         </Row>
-       </LoginWrapper>
+      <div onChange={this.handleChange}>
+        <LoginWrapper>
+          <Logo imgSrc="images/gifty-blue.svg" />
+          <Row>
+            <Form id="tags">
+              <TextInput id="name">Name</TextInput>
+              <RadioInput id="male">Male</RadioInput>
+              <RadioInput id="female">Female</RadioInput>
+              <NumberInput id="number">Age</NumberInput>
+              <NumberInput id="price">Price</NumberInput>
+
+              <SmallWrapper>
+                <Checkbox id="sport">Sport</Checkbox>
+                <Checkbox id="travel">Travel</Checkbox>
+                <Checkbox id="gadgets">Gadgets</Checkbox>
+                <Checkbox id="reading">Reading</Checkbox>
+              </SmallWrapper>
+              <SmallWrapper>
+                <Checkbox id="gaming">Gaming</Checkbox>
+                <Checkbox id="music">Music</Checkbox>
+                <Checkbox id="art">Art</Checkbox>
+                <Checkbox id="cooking">Cooking</Checkbox>
+              </SmallWrapper>
+
+              <Button onClick={this.handleGenerate} to="generated">Generate</Button>
+            </Form>
+           </Row>
+         </LoginWrapper>
+       </div>
     )}
 };
 
@@ -61,3 +65,6 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(null, mapDispatchToProps)(GiftyForm);
+
+//
+//<Text txtPosition="center">Describe your friend!</Text>
