@@ -1,28 +1,27 @@
 import React from 'react'
 import { GiftItem } from './GiftItem'
-import { CarouselItem } from './CarouselItem'
 
 export default class GiftList extends React.Component {
 	constructor(props) {
 		super(props);
+		this.displayCarousel.bind(this)
 	}
 
 	componentDidMount() {
-	  $(".carousel").carousel();
+	  	$(".carousel").carousel();
 	}
+
+	displayCarousel(i) {
+		$(".carousel").eq(i).toggleClass("display-none");
+	}
+	
 	render() {
 	  return (
 	  	<div>
-	  	  <div>
+	  		{console.log(this.props.gifts)}
 	        <div className="row">
-	          {this.props.gifts.map((gift,index) => <GiftItem key={index} {...gift}/>)}
-	        </div>
-	      </div>
-
-	      <div className="carousel">
-	        {this.props.gifts.map((gift,index) => <CarouselItem key={index} {...gift} />)}
-	      </div>
-	      
+	          {this.props.gifts.map((gift,index) => <GiftItem key={index} index={index} displayCarousel={this.displayCarousel} {...gift}/>)}
+	        </div>     
 	    </div>
 	  )
   	}
