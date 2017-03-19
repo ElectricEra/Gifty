@@ -1,9 +1,10 @@
 import React from "react";
-import {Logo, Text} from '../materialize';
-import {Button, SubmitButton} from '../materialize';
-import {Row, TextInput, LoginWrapper, Form} from '../materialize';
-import { Field, reduxForm } from 'redux-form'
-import { validate } from '../../utils/index'
+import { connect } from 'react-redux'
+import { Logo, Text } from '../materialize';
+import { SubmitButton } from '../materialize';
+import { Row, TextInput, LoginWrapper, Form } from '../materialize';
+import { Field, reduxForm, getFormValues } from 'redux-form'
+import { validate } from '../../utils/login_validation/index'
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -18,14 +19,13 @@ class LoginForm extends React.Component {
   }
 
   handleSubmitForm(event) {
-
     console.log('submit');
+    console.log(this.props.values);
   }
 
   renderField ({ input, label, type, meta: { touched, error } }) {
     return (
       <div>
-        {console.log(error)}
         <TextInput {...input} type={type}>{label}</TextInput>
         {touched && error && <span className="field-error col s12">{error}</span>}
       </div>
@@ -74,7 +74,13 @@ class LoginForm extends React.Component {
     )}
 };
 
+LoginForm = connect(
+  state => ({
+    values: getFormValues('LoginReduxForm')(state),
+  })
+)(LoginForm)
+
 export default reduxForm({
   form: 'LoginReduxForm',
-  validate,
+  validate
 })(LoginForm)

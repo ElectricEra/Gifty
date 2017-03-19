@@ -4,6 +4,9 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'
 import { generateGifts } from '../../actions/index'
 import { getGifts } from '../../actions/index'
+import { Field, reduxForm, getFormValues } from 'redux-form'
+import { validate } from '../../utils/gifty_validation/index'
+
 
 import {LoginWrapper, InputWrapper, Logo, Text} from '../materialize';
 import {SmallWrapper, Form, Checkbox, Button} from '../materialize';
@@ -24,6 +27,7 @@ class GiftyForm extends React.Component {
   }
 
   handleChange(event) {
+
   }
 
   render() {
@@ -66,5 +70,7 @@ function mapDispatchToProps(dispatch) {
 
 export default connect(null, mapDispatchToProps)(GiftyForm);
 
-//
-//<Text txtPosition="center">Describe your friend!</Text>
+// export default reduxForm({
+//   form: 'GiftyReduxForm',
+//   validate
+// }, null, {getGifts})(GiftyForm)
