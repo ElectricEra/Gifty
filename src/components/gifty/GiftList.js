@@ -14,14 +14,14 @@ export default class GiftList extends React.Component {
 	displayCarousel(i) {
 		$(".carousel").eq(i).toggleClass("display-none");
 	}
-	
+
 	render() {
 	  return (
 	  	<div>
 	  		{console.log(this.props.gifts)}
 	        <div className="row">
 	          {this.props.gifts.map((gift,index) => <GiftItem key={index} index={index} displayCarousel={this.displayCarousel} {...gift}/>)}
-	        </div>     
+	        </div>
 	    </div>
 	  )
   	}

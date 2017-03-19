@@ -4,7 +4,7 @@ import { Logo, Text } from '../materialize';
 import { SubmitButton } from '../materialize';
 import { Row, TextInput, LoginWrapper, Form } from '../materialize';
 import { Field, reduxForm, getFormValues } from 'redux-form'
-import { validate } from '../../utils/login_validation/index'
+import { validate } from '../../utils/utils_login/index'
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -19,14 +19,14 @@ class LoginForm extends React.Component {
   }
 
   handleSubmitForm(event) {
-    console.log('submit');
+    console.log('Form submited');
     console.log(this.props.values);
   }
 
-  renderField ({ input, label, type, meta: { touched, error } }) {
+  renderField ({ input, label, type, id, meta: { touched, error } }) {
     return (
       <div>
-        <TextInput {...input} type={type}>{label}</TextInput>
+        <TextInput {...input} id={id} type={type}>{label}</TextInput>
         {touched && error && <span className="field-error col s12">{error}</span>}
       </div>
     )
