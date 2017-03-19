@@ -42,70 +42,70 @@ function getFriends() {
 }
 
 function getQuery(id){
-	FB.api(
-	  '/'+id,
-	  'GET',
-	  {fields:"id,name,gender,birthday,sports,games,about,likes,music,books,devices,feed"},
-	  function(response) {
-	  		var age = new Date().getFullYear() - new Date(response.birthday).getFullYear();
-	  		var gender = response.gender;
-	  		var tags = [];
-	  		var possibleTags = ['sport', 'music', 'gaming', 'reading', 'gadgets', 'cooking', 'art', 'travel'];
-	  		if(response.sports){
-	  			tags.push('sport');
-	  		};
-	  		if(response.games){
-	  			tags.push('gaming');
-	  		};
-	  		if(response.music){
-	  			tags.push('music');
-	  		};
-	  		if(response.books){
-	  			tags.push('reading');
-	  		};
-	  		if(response.devices){
-	  			tags.push('gadgets');
-	  		};	  		
+	return new Promise(function(resolve, reject){
+		FB.api(
+		  '/'+id,
+		  'GET',
+		  {fields:"id,name,gender,birthday,sports,games,about,likes,music,books,devices,feed"},
+		  function(response) {
+		  		var age = new Date().getFullYear() - new Date(response.birthday).getFullYear();
+		  		var gender = response.gender;
+		  		var tags = [];
+		  		var possibleTags = ['sport', 'music', 'gaming', 'reading', 'gadgets', 'cooking', 'art', 'travel'];
+		  		if(response.sports){
+		  			tags.push('sport');
+		  		};
+		  		if(response.games){
+		  			tags.push('gaming');
+		  		};
+		  		if(response.music){
+		  			tags.push('music');
+		  		};
+		  		if(response.books){
+		  			tags.push('reading');
+		  		};
+		  		if(response.devices){
+		  			tags.push('gadgets');
+		  		};	  		
 
-	  		possibleTags.forEach(function(tag){
-	  			if(response.feed){
-	  				response.feed.data.forEach(function(feed){
-	  					if(feed.message){	  						
-	  						if(feed.message.toLowerCase().indexOf(tag) != -1){
-	  							console.log(tag);
-	  							tags.push(tag);
-	  						}
-	  					}
-	  				})
-	  			};
+		  		possibleTags.forEach(function(tag){
+		  			if(response.feed){
+		  				response.feed.data.forEach(function(feed){
+		  					if(feed.message){	  						
+		  						if(feed.message.toLowerCase().indexOf(tag) != -1){
+		  							console.log(tag);
+		  							tags.push(tag);
+		  						}
+		  					}
+		  				})
+		  			};
 
-	  			if(response.likes){
-	  				response.likes.data.forEach(function(like){
-	  					if(like.name.toLowerCase().indexOf(tag) != -1){
-	  						console.log(tag);
-	  						tags.push(tag);
-  						}	  					
-	  				})
-	  			}
-	  		})
+		  			if(response.likes){
+		  				response.likes.data.forEach(function(like){
+		  					if(like.name.toLowerCase().indexOf(tag) != -1){
+		  						console.log(tag);
+		  						tags.push(tag);
+	  						}	  					
+		  				})
+		  			}
+		  		})
 
-	  		tags = [...new Set(tags)];
+		  		tags = [...new Set(tags)];
 
-	  		if(isNaN(age)){
-	  			age = 25;
-	  		};
-	  		if (tags.length === 0){
-	  			tags.push('other');
-	  		};
-	  		var price = 150;
-	  		console.log({age, gender, price, tags});
-	  		
-	  		$.post("/submit",{age, gender, price, tags}).done( function(data){
-				console.log(JSON.parse(data));
-			});
-	  		
-	  }
-	);
+		  		if(isNaN(age)){
+		  			age = 25;
+		  		};
+		  		if (tags.length === 0){
+		  			tags.push('other');
+		  		};
+		  		var price = 150;
+		  		console.log({age, gender, price, tags});
+		  		resolve({age, gender, price, tags});
+		  	}
+		);
+
+	})
+
 };
 
 window.fbAsyncInit = function() {
