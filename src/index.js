@@ -17,6 +17,7 @@ import GiftyForm from './components/gifty/GiftyForm.js'
 import GiftyGenerated from './components/gifty/GiftyGenerated.js'
 import ProfileView from './components/profile/ProfileView.js'
 import Login from './components/Login.js'
+import FriendListView from './components/friends/FriendList.js'
 import NotFound from './components/NotFound.js'
 
 //Store
@@ -32,6 +33,7 @@ ReactDOM.render(<Provider store={store}>
         <Route path="generated" component={GiftyGenerated}></Route>
       <Route path="login" component={Login}></Route>
       <Route path="profile" component={ProfileView}></Route>
+      <Route path="friends" component={FriendListView}></Route>
       <Route path="*" component={NotFound}></Route>
     </Route>
   </Router>
