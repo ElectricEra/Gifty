@@ -1,8 +1,9 @@
-export {NavbarWrapper} from './wrappers/NavbarWrapper';
 export {BasicWrapper} from './wrappers/BasicWrapper';
-export {LoginWrapper} from './wrappers/LoginWrapper';
 export {InputWrapper} from './wrappers/InputWrapper';
 export {InputWrapperSmall} from './wrappers/InputWrapperSmall';
+export {LoginWrapper} from './wrappers/LoginWrapper';
+export {NavbarWrapper} from './wrappers/NavbarWrapper';
+export {ProfileWrapper} from './wrappers/ProfileWrapper';
 export {SmallWrapper} from './wrappers/SmallWrapper';
 
 
