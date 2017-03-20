@@ -9,10 +9,13 @@ export default class GiftList extends React.Component {
 
 	componentDidMount() {
 	  	$(".carousel").carousel();
+	  	$(".carousel").toggleClass("display-none");
 	}
 
 	displayCarousel(i) {
 		$(".carousel").eq(i).toggleClass("display-none");
+		$(".carousel").eq(i).toggleClass("col l7 s12");
+	  	$(".my-our-propositions").eq(i).toggleClass("col l5 s12 my-our-propositions-offset")
 	}
 
 	render() {

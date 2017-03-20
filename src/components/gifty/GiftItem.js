@@ -3,18 +3,18 @@ import { CarouselItem } from './CarouselItem'
 
 export const GiftItem = (props) => {
   return (
-      <div>
-        <div className="card-panel my-our-propositions center" onClick={props.displayCarousel.bind(this,props.index)}>
-          <div className="row center">
-          	<img src={props.img} className="helper-my-image-140" />
+      <div className="row">
+        <div className="card-panel my-our-propositions center my-select-none" onClick={props.displayCarousel.bind(this,props.index)}>
+          <div className="row center my-image-box">
+          	<img src={props.img} className="helper-my-image-120" />
           </div>
-          <p className="center">{props.name}</p>
+          <p className="center my-select-none">{props.name}</p>
         </div>
-
-        <div className="carousel display-none">
-          {props.ebay.map((gift,index) => <CarouselItem key={index} {...gift} />)}
+        <div className="center">
+          <div className="carousel center">
+            {props.ebay.map((gift,index) => <CarouselItem key={index} {...gift} />)}
+          </div>
         </div>
-
       </div>
   )
 }
