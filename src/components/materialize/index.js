@@ -1,4 +1,5 @@
 export {BasicWrapper} from './wrappers/BasicWrapper';
+export {DefaultBoxWrapper} from './wrappers/DefaultBoxWrapper';
 export {InputWrapper} from './wrappers/InputWrapper';
 export {InputWrapperSmall} from './wrappers/InputWrapperSmall';
 export {LoginWrapper} from './wrappers/LoginWrapper';
@@ -14,7 +15,6 @@ export {Form} from './elements/Form';
 export {Checkbox} from './elements/Checkbox';
 export {Button} from './elements/Button';
 export {SubmitButton} from './elements/SubmitButton';
-
 
 
 export {TextInput} from './inputs/TextInput';
