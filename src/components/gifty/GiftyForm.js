@@ -54,7 +54,7 @@ class GiftyForm extends React.Component {
 
     return (
       <LoginWrapper>
-        <Logo imgSrc="images/gifty-blue.svg" />
+        <Logo imgSrc="images/gift.png" />
         <Row>
           <Form onSubmit={handleSubmit(this.handleGenerate)}>
             <Field

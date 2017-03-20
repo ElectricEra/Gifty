@@ -1,0 +1,15 @@
+$navbarBackground: null !default;
+
+
+nav {
+	background: $navbarBackground;
+
+	.nav-wrapper {
+
+	}
+}
+
+
+div#sidenav-overlay {
+		background: none;
+}

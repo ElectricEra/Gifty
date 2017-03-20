@@ -1,6 +1,5 @@
 $bodyBackground: null !default;
 $bodyColor: null !default;
-$navbarBackground: null !default;
 $footerBackground: null !default;
 $navbarColor: null !default;
 $footerColor: null !default;
@@ -44,7 +43,7 @@ html {
 
 .my-profile-image-login {
 	width: 250px;
-	margin: 50px 0 50px;
+	margin: 0;
 }
 
 .my-main-page {
@@ -102,7 +101,7 @@ html {
 }
 
 .field-error.small {
-	
+
 }
 
 .logo {
@@ -116,10 +115,6 @@ html {
 	width: auto;
 }
 
-
-.nav-wrapper {
-	background: $navbarBackground;
-}
 
 .input-field input[type=text].invalid {
    border-bottom: 1px solid red;

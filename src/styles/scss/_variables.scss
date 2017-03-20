@@ -11,19 +11,26 @@ $purple: #1D2671;
 $lightPink: #3494E6;
 $lightPurple: #EC6EAD;
 
+
+$yellowPink: #DD5E89;
+$lightYellowPink: #F7BB97;
+
+
+//background: linear-gradient(to left, #DD5E89 , #F7BB97);
+
 $red: red;
 
 //Functional color names
 $bodyBackground: $white;
 $bodyColor: $black;
-$navbarBackground: linear-gradient(to left,  $lightGreen , $blue);
-$footerBackground: linear-gradient(to left,  $lightGreen , $blue);
+$navbarBackground: linear-gradient(to left,  $lightYellowPink , $yellowPink);
+$footerBackground: linear-gradient(to left,  $lightYellowPink , $yellowPink);
 $navbarColor: $white;
 $footerColor: $white;
-$buttonBackground: $blue;
-$loaderBackground: $blue;
+$buttonBackground: $yellowPink;
+$loaderBackground: $yellowPink;
 
 
 //Common styles
-$blueShadow: 0 0 30px $blue;
+$blueShadow: 0 0 30px $yellowPink;
 $redShadow: 0 0 30px $red;

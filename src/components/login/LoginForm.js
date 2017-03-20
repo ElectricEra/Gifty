@@ -37,7 +37,7 @@ class LoginForm extends React.Component {
 
     return (
       <LoginWrapper>
-        <Logo imgSrc="images/gifty-blue.svg" />
+        <Logo imgSrc="images/gift.png" />
         <Row>
           <Form onSubmit={handleSubmit(this.handleSubmitForm)}>
             <Field
@@ -47,12 +47,14 @@ class LoginForm extends React.Component {
               component={this.renderField}
               label="Name"/>
 
-            <Field
-              name="surname"
-              id="surname"
-              type="text"
-              component={this.renderField}
-              label="Surname"/>
+            {
+            // <Field
+            //   name="surname"
+            //   id="surname"
+            //   type="text"
+            //   component={this.renderField}
+            //   label="Surname"/>
+            }
 
             <Field
               name="email"
