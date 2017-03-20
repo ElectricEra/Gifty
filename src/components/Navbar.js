@@ -14,15 +14,15 @@ export default class Navbar extends React.Component {
         <NavbarWrapper>
           <BasicWrapper>
           {/* TODO: Action for reseting props*/}
-            <Link to="app" className="brand-logo">
+            <Link href="app" className="brand-logo">
               <img className="logo" src="images/gifty-white.svg" alt="Gifty"/>
             </Link>
             <ul id="nav-mobile" className="right hide-on-med-and-down">
                 {/*Log in*/}
-                <li><Link href="profile">Profile</Link></li>
-                <li><Link href="history">History</Link></li>
-                <li><Link href="friends">Friends</Link></li>
-                <li><Link href="settings">Settings</Link></li>
+                <li><Link to="profile">Profile</Link></li>
+                <li><Link to="history">History</Link></li>
+                <li><Link to="friends">Friends</Link></li>
+                <li><Link to="settings">Settings</Link></li>
 
 
                 {/*Log out*/}
