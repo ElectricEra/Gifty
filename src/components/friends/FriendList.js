@@ -2,7 +2,7 @@ import React from "react";
 import {IndexLink, Link} from 'react-router';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { generateGifts } from '../../actions/index';
+import { addFriends } from '../../actions/index';
 import { getGifts } from '../../actions/index';
 
 import {LoginWrapper, Logo} from '../materialize';
@@ -14,46 +14,32 @@ class FriendListView extends React.Component {
   constructor(props) {
     super(props);
     this.handleFriend = this.handleFriend.bind(this);
-    this.state = {
-      friends: [
-        {
-          id: "1213922765330248",
-          name: "Юрій Данилевич",
-          picture: {
-            data:{
-              url:"https://scontent.xx.fbcdn.net/v/t1.0-1/p100x100/12993516_968423489880178_3312180938734337082_n.jpg?oh=3e648533e0ccf3b6756eb55a31a1f56c&oe=59619040"
-            }
-          }
-        },
-        {
-          id: "1287709277944565",
-          name: "Roksolana Yasynevych",
-          picture: {
-            data:{
-              url:"https://scontent.xx.fbcdn.net/v/t1.0-1/p100x100/14956051_1164091850306309_739022048876137729_n.jpg?oh=f222b6f1b5c9656c88498efdb42ce69b&oe=59538DF2"
-            }
-          }
-        },
-        {
-          id: "756869654480026",
-          name: "Yuriy Pankiv",
-          picture: {
-            data:{
-              url:"https://scontent.xx.fbcdn.net/v/t1.0-1/p100x100/13754315_627879230712403_6912702353736773732_n.jpg?oh=6643eca76fe58a132a3c84e0d29916ac&oe=592A223D"
-            }
-          }
-        }
-      ]
+    this.handleSearch = this.handleSearch.bind(this);
+    this.state = {      
+      found: []
     }
   }
   
+  componentDidMount() {
+    getFriends().then(data => {
+      this.props.addFriends(data);
+      this.setState({found: data});
+    })
+  }
 
   handleFriend(id) {
     getQuery(id).then(query => {
       this.props.getGifts(query)
     })
     
-  }  
+  }
+
+  handleSearch(event) {
+    var result = this.props.friends.filter(function(friend){
+      return friend.name.toLowerCase().indexOf(event.target.value.toLowerCase()) != -1;
+    })
+    this.setState({found: result});
+  }
   
 
   render() {
@@ -62,7 +48,8 @@ class FriendListView extends React.Component {
         <LoginWrapper>
           <Logo imgSrc="images/gifty-blue.svg" />
           <Row>
-            <FriendList friends={this.state.friends} handleFriend={this.handleFriend} />
+            <input type="text" placeholder="Search" onChange={this.handleSearch} />
+            <FriendList friends={this.state.found} handleFriend={this.handleFriend} />
            </Row>
          </LoginWrapper>
     
@@ -71,7 +58,12 @@ class FriendListView extends React.Component {
 
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ generateGifts, getGifts }, dispatch);
+  return bindActionCreators({ addFriends, getGifts }, dispatch);
 }
 
-export default connect(null, mapDispatchToProps)(FriendListView);
+function mapStateToProps({ friends }) {
+  return { friends };
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(FriendListView);

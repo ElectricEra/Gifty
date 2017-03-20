@@ -23,7 +23,6 @@ function getInfo() {
 function getFriend(id){
 	return new Promise(function(resolve, reject){
 		FB.api(('/'+id), 'GET', {fields: 'name,id,picture.width(100).height(100)'}, function (response) {
-			// console.log(response);
 			resolve(response);
 		});
 	})	

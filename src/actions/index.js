@@ -2,7 +2,8 @@ import axios from 'axios';
 
 export const GENERATE_GIFTS = 'GENERATE_GIFTS';
 export const SELECT_GIFT = 'SELECT_GIFT';
-export const GET_GIFTS = 'GET_GIFTS'
+export const GET_GIFTS = 'GET_GIFTS';
+export const ADD_FRIENDS = 'ADD_FRIENDS';
 
 export function generateGifts(description) {
   return {
@@ -17,6 +18,13 @@ export function getGifts(personDescription) {
   return {
     type:  GET_GIFTS,
     payload: request
+  }
+}
+
+export function addFriends(data) {  
+  return {
+    type:  ADD_FRIENDS,
+    payload: data
   }
 }
 
