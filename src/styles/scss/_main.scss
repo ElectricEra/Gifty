@@ -86,6 +86,8 @@ html {
 }
 
 .my-our-propositions {
+	padding: 5px;
+	height: 200px;
 	max-width: 300px;
 	margin: 1rem auto;
 	margin-top: 0.5rem;
@@ -109,8 +111,8 @@ html {
 }
 
 
-.helper-my-image-140 {
-	max-height: 140px;
+.helper-my-image-120 {
+	max-height: 120px;
 	width: auto;
 }
 
@@ -139,4 +141,24 @@ footer {
 
 footer.page-footer {
 
+}
+
+.carousel {
+	height: 300px;
+}
+
+.my-select-none {
+	-webkit-user-select: none;
+  	-moz-user-select: none;
+  	-ms-user-select: none;
+  	user-select: none;
+}
+
+.my-our-propositions-offset {
+	margin-top:70px;
+}
+
+.my-image-box {
+	height: 140px;
+	width: auto;
 }
