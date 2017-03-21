@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 import { addFriends } from '../../actions/index';
 import { getGifts } from '../../actions/index';
 
-import {LoginWrapper, Logo} from '../materialize';
+import {DefaultBoxWrapper, Logo} from '../materialize';
 import {Row} from '../materialize';
 import FriendList from './user-list';
 
@@ -45,13 +45,13 @@ class FriendListView extends React.Component {
   render() {
     return (
       
-        <LoginWrapper>
+        <DefaultBoxWrapper>
           <Logo imgSrc="images/gifty-blue.svg" />
           <Row>
             <input type="text" placeholder="Search" onChange={this.handleSearch} />
             <FriendList friends={this.state.found} handleFriend={this.handleFriend} />
            </Row>
-         </LoginWrapper>
+         </DefaultBoxWrapper>
     
     )}
 };
