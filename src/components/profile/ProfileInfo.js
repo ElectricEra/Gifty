@@ -11,7 +11,7 @@ export default class ProfileInfo extends React.Component {
 	render() {
 	  return (
 	  	<div>
-	  		<ProfilePicture img={this.props.img} />
+	  		<ProfilePicture img={this.props.src} />
 	  		<ProfileName name={this.props.name} />
 	  	</div>
 	  )

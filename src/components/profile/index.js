@@ -1,2 +1,2 @@
 
-import { ProfileView } from './ProfileView';
+import ProfileView from './ProfileView';

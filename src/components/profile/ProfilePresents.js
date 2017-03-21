@@ -9,13 +9,15 @@ export default class ProfilePresents extends React.Component {
 	
 	render() {
 	  return (
-	  	<div>
+	  	<div className="center">
 	  		<span>
 	  			Presents you would like to get
 	  		</span>
-	  		{this.props.gifts.map(gift=>{
-	  			<ProfileGift {...gift} />
-	  		})}
+	  		<div>
+		  		{this.props.gifts.map(gift=>{
+		  			return <ProfileGift {...gift} />
+		  		})}
+	  		</div>
 	  	</div>
 	  )
   	}

@@ -37,6 +37,19 @@ html {
 	}
 }
 
+.my-default-box {
+	max-width: 600px;
+	min-height: 600px;
+	margin: 50px auto 100px;
+	box-shadow: $blueShadow;
+
+	@media (max-width: 450px) {
+		margin: 0 auto;
+		box-shadow: none;
+		padding-bottom: 100px;
+	}
+}
+
 .my-profile-box {
 	max-width: 700px;
 	margin: 50px auto;
