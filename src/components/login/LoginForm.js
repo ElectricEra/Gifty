@@ -1,10 +1,13 @@
 import React from "react";
+import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { Logo, Text } from '../materialize';
-import { SubmitButton } from '../materialize';
-import { Row, TextInput, LoginWrapper, Form } from '../materialize';
 import { Field, reduxForm, getFormValues } from 'redux-form'
+import { Logo, Text } from '../materialize'
+import { SubmitButton } from '../materialize'
+import { Row, TextInput, LoginWrapper, Form } from '../materialize'
 import { validate } from '../../utils/utils_login/index'
+import { changeSignInForm, changeSignUpForm } from '../../actions/index'
+
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -12,15 +15,21 @@ class LoginForm extends React.Component {
 
     this.handleInputChange = this.handleInputChange.bind(this)
     this.handleSubmitForm = this.handleSubmitForm.bind(this);
+    this.handleChangeForm = this.handleChangeForm.bind(this);
   }
 
   handleInputChange(event) {
-    console.log(changes);
+    console.log('changed');
   }
 
   handleSubmitForm(event) {
     console.log('Form submited');
     console.log(this.props.values);
+  }
+
+  handleChangeForm(event) {
+    let id = event.target.id;
+    id === 'signIn' ? this.props.changeSignInForm() : this.props.changeSignUpForm();
   }
 
   renderField ({ input, label, type, id, meta: { touched, error } }) {
@@ -33,28 +42,22 @@ class LoginForm extends React.Component {
   }
 
   render() {
-    const { handleSubmit, pristine, reset, submitting } = this.props
+    const { handleSubmit, pristine, reset, submitting } = this.props;
+    const { currentForm } = this.props;
 
     return (
       <LoginWrapper>
         <Logo imgSrc="images/gift.png" />
         <Row>
           <Form onSubmit={handleSubmit(this.handleSubmitForm)}>
+
+          {currentForm === 'signUp' ?
             <Field
               name="name"
               id="name"
               type="text"
               component={this.renderField}
-              label="Name"/>
-
-            {
-            // <Field
-            //   name="surname"
-            //   id="surname"
-            //   type="text"
-            //   component={this.renderField}
-            //   label="Surname"/>
-            }
+              label="Name"/> : null}
 
             <Field
               name="email"
@@ -69,20 +72,65 @@ class LoginForm extends React.Component {
               type="password"
               component={this.renderField}
               label="Password"/>
-            <SubmitButton disabled={submitting}>Register</SubmitButton>
+
+            <SubmitButton disabled={submitting}>
+              {currentForm === 'signIn' ? 'Log In' : 'Register'}
+            </SubmitButton>
            </Form>
+        </Row>
+        <Row>
+          {currentForm === 'signIn' ?
+           <div className="sign-toggle">
+             <Text txtPosition="center">
+               Dont have an have account?
+               <span className="sign-toggle-text" id="signIn" onClick={this.handleChangeForm}>Sign up</span>
+             </Text>
+           </div>
+           :
+           <div className="sign-toggle">
+             <Text txtPosition="center">
+               Already have an have account?
+               <span className="sign-toggle-text" id="signUp" onClick={this.handleChangeForm}>Sign in</span>
+             </Text>
+           </div>
+         }
         </Row>
        </LoginWrapper>
     )}
 };
 
-LoginForm = connect(
-  state => ({
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ changeSignInForm, changeSignUpForm }, dispatch)
+}
+
+function mapStateToProps(state) {
+  return {
     values: getFormValues('LoginReduxForm')(state),
-  })
+    currentForm: state.currentForm
+  }
+}
+
+LoginForm = connect(
+  mapStateToProps,
+  mapDispatchToProps
 )(LoginForm)
+
 
 export default reduxForm({
   form: 'LoginReduxForm',
   validate
 })(LoginForm)
+
+
+
+/*
+
+
+
+           <div className="sign-toggle">
+             <Text txtPosition="center">
+               Already have account? <span className="sign-toggle-text">Sign in</span>
+             </Text>
+           </div>
+*/

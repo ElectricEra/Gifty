@@ -4,6 +4,9 @@ export const GENERATE_GIFTS = 'GENERATE_GIFTS';
 export const SELECT_GIFT = 'SELECT_GIFT';
 export const GET_GIFTS = 'GET_GIFTS';
 export const ADD_FRIENDS = 'ADD_FRIENDS';
+export const CHANGE_SIGN_IN = 'CHANGE_SIGN_IN';
+export const CHANGE_SIGN_UP = 'CHANGE_SIGN_UP';
+
 
 export function generateGifts(description) {
   return {
@@ -21,12 +24,27 @@ export function getGifts(personDescription) {
   }
 }
 
-export function addFriends(data) {  
+export function addFriends(data) {
   return {
     type:  ADD_FRIENDS,
     payload: data
   }
 }
+
+export function changeSignUpForm() {
+  return {
+    type: CHANGE_SIGN_UP,
+    payload: 'signIn'
+  }
+}
+
+export function changeSignInForm() {
+  return {
+    type: CHANGE_SIGN_IN,
+    payload: 'signUp'
+  }
+}
+
 
 export const selectGift = (gift) => ({
   type: SELECT_GIFT,
@@ -40,11 +58,6 @@ export const logIn = (data) => ({
 
 export const logOut = () => ({
   type: 'LOG_OUT'
-});
-
-export const toggleForm = (value) => ({
-  type: 'TOGGLE_FORM',
-  value
 });
 
 const userCreated = () => ({

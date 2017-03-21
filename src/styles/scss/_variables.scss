@@ -16,10 +16,6 @@ $yellowPink: #DD5E89;
 $lightYellowPink: #F7BB97;
 
 
-//background: linear-gradient(to left, #DD5E89 , #F7BB97);
-
-$red: red;
-
 //Functional color names
 $bodyBackground: $white;
 $bodyColor: $black;
@@ -29,8 +25,8 @@ $navbarColor: $white;
 $footerColor: $white;
 $buttonBackground: $yellowPink;
 $loaderBackground: $yellowPink;
+$themeColor: $yellowPink;
 
 
 //Common styles
-$blueShadow: 0 0 30px $yellowPink;
-$redShadow: 0 0 30px $red;
+$shadow: 0 0 30px $yellowPink;

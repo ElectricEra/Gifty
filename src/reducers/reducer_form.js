@@ -1,13 +1,14 @@
-const items = (state = {}, action) => {
+import { CHANGE_SIGN_UP } from '../actions/index'
+import { CHANGE_SIGN_IN } from '../actions/index'
 
+export default (state = 'signIn', action) => {
   switch (action.type) {
-    case 'TOGGLE_FORM':
-      console.log('TOGGLE_FORM');
-      return action.value;
-
-    default:
-      return state
+    case CHANGE_SIGN_UP:
+      return action.payload;
+      break;
+    case CHANGE_SIGN_IN:
+      return action.payload;
+      break;
   }
+  return state;
 }
-
-export default items

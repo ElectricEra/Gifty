@@ -41,7 +41,7 @@ html {
 	max-width: 600px;
 	min-height: 600px;
 	margin: 50px auto 100px;
-	box-shadow: $blueShadow;
+	box-shadow: $shadow;
 
 	@media (max-width: 450px) {
 		margin: 0 auto;
