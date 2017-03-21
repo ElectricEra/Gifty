@@ -4,8 +4,9 @@ $footerBackground: null !default;
 $navbarColor: null !default;
 $footerColor: null !default;
 $buttonBackground: null !default;
-$blueShadow: null !default;
-$redShadow: null !default;
+$shadow: null !default;
+$themeColor: null !default;
+
 
 
 * {
@@ -27,7 +28,7 @@ html {
 	max-width: 400px;
 	min-height: 600px;
 	margin: 50px auto 100px;
-	box-shadow: $blueShadow;
+	box-shadow: $shadow;
 
 	@media (max-width: 450px) {
 		margin: 0 auto;
@@ -156,4 +157,13 @@ footer.page-footer {
 .my-image-box {
 	height: 140px;
 	width: auto;
+}
+
+.sign-toggle {
+	padding: 20px;
+
+	.sign-toggle-text {
+		color: $themeColor;
+		cursor: pointer;
+	}
 }
