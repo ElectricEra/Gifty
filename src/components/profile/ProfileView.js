@@ -2,13 +2,13 @@ import React from 'react';
 import { DefaultBoxWrapper } from '../materialize';
 import ProfileInfo from './ProfileInfo';
 import ProfilePresents from './ProfilePresents';
-
+//
 export default class ProfileView extends React.Component {
-	
+
 	constructor(props) {
 		super(props);
 	}
-	
+
 	render() {
 	  return (
   		<DefaultBoxWrapper>
