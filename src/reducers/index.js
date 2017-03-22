@@ -1,5 +1,4 @@
 import { combineReducers } from 'redux'
-import currentGift from './reducer_current_gift'
 import currentForm from './reducer_form'
 import addedFriends from './reducer_friends'
 import generatedGifts from './reducer_gifts'
@@ -12,8 +11,7 @@ const App = combineReducers({
   friends: addedFriends,
   form: formReducer,
   isFirstTimeOnOurWebsiteTryingToFingSomeNiceGiftsForFrendsOrParentsOrDogOnWebsiteGiftyWhichIFindReallyInterestingAndHelpful: firstEntrance,
-  currentForm,
-  currentGift
+  currentForm
 })
 
 export default App
