@@ -11,7 +11,7 @@ const App = combineReducers({
   gifts: generatedGifts,
   friends: addedFriends,
   form: formReducer,
-  isFirstTimeOnOurWebsiteTryingToFingSomeNiceGiftsForFrendsOrParentsOrDogOnWebsiteGiftyWhichIFindReallyInterestingAndHelpful: firstEntrance,
+  isFirstTime: firstEntrance,
   currentForm,
   currentGift
 })

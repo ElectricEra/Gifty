@@ -19,11 +19,14 @@ class GiftyGenerated extends React.Component {
     browserHistory.push('/app');
   }
 
-  render() {
-    if(this.props.gifts.length === 0) {
-      if(this.props.isFirstTimeOnOurWebsiteTryingToFingSomeNiceGiftsForFrendsOrParentsOrDogOnWebsiteGiftyWhichIFindReallyInterestingAndHelpful) {
+  componentWillMount() {
+      if(this.props.isFirstTime) {
         this.redirectToMain();
       }
+  }
+
+  render() {
+    if(this.props.gifts.length === 0) {
       return <div className="loader">Loading...</div>
     }
     return (
@@ -35,8 +38,8 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({ resetGift }, dispatch);
 }
 
-function mapStateToProps({ gifts, isFirstTimeOnOurWebsiteTryingToFingSomeNiceGiftsForFrendsOrParentsOrDogOnWebsiteGiftyWhichIFindReallyInterestingAndHelpful }) {
-  return { gifts, isFirstTimeOnOurWebsiteTryingToFingSomeNiceGiftsForFrendsOrParentsOrDogOnWebsiteGiftyWhichIFindReallyInterestingAndHelpful };
+function mapStateToProps({ gifts, isFirstTime }) {
+  return { gifts, isFirstTime };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(GiftyGenerated);
