@@ -2,17 +2,11 @@ import React from 'react';
 import { ProfileGift } from './ProfileGift';
 
 export default class ProfilePresents extends React.Component {
-	
-	constructor(props) {
-		super(props);
-	}
-	
+
 	render() {
 	  return (
 	  	<div className="center">
-	  		<span>
-	  			Presents you would like to get
-	  		</span>
+	  		<span>Presents you would like to get</span>
 	  		<div>
 		  		{this.props.gifts.map(gift=>{
 		  			return <ProfileGift {...gift} />
@@ -20,5 +14,6 @@ export default class ProfilePresents extends React.Component {
 	  		</div>
 	  	</div>
 	  )
-  	}
+  }
+
 }

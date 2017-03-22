@@ -101,9 +101,9 @@ html {
 .my-our-propositions {
 	padding: 5px;
 	height: 200px;
-	max-width: 300px;
+	width: 220px;
 	margin: 1rem auto;
-	margin-top: 0.5rem;
+	margin-top: 50px;
 }
 
 .my-present-holder {
@@ -123,9 +123,16 @@ html {
 	color: #fff;
 }
 
+.my-image-wrapper {
+	height:120px;
+}
 
 .helper-my-image-120 {
 	max-height: 120px;
+}
+
+.carousel .carousel-item img.helper-my-image {
+	height: 120px;
 	width: auto;
 }
 

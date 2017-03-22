@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 export const Checkbox = (props) => {
   return (
@@ -8,7 +8,8 @@ export const Checkbox = (props) => {
         id={props.id}
         value={props.id}
         onBlur={props.onBlur} />
-      <label htmlFor={props.id} onChange={props.onChange}>{props.children}</label>
+      <label htmlFor={props.id} 
+        onChange={props.onChange}>{props.children}</label>
     </p>
   )
 }
