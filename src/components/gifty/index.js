@@ -1,1 +1,1 @@
-export {GiftyForm} from './GiftyForm';
+export { GiftyForm } from './GiftyForm';
