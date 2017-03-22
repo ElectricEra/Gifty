@@ -6,7 +6,7 @@ $footerColor: null !default;
 $buttonBackground: null !default;
 $shadow: null !default;
 $themeColor: null !default;
-
+$buttonHoverBackground: null !default;
 
 
 * {
@@ -92,7 +92,13 @@ html {
 .submit-button {
 	background: $buttonBackground;
 	margin-top: 20px;
+	width: 130px;
 }
+
+.submit-button:hover {
+	background: $buttonHoverBackground;
+}
+
 
 .field-error {
 	color: red;
