@@ -50,21 +50,3 @@ export const selectGift = (gift) => ({
   type: SELECT_GIFT,
   payload: gift
 })
-
-export const logIn = (data) => ({
-  type: "LOG_IN",
-  data
-});
-
-export const logOut = () => ({
-  type: 'LOG_OUT'
-});
-
-const userCreated = () => ({
-  type: 'USER_CREATED'
-});
-
-const updateUser = (data) => ({
-  type: 'UPDATE_USER',
-  data
-});

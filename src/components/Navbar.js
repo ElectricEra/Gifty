@@ -10,11 +10,11 @@ export default class Navbar extends React.Component {
 
   componentDidMount() {
     $('.button-collapse').sideNav();
-    $('.button-collapse').click(this.removeOverlay);
+    // $('.button-collapse').click(this.removeOverlay);
   }
 
   removeOverlay() {
-    $('div[id^=sidenav-overlay]').remove();
+    // $('div[id^=sidenav-overlay]').remove();
   }
 
   render() {
@@ -39,7 +39,7 @@ export default class Navbar extends React.Component {
         <ul id="slide-out" className="side-nav">
             <li><div className="userView">
               <div className="background">
-                <img src="images/bg.jpg" />
+                <img src="images/menu-bg.png" />
               </div>
               <a href="#!user"><img className="circle" src="images/user.jpg" /></a>
               <a href="#!name"><span className="white-text name">John Doe</span></a>

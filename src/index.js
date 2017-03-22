@@ -2,7 +2,7 @@ import React from 'react';
 import  ReactDOM from 'react-dom';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import reducers from './reducers';
 import thunk from 'redux-thunk';
 import ReduxPromise from 'redux-promise'
@@ -22,8 +22,13 @@ import Login from './components/Login.js'
 import FriendListView from './components/friends/FriendList.js'
 import NotFound from './components/NotFound.js'
 
-//Store
-let store = applyMiddleware(ReduxPromise)(createStore)(reducers);
+let store = createStore(
+  reducers,
+  compose(
+    applyMiddleware(ReduxPromise),
+    applyMiddleware(thunk)
+  )
+)
 
 //Routing
 ReactDOM.render(<Provider store={store}>

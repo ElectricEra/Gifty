@@ -23,6 +23,7 @@ class LoginForm extends React.Component {
   }
 
   handleSubmitForm(event) {
+    
     console.log('Form submited');
     console.log(this.props.values);
   }
