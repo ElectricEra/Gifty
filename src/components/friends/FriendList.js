@@ -1,9 +1,9 @@
 import React from "react";
-import {IndexLink, Link} from 'react-router';
+import {IndexLink, Link, browserHistory} from 'react-router';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { addFriends } from '../../actions/index';
-import { getGifts } from '../../actions/index';
+import { getGifts, firstEntrance} from '../../actions/index';
 
 import {DefaultBoxWrapper, Logo} from '../materialize';
 import {Row} from '../materialize';
@@ -29,7 +29,9 @@ class FriendListView extends React.Component {
 
   handleFriend(id) {
     getQuery(id).then(query => {
-      this.props.getGifts(query)
+      this.props.getGifts(query);
+      this.props.firstEntrance();
+      browserHistory.push('/generated');
     })
     
   }
@@ -46,7 +48,7 @@ class FriendListView extends React.Component {
     return (
       
         <DefaultBoxWrapper>
-          <Logo imgSrc="images/gifty-blue.svg" />
+          <Logo imgSrc="images/gift.png" />
           <Row>
             <input type="text" placeholder="Search" onChange={this.handleSearch} />
             <FriendList friends={this.state.found} handleFriend={this.handleFriend} />
@@ -58,7 +60,7 @@ class FriendListView extends React.Component {
 
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ addFriends, getGifts }, dispatch);
+  return bindActionCreators({ addFriends, getGifts, firstEntrance }, dispatch);
 }
 
 function mapStateToProps({ friends }) {

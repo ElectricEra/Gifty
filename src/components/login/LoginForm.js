@@ -7,6 +7,7 @@ import { SubmitButton } from '../materialize'
 import { Row, TextInput, LoginWrapper, Form } from '../materialize'
 import { validate } from '../../utils/utils_login/index'
 import { changeSignInForm, changeSignUpForm } from '../../actions/index'
+import FacebookLogin from './FacebookLogin'
 
 
 class LoginForm extends React.Component {
@@ -95,6 +96,9 @@ class LoginForm extends React.Component {
              </Text>
            </div>
          }
+        </Row>
+        <Row>
+          <FacebookLogin />
         </Row>
        </LoginWrapper>
     )}

@@ -1,5 +1,4 @@
 import { GET_GIFTS } from '../actions/index'
-import GENERATE_GIFTS from '../actions/index';
 import { GIFT_RESET } from '../actions/index'
 
 export default (state = [], action) => {
