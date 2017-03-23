@@ -12,17 +12,34 @@ module.exports.findIdeas = function(queryObject) {
 
 module.exports.loginUser = function(user){
 
-  return MongoClient.connect(url).then(function(db) {
-    return db.collection('users').find(user).toArray().then(function (result) {
-      if(result.length === 1) {
+  if(user.email.facebook) {
+    
+    return MongoClient.connect(url).then(function(db) {
+      return db.collection('users').find({facebook: user.email.facebook}).toArray().then(function (result) {
+        if(result.length === 0) {
+          db.collection('users').insert(user.email);
+          db.close();
+          return user.email;
+        }
         db.close();
         return result;
-      }
-      db.close();
-      return false;
+      });
     });
-  });
 
+  } else {
+
+    return MongoClient.connect(url).then(function(db) {
+      return db.collection('users').find(user).toArray().then(function (result) {
+        if(result.length === 1) {
+          db.close();
+          return result;
+        }
+        db.close();
+        return false;
+      });
+    });
+
+  }
 };
 
 module.exports.registerUser = function(user){
