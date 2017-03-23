@@ -37,9 +37,9 @@ app.post('/submit',function(req,res){
     });
     Promise.all(results).then((results) => {
       res.end(JSON.stringify(results))
-    });    
+    });
   });
-  
+
 });
 
 app.post('/register',function(req,res){
@@ -47,7 +47,7 @@ app.post('/register',function(req,res){
   db.registerUser(req.body).then((user) => {
     res.end(JSON.stringify(user));
   });
-  
+
 });
 
 app.post('/login',function(req,res){
