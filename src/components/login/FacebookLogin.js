@@ -1,6 +1,9 @@
 import React from "react";
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { logInCreator } from '../../actions/index';
 
-export default class FacebookLogin extends React.Component {
+class FacebookLogin extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -16,8 +19,20 @@ export default class FacebookLogin extends React.Component {
       cookie     : true,
       version    : 'v2.8'
     });
-  	FB.login(function(response) {console.log(response)},
+  	FB.login((response) => {
+      if(response.status === 'connected'){
+        getInfo().then(data => {
+          let user = {
+            facebook: data.id,
+            name: data.name,
+            picture: data.picture.data.url
+          }
+          this.props.logInCreator(user);
+        });       
+      };
+    },
   		{scope: 'email,publish_actions,user_about_me,user_birthday,user_friends,user_games_activity,user_likes,user_posts,user_actions.books,user_actions.fitness,user_events,user_actions.music'});
+
 
   }
 
@@ -30,3 +45,16 @@ export default class FacebookLogin extends React.Component {
 
     )}
 };
+
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({
+    logInCreator
+  }, dispatch)
+}
+
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(FacebookLogin)

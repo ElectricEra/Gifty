@@ -59,7 +59,6 @@ function getInfo() {
 
 	return new Promise(function(resolve, reject){
 		FB.api('/me', 'GET', {fields: 'name,id,picture.width(150).height(150),friends'}, function(response) {
-			console.log(response);
 			resolve(response);
 			response.friends.data.forEach(function(friend){
 				getFriend(friend.id);
