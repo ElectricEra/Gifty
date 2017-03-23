@@ -1,6 +1,6 @@
 import React from 'react'
-import {InputWrapper} from '../'
-import {InputWrapperSmall} from '../'
+import { InputWrapper } from '../'
+import { InputWrapperSmall } from '../'
 
 export const TextInput = (props) => {
   let Wrapper = props.size === 'small' ? InputWrapperSmall : InputWrapper;

@@ -1,12 +1,14 @@
 import React from "react";
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import {IndexLink, Link, browserHistory} from 'react-router';
 import { Field, reduxForm, getFormValues } from 'redux-form'
 import { Logo, Text } from '../materialize'
 import { SubmitButton } from '../materialize'
 import { Row, TextInput, LoginWrapper, Form } from '../materialize'
 import { validate } from '../../utils/utils_login/index'
 import { changeSignInForm, changeSignUpForm } from '../../actions/index'
+import { logInCreator, signUpCreator } from '../../actions/index'
 import FacebookLogin from './FacebookLogin'
 
 
@@ -15,23 +17,48 @@ class LoginForm extends React.Component {
     super(props);
 
     this.handleInputChange = this.handleInputChange.bind(this)
-    this.handleSubmitForm = this.handleSubmitForm.bind(this);
     this.handleChangeForm = this.handleChangeForm.bind(this);
+    this.handleLogIn = this.handleLogIn.bind(this);
+    this.handleSignUp = this.handleSignUp.bind(this);
+  }
+
+  componentWillMount() {
+    if(this.props.logStatus.loggedIn === true) {
+      browserHistory.push('/app');
+    }
+  }
+
+  componentDidMount() {
+    // console.log(this.props.logStatus);
   }
 
   handleInputChange(event) {
     console.log('changed');
   }
 
-  handleSubmitForm(event) {
-    
-    console.log('Form submited');
-    console.log(this.props.values);
-  }
-
   handleChangeForm(event) {
     let id = event.target.id;
     id === 'signIn' ? this.props.changeSignInForm() : this.props.changeSignUpForm();
+  }
+
+  handleLogIn() {
+    let email;
+    let password;
+
+    email = this.props.values.email;
+    password = this.props.values.password;
+    this.props.logInCreator(email, password)
+  }
+
+  handleSignUp() {
+    let name;
+    let email;
+    let password;
+
+    name = this.props.values.name;
+    email = this.props.values.email;
+    password = this.props.values.password;
+    this.props.signUpCreator(name, email, password);
   }
 
   renderField ({ input, label, type, id, meta: { touched, error } }) {
@@ -51,7 +78,9 @@ class LoginForm extends React.Component {
       <LoginWrapper>
         <Logo imgSrc="images/gift.png" />
         <Row>
-          <Form onSubmit={handleSubmit(this.handleSubmitForm)}>
+          <Form onSubmit={ currentForm === 'signIn' ?
+                           handleSubmit(this.handleLogIn) :
+                           handleSubmit(this.handleSignUp)}>
 
           {currentForm === 'signUp' ?
             <Field
@@ -60,7 +89,6 @@ class LoginForm extends React.Component {
               type="text"
               component={this.renderField}
               label="Name"/> : null}
-
             <Field
               name="email"
               id="email"
@@ -76,8 +104,9 @@ class LoginForm extends React.Component {
               label="Password"/>
 
             <SubmitButton disabled={submitting}>
-              {currentForm === 'signIn' ? 'Log In' : 'Register'}
+              {currentForm === 'signIn' ? 'Log In' : 'Sign Up'}
             </SubmitButton>
+
            </Form>
         </Row>
         <Row>
@@ -95,9 +124,8 @@ class LoginForm extends React.Component {
                <span className="sign-toggle-text" id="signUp" onClick={this.handleChangeForm}>Sign in</span>
              </Text>
            </div>
-         }
-        </Row>
-        <Row>
+          }
+
           <FacebookLogin />
         </Row>
        </LoginWrapper>
@@ -106,13 +134,20 @@ class LoginForm extends React.Component {
 
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ changeSignInForm, changeSignUpForm }, dispatch)
+  return bindActionCreators({
+    changeSignInForm,
+    changeSignUpForm,
+    logInCreator,
+    signUpCreator
+  }, dispatch)
 }
 
 function mapStateToProps(state) {
   return {
     values: getFormValues('LoginReduxForm')(state),
-    currentForm: state.currentForm
+    currentForm: state.currentForm,
+    user: state.user,
+    logStatus: state.logStatus
   }
 }
 
@@ -130,7 +165,7 @@ export default reduxForm({
 
 
 /*
-
+//
 
 
            <div className="sign-toggle">
