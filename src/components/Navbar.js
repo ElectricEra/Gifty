@@ -75,7 +75,7 @@ class Navbar extends React.Component {
             <Link to="app" className="brand-logo">
               <img className="logo" src="images/gifty-white.svg" alt="Gifty"/>
             </Link>
-            <Link to="#" data-activates="slide-out" className="button-collapse">
+            <Link to="#" data-activates="slide-out" className="button-collapse navbar-hamburger">
               &#9776;
             </Link>
 
