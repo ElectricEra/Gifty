@@ -7,10 +7,10 @@ import { getGifts, firstEntrance} from '../../actions/index';
 
 import {DefaultBoxWrapper, Logo} from '../materialize';
 import {Row} from '../materialize';
-import FriendList from './user-list';
+import FriendView from './FriendView';
 
 
-class FriendListView extends React.Component {
+class FriendListContainer extends React.Component {
   constructor(props) {
     super(props);
     this.handleFriend = this.handleFriend.bind(this);
@@ -26,8 +26,7 @@ class FriendListView extends React.Component {
      this.updateFriends();
     } else {
       initFb().then(() =>  this.updateFriends());
-    }
-      
+    }      
   }
 
   updateFriends(){
@@ -35,6 +34,7 @@ class FriendListView extends React.Component {
         getFriends().then(data => {
           this.props.addFriends(data);
           this.setState({found: data});
+          this.handleSearch({target:{value:''}});
         })
       })
   }
@@ -51,7 +51,7 @@ class FriendListView extends React.Component {
   handleSearch(event) {
     var result = this.props.friends.filter(function(friend){
       return friend.name.toLowerCase().indexOf(event.target.value.toLowerCase()) != -1;
-    })
+    });
     this.setState({found: result});
   }
   
@@ -68,7 +68,7 @@ class FriendListView extends React.Component {
             <div className='input-field col s3'>
               <input type="number" placeholder='Max price' ref='price' />
             </div>  
-            <FriendList friends={this.state.found} handleFriend={this.handleFriend} />
+            <FriendView friends={this.state.found} handleFriend={this.handleFriend} />
            </Row>
          </DefaultBoxWrapper>
     
@@ -85,4 +85,4 @@ function mapStateToProps({ friends }) {
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(FriendListView);
+export default connect(mapStateToProps, mapDispatchToProps)(FriendListContainer);

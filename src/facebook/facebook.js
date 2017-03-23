@@ -70,7 +70,7 @@ function getInfo() {
 
 function getFriend(id){
 	return new Promise(function(resolve, reject){
-		FB.api(('/'+id), 'GET', {fields: 'name,id,picture.width(100).height(100)'}, function (response) {
+		FB.api(('/'+id), 'GET', {fields: 'name,id,picture.width(100).height(100),birthday'}, function (response) {
 			resolve(response);
 		});
 	})	
@@ -83,7 +83,17 @@ function getFriends() {
 			response.friends.data.forEach(function(friend){
 				result.push(getFriend(friend.id));
 			})
-			Promise.all(result).then(data => resolve(data))
+			Promise.all(result).then(data => {
+				data.sort((a, b) => {
+			      var now = new Date().toISOString().slice(5,10).replace(/-/g,"/"),
+			        adate = a.birthday.slice(0, 5),
+			        bdate = b.birthday.slice(0, 5);
+			      if (now > adate){
+			        return false;
+			      }
+			      return adate > bdate;
+			    })
+				resolve(data)})
 		});
     })		
 }

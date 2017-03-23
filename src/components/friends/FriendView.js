@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router';
 
 // Using "Stateless Functional Components"
 export default function(props) {
@@ -9,11 +8,12 @@ export default function(props) {
       {props.friends.map(user => {
 
         return (
-          <li key={user.id} className="collection-item avatar" >
-            <Link onClick={props.handleFriend.bind(null, user.id)} to="generated">
+          <li key={user.id} className="collection-item friend" onClick={props.handleFriend.bind(null, user.id)} >
+            <div className='center'>
               <img src={user.picture.data.url} alt="pic" className="circle" />
-              <p>{user.name}</p>
-            </Link>          
+              <h5>{user.name}</h5>              
+              <p>Birtday: {user.birthday.slice(0, 5)}</p>
+            </div>
           </li>
         );
 
