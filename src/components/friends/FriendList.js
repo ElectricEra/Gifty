@@ -22,6 +22,10 @@ class FriendListContainer extends React.Component {
   }
   
   componentWillMount() {
+    if(this.props.logStatus.loggedIn === false) {
+      browserHistory.push('/app');
+    }
+
     if(FBInitialized()){
      this.updateFriends();
     } else {
@@ -80,9 +84,8 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({ addFriends, getGifts, firstEntrance }, dispatch);
 }
 
-function mapStateToProps({ friends }) {
-  return { friends };
+function mapStateToProps({ friends, logStatus }) {
+  return { friends, logStatus };
 }
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(FriendListContainer);
