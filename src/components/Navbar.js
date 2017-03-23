@@ -48,7 +48,7 @@ class Navbar extends React.Component {
               <li><Link to="history">History</Link></li>
               <li><Link to="friends">Friends</Link></li>
               <li><Link to="settings">Settings</Link></li>
-              <li><Link to="login">Log out</Link></li>
+              <li><Link to="login" onClick={this.handleLogOut}>Log out</Link></li>
             </ul>
         </NavbarWrapper>
         <ul id="slide-out" className="side-nav" onClick={this.handleHideSideNav}>
