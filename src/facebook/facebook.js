@@ -1,10 +1,58 @@
+window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '381020565615954',
+      xfbml      : true,
+      version    : 'v2.8'
+    });
+};
+
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=381020565615954";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+
+
+function initFb() {
+	(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=381020565615954";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));
+
+	return new Promise(function(resolve, reject){
+
+		window.fbAsyncInit = function() {
+		    FB.init({
+		      appId      : '381020565615954',
+		      xfbml      : true,
+		      version    : 'v2.8'
+		    });
+		    resolve(true);
+		};
+
+	})
+}
+
+FBInitialized = function () {
+    return typeof (FB) != 'undefined' && window.fbAsyncInit.hasRun;
+};
+
 function facebookLogged(){
 
-	FB.getLoginStatus(function(response) {
+	return new Promise(function(resolve, reject){
+		FB.getLoginStatus(function(response) {
 		if (response.status === 'connected') {
-			getInfo();
-		}	
-	});
+			resolve(true);
+			}	
+		});
+
+	})	
 };
 
 function getInfo() {
@@ -40,7 +88,7 @@ function getFriends() {
     })		
 }
 
-function getQuery(id){
+function getQuery(id, price){
 	return new Promise(function(resolve, reject){
 		FB.api(
 		  '/'+id,
@@ -97,7 +145,12 @@ function getQuery(id){
 		  		if (tags.length === 0){
 		  			tags.push('other');
 		  		};
-		  		var price = 150;
+		  		if(price === ''){
+		  			price = 1000
+		  		} else {
+		  			price = +price;
+		  		}
+		  		
 		  		console.log({age, gender, price, tags});
 		  		resolve({age, gender, price, tags});
 		  	}
@@ -106,21 +159,3 @@ function getQuery(id){
 	})
 
 };
-
-window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '381020565615954',
-      xfbml      : true,
-      version    : 'v2.8'
-    });
-    facebookLogged();
-};
-
-
-(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=381020565615954";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));

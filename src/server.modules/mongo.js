@@ -1,12 +1,3 @@
-module.exports.insertIdeas = function(idea){
-
-  return MongoClient.connect(url).then(function(db) {
-  db.collection('ideas').insert(idea);
-  db.close();
-  });
-
-}
-
 module.exports.findIdeas = function(queryObject) {
   var ideas;
 
@@ -18,23 +9,6 @@ module.exports.findIdeas = function(queryObject) {
 
 }
 
-module.exports.updateIdeas = function(queryObject, updateObject) {
-
-  return MongoClient.connect(url).then(function(db) {    
-  ideas = db.collection('ideas').update(queryObject, {$set: updateObject});  
-  db.close();
-  });
-
-}
-
-module.exports.deleteIdeas = function(queryObject){
-  
-  return MongoClient.connect(url).then(function(db) {    
-  db.collection('ideas').remove(queryObject);  
-  db.close();
-  });
-
-}
 
 module.exports.loginUser = function(user){
 

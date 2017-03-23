@@ -15,20 +15,32 @@ class FriendListView extends React.Component {
     super(props);
     this.handleFriend = this.handleFriend.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
+    this.updateFriends = this.updateFriends.bind(this);
     this.state = {      
-      found: []
+      found: this.props.friends
     }
   }
   
-  componentDidMount() {
-    getFriends().then(data => {
-      this.props.addFriends(data);
-      this.setState({found: data});
-    })
+  componentWillMount() {
+    if(FBInitialized()){
+     this.updateFriends();
+    } else {
+      initFb().then(() =>  this.updateFriends());
+    }
+      
+  }
+
+  updateFriends(){
+    facebookLogged().then(() => {
+        getFriends().then(data => {
+          this.props.addFriends(data);
+          this.setState({found: data});
+        })
+      })
   }
 
   handleFriend(id) {
-    getQuery(id).then(query => {
+    getQuery(id, this.refs.price.value).then(query => {
       this.props.getGifts(query);
       this.props.firstEntrance();
       browserHistory.push('/generated');
@@ -50,7 +62,12 @@ class FriendListView extends React.Component {
         <DefaultBoxWrapper>
           <Logo imgSrc="images/gift.png" />
           <Row>
-            <input type="text" placeholder="Search" onChange={this.handleSearch} />
+            <div className='input-field col s9'>
+              <input type="text" placeholder="Search" onChange={this.handleSearch} />
+            </div>
+            <div className='input-field col s3'>
+              <input type="number" placeholder='Max price' ref='price' />
+            </div>  
             <FriendList friends={this.state.found} handleFriend={this.handleFriend} />
            </Row>
          </DefaultBoxWrapper>
