@@ -58,6 +58,14 @@ app.post('/login',function(req,res){
 
 });
 
+app.post('/update',function(req,res){
+  
+  db.updateUser(req.body).then((user) => {
+    res.end(JSON.stringify(user));
+  }); 
+
+})
+
 app.listen(3000,function(){
   console.log("Started on PORT 3000");
 })
