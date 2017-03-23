@@ -45,7 +45,7 @@ module.exports.loginUser = function(user){
 module.exports.registerUser = function(user){
 
   return MongoClient.connect(url).then(function(db) {
-    return db.collection('users').find({email: user.email}).toArray().then(function (result) {
+    return db.collection('users').find({email: user.email}).toArray().then(function(result) {
       if(result.length === 0) {
         db.collection('users').insert(user);
         db.close();
@@ -58,12 +58,37 @@ module.exports.registerUser = function(user){
 
 };
 
-module.exports.updateUser = function(user, updateObject) {
+module.exports.updateUser = function(user) {
 
-  return MongoClient.connect(url).then(function(db) {    
-    ideas = db.collection('users').update(user, {$set: updateObject});  
-    db.close();
-    return true;
-  });
+  if (user.facebook) {
 
+    return MongoClient.connect(url).then(function(db) {    
+      return db.collection('users').update({facebook: user.facebook}, {$set: user}).then(function(){
+        return db.collection('users').find({facebook: user.facebook}).toArray().then(function (result) {
+          if(result.length === 1) {
+            db.close();
+            return result;
+          }
+          db.close();
+          return false;
+        });
+      });
+    });  
+
+  } else {
+
+    return MongoClient.connect(url).then(function(db) {    
+      return db.collection('users').update({email: user.email}, {$set: user}).then(function(){
+        return db.collection('users').find({email: user.email}).toArray().then(function (result) {
+          if(result.length === 1) {
+            db.close();
+            return result;
+          }
+          db.close();
+          return false;
+        });
+      });
+    });
+  
+  }
 };

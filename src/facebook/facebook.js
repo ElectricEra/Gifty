@@ -39,7 +39,7 @@ function initFb() {
 	})
 }
 
-FBInitialized = function () {
+function FBInitialized() {
     return typeof (FB) != 'undefined' && window.fbAsyncInit.hasRun;
 };
 
@@ -119,10 +119,7 @@ function getQuery(id, price){
 		  		};
 		  		if(response.books){
 		  			tags.push('reading');
-		  		};
-		  		if(response.devices){
-		  			tags.push('gadgets');
-		  		};	  		
+		  		};	
 
 		  		possibleTags.forEach(function(tag){
 		  			if(response.feed){
