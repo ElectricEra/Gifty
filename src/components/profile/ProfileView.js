@@ -1,11 +1,19 @@
 import React from 'react';
+import { browserHistory } from 'react-router'
+import { connect } from 'react-redux'
 import { DefaultBoxWrapper } from '../materialize';
 import ProfileInfo from './ProfileInfo';
 import ProfilePresents from './ProfilePresents';
-//
-export default class ProfileView extends React.Component {
+
+class ProfileView extends React.Component {
 	constructor(props) {
 		super(props);
+	}
+
+	componentWillMount() {
+		if(this.props.logStatus.loggedIn === false) {
+      browserHistory.push('/app');
+    }
 	}
 
 	render() {
@@ -22,3 +30,11 @@ export default class ProfileView extends React.Component {
 	  )
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    logStatus: state.logStatus
+  }
+}
+
+export default connect(mapStateToProps)(ProfileView);
