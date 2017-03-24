@@ -21,14 +21,9 @@ class HistoryView extends React.Component {
     browserHistory.push('/generated');
 	}
 
-  
-	redirectToMain() {
-    browserHistory.push('/app');
-  }
-
   componentWillMount() {
-    if (this.props.isFirstTime) {
-      this.redirectToMain();
+    if(this.props.logStatus.loggedIn === false) {
+      browserHistory.push('/app');
     }
   }
 
@@ -47,8 +42,8 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({ getGifts }, dispatch);
 }
 
-function mapStateToProps({ history, isFirstTime }) {
-  return { history, isFirstTime };
+function mapStateToProps({ history, logStatus }) {
+  return { history, logStatus };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(HistoryView);

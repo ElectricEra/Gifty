@@ -9,7 +9,7 @@ export const HistoryCollection = (props) => {
       <div className="row">
         {props.history.map((gift, id) => {
             return (
-              <div onClick={()=>{props.generateOldGifts(id)}}>
+              <div onClick={()=>{props.generateOldGifts(id)}} key={id} >
                 <HistoryItem {...gift} />
               </div>
             )
