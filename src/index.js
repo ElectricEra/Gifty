@@ -6,11 +6,10 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import reducers from './reducers';
 import thunk from 'redux-thunk';
 import ReduxPromise from 'redux-promise'
-
-//Styles
+import throttle from 'lodash/throttle'
+import { loadState, saveState } from './utils/local_storage/localStorage'
 import styles from './styles/scss/styles.scss'
 
-//Components
 import App from './components/App.js'
 import GiftyApp from './components/GiftyApp.js'
 import GiftyForm from './components/gifty/GiftyForm.js'
@@ -22,15 +21,22 @@ import Login from './components/Login.js'
 import FriendListView from './components/friends/FriendList.js'
 import NotFound from './components/NotFound.js'
 
-let store = createStore(
+
+const persistedState = loadState();
+
+const store = createStore(
   reducers,
+  persistedState,
   compose(
     applyMiddleware(ReduxPromise),
     applyMiddleware(thunk)
   )
 )
 
-//Routing
+store.subscribe(throttle(() => {
+  saveState(store.getState());
+}, 1000));
+
 ReactDOM.render(<Provider store={store}>
   <Router history={browserHistory}>
     <Route path="/" component={App}>

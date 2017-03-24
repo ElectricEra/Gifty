@@ -8,7 +8,7 @@ import { HistoryCollection } from './HistoryCollection'
 import { getGifts } from '../../actions/index'
 
 class HistoryView extends React.Component {
-	
+
 	constructor(props) {
 		super(props);
 
@@ -21,6 +21,7 @@ class HistoryView extends React.Component {
     browserHistory.push('/generated');
 	}
 
+  
 	redirectToMain() {
     browserHistory.push('/app');
   }
@@ -30,7 +31,7 @@ class HistoryView extends React.Component {
       this.redirectToMain();
     }
   }
-	
+
 	render() {
 	  return (
   		<DefaultBoxWrapper>

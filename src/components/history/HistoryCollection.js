@@ -2,6 +2,7 @@ import React from 'react';
 
 import { HistoryItem } from './HistoryItem';
 
+
 export const HistoryCollection = (props) => {
   
   return (
