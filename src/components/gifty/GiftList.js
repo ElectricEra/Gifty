@@ -3,19 +3,29 @@ import { GiftItem } from './GiftItem';
 
 export default class GiftList extends React.Component {
 
-	componentDidMount() {
-	  	$(".carousel").carousel();
-	}
+  constructor(props) {
+    super(props);
+    
+    this.onClickHandler = this.onClickHandler.bind(this)
+  }
 
-	render() {
-	  return (
-  		<div>
+  componentDidMount() {
+    $(".carousel").carousel();
+  }
+
+  onClickHandler(index) {
+    this.props.addToHistory(this.props.gifts[index])
+  }
+
+  render() {
+    return (
+      <div>
         <div className="row">
-         	{this.props.gifts.map((gift,index) => <GiftItem key={index} 
-         			index={index} {...gift}/>)}
-        	</div>
-    	</div>
-	  )
+          {this.props.gifts.map((gift,index) => <GiftItem key={index} 
+              index={index} {...gift} onClickHandler={this.onClickHandler}/>)}
+        </div>
+      </div>
+    )
   }
 
 }

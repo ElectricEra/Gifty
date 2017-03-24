@@ -5,6 +5,7 @@ import generatedGifts from './reducer_gifts'
 import firstEntrance from './reducer_entrance'
 import user from './reducer_user'
 import logStatus from './reducer_log_status'
+import history from './reducer_history'
 
 import { reducer as formReducer } from 'redux-form'
 
@@ -14,6 +15,7 @@ const App = combineReducers({
   friends: addedFriends,
   form: formReducer,
   isFirstTime: firstEntrance,
+  history,
   currentForm,
   user,
   logStatus
