@@ -6,11 +6,11 @@ import { connect } from 'react-redux';
 import HistoryCollection from './HistoryCollection'
 
 class HistoryView extends React.Component {
-	
+
 	constructor(props) {
 		super(props);
 	}
-	
+
 	render() {
 	  return (
   		<DefaultBoxWrapper>
