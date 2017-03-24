@@ -14,7 +14,7 @@ export default class GiftList extends React.Component {
   }
 
   onClickHandler(index) {
-    this.props.addToHistory(this.props.gifts[index])
+    console.log("Click");
   }
 
   render() {
