@@ -124,6 +124,8 @@ function processValues(values) {
       case 'price':
         description.price = values[prop];
         break;
+      case 'name':
+        break;
       default:
         description.tags.push(prop)
     }
