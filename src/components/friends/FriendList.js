@@ -17,7 +17,7 @@ class FriendListContainer extends React.Component {
     this.handleSearch = this.handleSearch.bind(this);
     this.updateFriends = this.updateFriends.bind(this);
     this.state = {      
-      found: this.props.friends
+      found: this.props.user.friends
     }
   }
   
@@ -54,7 +54,7 @@ class FriendListContainer extends React.Component {
   }
 
   handleSearch(event) {
-    var result = this.props.friends.filter(function(friend){
+    var result = this.props.user.friends.filter(function(friend){
       return friend.name.toLowerCase().indexOf(event.target.value.toLowerCase()) != -1;
     });
     this.setState({found: result});
@@ -85,8 +85,8 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({ addFriends, getGifts, firstEntrance, addToHistory }, dispatch);
 }
 
-function mapStateToProps({ friends, logStatus, history }) {
-  return { friends, logStatus, history };
+function mapStateToProps({ user, logStatus, history }) {
+  return { user, logStatus, history };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(FriendListContainer);

@@ -107,11 +107,12 @@ function getQuery(id, price){
 		  'GET',
 		  {fields:"id,name,gender,birthday,sports,games,about,likes,music,books,devices,feed"},
 		  function(response) {
-		  		const age = new Date().getFullYear() - new Date(response.birthday).getFullYear(),
-		  			gender = response.gender,
+		  		var tags = [],
+		  			age = new Date().getFullYear() - new Date(response.birthday).getFullYear();
+		  		const gender = response.gender,
 		  			name = response.name,		  		
 		  			possibleTags = ['sport', 'music', 'gaming', 'reading', 'gadgets', 'cooking', 'art', 'travel'];
-		  		var tags = [];
+		  		
 		  		if(response.sports){
 		  			tags.push('sport');
 		  		};
