@@ -29,7 +29,7 @@ module.exports = function (idea, maxPrice) {
      
       function itemsCallback(error, itemsResponse) {
         if (error) reject(error);
-        if (itemsResponse){
+        if (itemsResponse.searchResult.item){
           idea.ebay = itemsResponse.searchResult.item.reduce((prev, curr) => {
             return prev.concat({
               url: curr.viewItemURL,
@@ -37,6 +37,8 @@ module.exports = function (idea, maxPrice) {
               price: curr.sellingStatus.currentPrice.amount
             });
           }, []);
+        } else {
+          idea.ebay = false;
         }
         resolve(idea);
       }
