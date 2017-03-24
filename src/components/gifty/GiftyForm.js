@@ -2,7 +2,7 @@ import React, {PropTypes} from "react";
 import {IndexLink, Link, browserHistory} from 'react-router';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'
-import { generateGifts } from '../../actions/index'
+import { generateGifts, addToHistory } from '../../actions/index'
 import { getGifts,  firstEntrance} from '../../actions/index'
 import { Field, reduxForm, getFormValues } from 'redux-form'
 import { validate } from '../../utils/utils_gifty/index'
@@ -23,6 +23,7 @@ class GiftyForm extends React.Component {
     let description = processValues(this.props.values);
     this.props.getGifts(description);
     this.props.firstEntrance();
+    this.props.addToHistory(description);
     console.log(description);
     console.log('Form submited');
     browserHistory.push('/generated');
@@ -104,6 +105,7 @@ class GiftyForm extends React.Component {
 
 function processValues(values) {
   let description = {
+    name: '',
     age: 0,
     gender:'',
     price: 0,
@@ -112,6 +114,9 @@ function processValues(values) {
 
   for (let prop in values) {
     switch (prop) {
+      case 'name':
+        description.name = values[prop];
+        break;
       case 'age':
         description.age = values[prop];
         break;
@@ -135,7 +140,7 @@ function processValues(values) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ getGifts, firstEntrance }, dispatch);
+  return bindActionCreators({ getGifts, firstEntrance, addToHistory }, dispatch);
 }
 
 function mapStateToProps(state) {
