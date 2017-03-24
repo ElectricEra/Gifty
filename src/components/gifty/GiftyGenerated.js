@@ -22,14 +22,14 @@ class GiftyGenerated extends React.Component {
     this.props.addToHistory(data)
   }
 
-  componentWillMount() {
-    if(this.props.isFirstTime) {
-      this.redirectToMain();
-    }
-  }
-
   componentWillUnmount() {
     this.props.resetGift();
+  }
+
+  componentWillMount() {
+    if (this.props.isFirstTime) {
+      this.redirectToMain();
+    }
   }
 
   render() {
