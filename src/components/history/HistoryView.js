@@ -1,32 +1,33 @@
 import React from 'react';
-import { browserHistory } from 'react-router'
-import { connect } from 'react-redux'
 import { DefaultBoxWrapper } from '../materialize';
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux';
+
+import HistoryCollection from './HistoryCollection'
 
 class HistoryView extends React.Component {
+	
 	constructor(props) {
 		super(props);
 	}
-
-	componentWillMount() {
-		if(this.props.logStatus.loggedIn === false) {
-			browserHistory.push('/app');
-		}
-	}
-
+	
 	render() {
 	  return (
   		<DefaultBoxWrapper>
-  			<p>History</p>
+  		{console.log(this.props.history)}
+  			<HistoryCollection history={this.props.history} />
   		</DefaultBoxWrapper>
 	  )
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    logStatus: state.logStatus
-  }
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({  }, dispatch);
 }
 
-export default connect(mapStateToProps)(HistoryView);
+function mapStateToProps({ history }) {
+  return { history };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(HistoryView);

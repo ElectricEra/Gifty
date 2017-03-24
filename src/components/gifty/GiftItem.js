@@ -15,7 +15,7 @@ export const GiftItem = (props) => {
       </div>
       <div className="col s12 l8">
         <div className="center">
-          <div className="carousel center">
+          <div className="carousel center" onClick={()=>props.onClickHandler(props.index)}>
             {props.ebay.map((gift, index) => <CarouselItem key={index} {...gift} />)}
           </div>
         </div>

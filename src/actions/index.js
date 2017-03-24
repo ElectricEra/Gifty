@@ -16,6 +16,7 @@ export const LOG_IN_FAILED    = 'LOG_IN_FAILED';
 export const SIGN_UP_FAILED   = 'SIGN_UP_FAILED';
 export const SIGN_UP_SUCCESS  = 'SIGN_UP_SUCCESS';
 export const LOGGED_OUT       = 'LOGGED_OUT';
+export const ADD_TO_HISTORY   = 'ADD_TO_HISTORY';
 
 
 
@@ -168,11 +169,18 @@ export function signUpCreator(name, email, password) {
   }
 }
 
-export function  logOutCreator() {
+export function logOutCreator() {
   console.log('LOG OUT CREATOR');
 
   return (dispatch) => {
     dispatch(logOut());
     dispatch(loggedOut());
+  }
+}
+
+export function addToHistory(data) {
+  return {
+    type: ADD_TO_HISTORY,
+    payload: data
   }
 }
