@@ -7,7 +7,7 @@ export default function(props) {
   ]
   return (
     <ul className="collection">
-
+    
       {props.friends.map(user => {
         if (!user.birthday){
 

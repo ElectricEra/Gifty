@@ -86,7 +86,7 @@ function getFriends() {
 				data.sort((a, b) => {					
 					if(!a.birthday || !b.birthday){
 						return false;
-					}
+					};
 					const now = new Date().toISOString().slice(5,10).replace(/-/g,"/"),
 						adate = a.birthday.slice(0, 5),
 						bdate = b.birthday.slice(0, 5);
