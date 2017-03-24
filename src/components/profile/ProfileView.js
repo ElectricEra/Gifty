@@ -1,7 +1,7 @@
 import React from 'react';
 import { browserHistory } from 'react-router'
 import { connect } from 'react-redux'
-import { DefaultBoxWrapper } from '../materialize';
+import { Row } from '../materialize';
 import ProfileInfo from './ProfileInfo';
 import ProfilePresents from './ProfilePresents';
 
@@ -17,24 +17,45 @@ class ProfileView extends React.Component {
 	}
 
 	render() {
+		const { user } = this.props;
+
 	  return (
-  		<DefaultBoxWrapper>
-  			<div className="col offset-s3 s6 l5">
-  				<ProfileInfo name="JOHN" src="../../images/user.jpg"/>
-  			</div>
-  			<div className="col s12 l7">
-  				<ProfilePresents gifts={[{src:"../../images/user.jpg","name":"Bobby1"},
-            {src:"../../images/user.jpg","name":"Bobby2"}]}/>
-  			</div>
-  		</DefaultBoxWrapper>
+  		<Row>
+			<div className="col s12 m2 l2"></div>
+			<div className="col s12 m8 l8 profile">
+					<div className="card">
+						<div className="card-image">
+							<img src="images/user-1.jpg" />
+							<span className="card-title">{user.name}</span>
+							<a className="btn-floating halfway-fab waves-effect waves-light red"><i className="material-icons">mode_edit</i></a>
+						</div>
+						<div className="card-content">
+							<p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+						</div>
+					</div>
+				</div>
+
+  		</Row>
 	  )
   }
 }
 
 function mapStateToProps(state) {
   return {
-    logStatus: state.logStatus
+    logStatus: state.logStatus,
+		user: state.user
   }
 }
 
 export default connect(mapStateToProps)(ProfileView);
+
+
+	// <div className="col offset-s3 s6 l5">
+	// 	<ProfileInfo name="JOHN" src="../../images/user.jpg"/>
+	// </div>
+
+		//
+		// <div className="col s12 m6">
+		// 	<ProfilePresents gifts={[{src:"../../images/user.jpg","name":"Bobby1"},
+		// 		{src:"../../images/user.jpg","name":"Bobby2"}]}/>
+		// </div>

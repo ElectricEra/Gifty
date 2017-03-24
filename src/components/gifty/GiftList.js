@@ -5,10 +5,10 @@ export default class GiftList extends React.Component {
 
   constructor(props) {
     super(props);
-    
+
     this.onClickHandler = this.onClickHandler.bind(this)
   }
-
+    
   componentDidMount() {
     $(".carousel").carousel();
   }
@@ -21,7 +21,7 @@ export default class GiftList extends React.Component {
     return (
       <div>
         <div className="row">
-          {this.props.gifts.map((gift,index) => <GiftItem key={index} 
+          {this.props.gifts.map((gift,index) => <GiftItem key={index}
               index={index} {...gift} onClickHandler={this.onClickHandler}/>)}
         </div>
       </div>
