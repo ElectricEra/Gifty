@@ -3,7 +3,7 @@ import {IndexLink, Link, browserHistory} from 'react-router';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { addFriends } from '../../actions/index';
-import { getGifts, firstEntrance} from '../../actions/index';
+import { getGifts, firstEntrance, addToHistory } from '../../actions/index';
 
 import {DefaultBoxWrapper, Logo} from '../materialize';
 import {Row} from '../materialize';
@@ -47,6 +47,7 @@ class FriendListContainer extends React.Component {
     getQuery(id, this.refs.price.value).then(query => {
       this.props.getGifts(query);
       this.props.firstEntrance();
+      this.props.addToHistory(query);
       browserHistory.push('/generated');
     })
     
@@ -81,11 +82,11 @@ class FriendListContainer extends React.Component {
 
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ addFriends, getGifts, firstEntrance }, dispatch);
+  return bindActionCreators({ addFriends, getGifts, firstEntrance, addToHistory }, dispatch);
 }
 
-function mapStateToProps({ friends, logStatus }) {
-  return { friends, logStatus };
+function mapStateToProps({ friends, logStatus, history }) {
+  return { friends, logStatus, history };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(FriendListContainer);
