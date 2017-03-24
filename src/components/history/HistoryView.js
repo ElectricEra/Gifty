@@ -5,7 +5,7 @@ import {IndexLink, Link, browserHistory} from 'react-router';
 import { connect } from 'react-redux';
 
 import { HistoryCollection } from './HistoryCollection'
-//import { getGifts } from '../../actions/index'
+import { getGifts } from '../../actions/index'
 
 class HistoryView extends React.Component {
 	
@@ -16,16 +16,24 @@ class HistoryView extends React.Component {
 	}
 
 	generateOldGifts(index) {
-		console.log(this.props.history);	
-		//this.props.getGifts(...this.props.history[index]);
+		this.props.getGifts(this.props.history[index]);
     console.log('Form submited');
-    //browserHistory.push('/generated');
+    browserHistory.push('/generated');
 	}
+
+	redirectToMain() {
+    browserHistory.push('/app');
+  }
+
+  componentWillMount() {
+    if (this.props.isFirstTime) {
+      this.redirectToMain();
+    }
+  }
 	
 	render() {
 	  return (
   		<DefaultBoxWrapper>
-  		{console.log(this.props.history)}
   			<HistoryCollection history={this.props.history} 
   				generateOldGifts={this.generateOldGifts} />
   		</DefaultBoxWrapper>
@@ -35,11 +43,11 @@ class HistoryView extends React.Component {
 
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ /*getGifts*/ }, dispatch);
+  return bindActionCreators({ getGifts }, dispatch);
 }
 
-function mapStateToProps({ history }) {
-  return { history };
+function mapStateToProps({ history, isFirstTime }) {
+  return { history, isFirstTime };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(HistoryView);
