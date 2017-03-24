@@ -16,7 +16,7 @@ class HistoryView extends React.Component {
 	}
 
 	generateOldGifts(index) {
-		console.log(index,this.props.history[index]);	
+		console.log(this.props.history);	
 		//this.props.getGifts(...this.props.history[index]);
     console.log('Form submited');
     //browserHistory.push('/generated');
