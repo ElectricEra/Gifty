@@ -16,7 +16,7 @@ class HistoryView extends React.Component {
 	}
 
 	generateOldGifts(index) {
-		this.props.getGifts(this.props.history[index]);
+		this.props.getGifts(this.props.user.history[index]);
     console.log('Form submited');
     browserHistory.push('/generated');
 	}
@@ -30,7 +30,7 @@ class HistoryView extends React.Component {
 	render() {
 	  return (
   		<DefaultBoxWrapper>
-  			<HistoryCollection history={this.props.history} 
+  			<HistoryCollection history={this.props.user.history} 
   				generateOldGifts={this.generateOldGifts} />
   		</DefaultBoxWrapper>
 	  )
@@ -41,8 +41,8 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({ getGifts }, dispatch);
 }
 
-function mapStateToProps({ history, logStatus }) {
-  return { history, logStatus };
+function mapStateToProps({ user, logStatus }) {
+  return { user, logStatus };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(HistoryView);
