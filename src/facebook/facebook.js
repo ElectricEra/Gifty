@@ -83,14 +83,17 @@ function getFriends() {
 				result.push(getFriend(friend.id));
 			})
 			Promise.all(result).then(data => {
-				data.sort((a, b) => {
-			      var now = new Date().toISOString().slice(5,10).replace(/-/g,"/"),
-			        adate = a.birthday.slice(0, 5),
-			        bdate = b.birthday.slice(0, 5);
-			      if (now > adate){
-			        return false;
-			      }
-			      return adate > bdate;
+				data.sort((a, b) => {					
+					if(!a.birthday || !b.birthday){
+						return false;
+					};
+					const now = new Date().toISOString().slice(5,10).replace(/-/g,"/"),
+						adate = a.birthday.slice(0, 5),
+						bdate = b.birthday.slice(0, 5);
+					if (now > adate){
+						return false;
+					}
+					return adate > bdate;
 			    })
 				resolve(data)})
 		});
@@ -112,9 +115,11 @@ function getQuery(id, price){
 		  			tags.push('sport');
 		  		};
 		  		if(response.games){
+		  			console.log(response.games)
 		  			tags.push('gaming');
 		  		};
 		  		if(response.music){
+		  			console.log(response.music)
 		  			tags.push('music');
 		  		};
 		  		if(response.books){
