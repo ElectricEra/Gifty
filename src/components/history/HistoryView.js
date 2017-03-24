@@ -37,7 +37,6 @@ class HistoryView extends React.Component {
   }
 }
 
-
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({ getGifts }, dispatch);
 }
