@@ -8,27 +8,13 @@ import { resetGift, addToHistory } from '../../actions/index';
   
 class GiftyGenerated extends React.Component {
 
-  constructor(props) {
-    super(props);
-
-    this.addToHistoryHandler = this.addToHistoryHandler.bind(this)
-  }
-
-  redirectToMain() {
-    browserHistory.push('/app');
-  }
-
-  addToHistoryHandler(data) {
-    this.props.addToHistory(data)
-  }
-
   componentWillUnmount() {
     this.props.resetGift();
   }
 
   componentWillMount() {
-    if (this.props.isFirstTime) {
-      this.redirectToMain();
+    if(this.props.logStatus.loggedIn === false) {
+      browserHistory.push('/app');
     }
   }
 
@@ -36,8 +22,7 @@ class GiftyGenerated extends React.Component {
     if(this.props.gifts.length === 0) {
       return <div className="loader">Loading...</div>
     }
-    return <GiftList gifts={this.props.gifts}
-            addToHistory={this.addToHistoryHandler} />
+    return <GiftList gifts={this.props.gifts} />
   }
 
 };
@@ -46,8 +31,8 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({ resetGift, addToHistory }, dispatch);
 }
 
-function mapStateToProps({ gifts, isFirstTime }) {
-  return { gifts, isFirstTime };
+function mapStateToProps({ gifts, logStatus }) {
+  return { gifts, logStatus };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(GiftyGenerated);
