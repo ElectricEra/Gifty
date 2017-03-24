@@ -107,10 +107,11 @@ function getQuery(id, price){
 		  'GET',
 		  {fields:"id,name,gender,birthday,sports,games,about,likes,music,books,devices,feed"},
 		  function(response) {
-		  		var age = new Date().getFullYear() - new Date(response.birthday).getFullYear();
-		  		var gender = response.gender;
+		  		const age = new Date().getFullYear() - new Date(response.birthday).getFullYear(),
+		  			gender = response.gender,
+		  			name = response.name,		  		
+		  			possibleTags = ['sport', 'music', 'gaming', 'reading', 'gadgets', 'cooking', 'art', 'travel'];
 		  		var tags = [];
-		  		var possibleTags = ['sport', 'music', 'gaming', 'reading', 'gadgets', 'cooking', 'art', 'travel'];
 		  		if(response.sports){
 		  			tags.push('sport');
 		  		};
@@ -162,8 +163,8 @@ function getQuery(id, price){
 		  			price = +price;
 		  		}
 		  		
-		  		console.log({age, gender, price, tags});
-		  		resolve({age, gender, price, tags});
+		  		console.log({age, name, gender, price, tags});
+		  		resolve({age, name, gender, price, tags});
 		  	}
 		);
 
