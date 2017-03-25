@@ -65,10 +65,12 @@ class GiftyForm extends React.Component {
               type="text"
               component={this.renderTextField}
               label="Name"/>
-
-            <Field name="male" id="male" component={this.renderRadioField} label="Male"  />
+            
+            <div className="center" >  
+              <Field name="male" id="male" component={this.renderRadioField} label="Male"  />
+            </div>
             <Field name="female" id="female" component={this.renderRadioField} label="Female" />
-
+            
             <Field
               name="age"
               id="age"
