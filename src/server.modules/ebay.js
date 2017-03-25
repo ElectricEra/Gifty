@@ -32,6 +32,7 @@ module.exports = function (idea, maxPrice) {
         if (itemsResponse.searchResult.item){
           idea.ebay = itemsResponse.searchResult.item.reduce((prev, curr) => {
             return prev.concat({
+              name: curr.title,
               url: curr.viewItemURL,
               img: curr.galleryURL,
               price: curr.sellingStatus.currentPrice.amount

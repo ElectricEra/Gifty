@@ -9,7 +9,7 @@ export const CarouselItem = (props) => {
 	    		<img src={props.img} className="helper-my-image my-select-none" />
 	    	</div>
 	  	</a>
-	  	<p className="center my-select-none">{props.price}</p>
+	  	<p className="center my-select-none">{props.price}$</p>
 		</div>
   )
 
