@@ -184,3 +184,19 @@ export function addToHistory(data) {
     payload: data
   }
 }
+
+export function updateUser(user){
+  console.log(user);
+
+  return (dispatch) => {
+    axios.post('/update', 
+        {
+          email: user.email, 
+          facebook: user.facebook,
+          friends: user.friends,
+          history: user.history,
+          settings: user.settings
+        }
+      ).then(() => console.log('update'))
+  }
+}

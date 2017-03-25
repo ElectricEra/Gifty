@@ -3,7 +3,7 @@ import {IndexLink, Link, browserHistory} from 'react-router';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { addFriends } from '../../actions/index';
-import { getGifts, firstEntrance, addToHistory } from '../../actions/index';
+import { getGifts, firstEntrance, addToHistory, updateUser } from '../../actions/index';
 
 import {DefaultBoxWrapper, Logo} from '../materialize';
 import {Row} from '../materialize';
@@ -35,11 +35,15 @@ class FriendListContainer extends React.Component {
 
   updateFriends(){
     facebookLogged().then(() => {
-        getFriends().then(data => {
-          this.props.addFriends(data);
-          this.setState({found: data});
-          this.handleSearch({target:{value:''}});
-        })
+        getFriends()
+          .then(data => {
+            this.props.addFriends(data);
+            this.setState({found: data});
+            this.handleSearch({target:{value:''}});
+          })
+          .then(() => {
+            this.props.updateUser(this.props.user)
+          });
       })
   }
 
@@ -72,21 +76,21 @@ class FriendListContainer extends React.Component {
             </div>
             <div className='input-field col s3'>
               <input type="number" placeholder='Max price' ref='price' />
-            </div>  
+            </div>
+          </Row>
             <FriendView friends={this.state.found} handleFriend={this.handleFriend} />
-           </Row>
-         </DefaultBoxWrapper>
+        </DefaultBoxWrapper>
     
     )}
 };
 
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ addFriends, getGifts, firstEntrance, addToHistory }, dispatch);
+  return bindActionCreators({ addFriends, getGifts, firstEntrance, addToHistory, updateUser }, dispatch);
 }
 
-function mapStateToProps({ user, logStatus, history }) {
-  return { user, logStatus, history };
+function mapStateToProps({ user, logStatus }) {
+  return { user, logStatus };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(FriendListContainer);

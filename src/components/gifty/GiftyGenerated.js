@@ -4,7 +4,7 @@ import { BasicWrapper } from '../materialize';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux';
 import GiftList from './GiftList';
-import { resetGift, addToHistory } from '../../actions/index';
+import { resetGift, updateUser } from '../../actions/index';
   
 class GiftyGenerated extends React.Component {
 
@@ -15,6 +15,8 @@ class GiftyGenerated extends React.Component {
   componentWillMount() {
     if(this.props.logStatus.loggedIn === false) {
       browserHistory.push('/app');
+    } else {
+      this.props.updateUser(this.props.user);
     }
   }
 
@@ -28,11 +30,11 @@ class GiftyGenerated extends React.Component {
 };
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ resetGift, addToHistory }, dispatch);
+  return bindActionCreators({ resetGift, updateUser }, dispatch);
 }
 
-function mapStateToProps({ gifts, logStatus }) {
-  return { gifts, logStatus };
+function mapStateToProps({ user, gifts, logStatus }) {
+  return { user, gifts, logStatus };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(GiftyGenerated);

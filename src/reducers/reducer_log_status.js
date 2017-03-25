@@ -30,8 +30,7 @@ export default (state = initialState, action) => {
       return Object.assign({}, state, action.payload);
       break;
 
-    case LOGGED_OUT:
-      facebookLogged().then(() => FB.logout());      
+    case LOGGED_OUT:            
       console.log('LOGGED OUT');
       return Object.assign({}, initialState);
       break;

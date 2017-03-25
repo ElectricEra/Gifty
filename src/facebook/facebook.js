@@ -90,7 +90,7 @@ function getFriends() {
 					const now = new Date().toISOString().slice(5,10).replace(/-/g,"/"),
 						adate = a.birthday.slice(0, 5),
 						bdate = b.birthday.slice(0, 5);
-					if (now > adate){
+					if (now > adate || now > bdate){
 						return false;
 					}
 					return adate > bdate;

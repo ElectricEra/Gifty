@@ -6,33 +6,33 @@ export default function(props) {
     "July", "August", "September", "October", "November", "December"
   ]
   return (
-    <ul className="collection">
+    <div>
     
       {props.friends.map(user => {
         if (!user.birthday){
 
           return (          
-            <li key={user.id} className="collection-item friend" onClick={props.handleFriend.bind(null, user.id)} >
+            <div key={user.id} className="card-panel row friend" onClick={props.handleFriend.bind(null, user.id)} >
               <div className='center'>
                 <img src={user.picture.data.url} alt="pic" className="circle" />
                 <h5>{user.name}</h5>
               </div>
-            </li>
+            </div>
           );
 
         }
         return (          
-          <li key={user.id} className="collection-item friend" onClick={props.handleFriend.bind(null, user.id)} >
+          <div key={user.id} className="card-panel row friend" onClick={props.handleFriend.bind(null, user.id)} >
             <div className='center'>
               <img src={user.picture.data.url} alt="pic" className="circle" />
               <h5>{user.name}</h5>
               <p>Birtday: {+user.birthday.slice(3, 5)} {monthNames[user.birthday.slice(0, 2) - 1]}</p>
             </div>
-          </li>
+          </div>
         );
 
       })}
 
-    </ul>
+    </div>
   );
 }

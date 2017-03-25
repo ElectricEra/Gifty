@@ -1,5 +1,4 @@
 import { LOG_IN, LOG_OUT, CREATE_USER, ADD_FRIENDS, ADD_TO_HISTORY } from '../actions/index';
-import axios from 'axios';
 
 const initialState = {
     name: undefined,
@@ -13,7 +12,7 @@ const initialState = {
 };
 
 export default (state = initialState, action) => {
-  var result;
+  
   switch (action.type) {
     case LOG_IN:
       console.log(`${action.payload.email} LOGED IN`);
@@ -29,29 +28,14 @@ export default (state = initialState, action) => {
       return Object.assign({}, state, action.payload);
       break;
 
-    case ADD_FRIENDS:
-      result = Object.assign({}, state, {friends: action.payload});
-      axios.post('/update', 
-        {
-          facebook: result.facebook, 
-          email: result.email, 
-          friends: result.friends
-        }
-      );
-      return result;
+    case ADD_FRIENDS:      
+      return Object.assign({}, state, {friends: action.payload});
       break;
 
-    case ADD_TO_HISTORY:
-      result = Object.assign({}, state, {history: [action.payload,...state.history].slice(0,10)});
-      axios.post('/update', 
-        {
-          facebook: result.facebook, 
-          email: result.email, 
-          history: result.history
-        }
-      );
-      return result;
+    case ADD_TO_HISTORY:      
+      return Object.assign({}, state, {history: [action.payload,...state.history].slice(0,10)});
       break;
+
   }
   return state;
 }
