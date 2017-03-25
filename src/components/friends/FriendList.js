@@ -8,6 +8,7 @@ import { getGifts, firstEntrance, addToHistory, updateUser } from '../../actions
 import {DefaultBoxWrapper, Logo} from '../materialize';
 import {Row} from '../materialize';
 import FriendView from './FriendView';
+import fb from '../../facebook/fbApi';
 
 
 class FriendListContainer extends React.Component {
@@ -26,16 +27,16 @@ class FriendListContainer extends React.Component {
       browserHistory.push('/app');
     }
 
-    if(FBInitialized()){
+    if(fb.checkInit()){
      this.updateFriends();
     } else {
-      initFb().then(() =>  this.updateFriends());
+      fb.initFb().then(() =>  this.updateFriends());
     }      
   }
 
   updateFriends(){
-    facebookLogged().then(() => {
-        getFriends()
+    fb.checkLogin().then(() => {
+        fb.getFriends()
           .then(data => {
             this.props.addFriends(data);
             this.setState({found: data});
@@ -48,7 +49,7 @@ class FriendListContainer extends React.Component {
   }
 
   handleFriend(id) {
-    getQuery(id, this.refs.price.value).then(query => {
+    fb.getQuery(id, this.refs.price.value).then(query => {
       this.props.getGifts(query);
       this.props.firstEntrance();
       this.props.addToHistory(query);

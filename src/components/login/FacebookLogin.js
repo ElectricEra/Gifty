@@ -2,6 +2,7 @@ import React from "react";
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { logInCreator } from '../../actions/index';
+import fb from '../../facebook/fbApi';
 
 class FacebookLogin extends React.Component {
   constructor(props) {
@@ -21,7 +22,7 @@ class FacebookLogin extends React.Component {
     });
   	FB.login((response) => {
       if(response.status === 'connected'){
-        getInfo().then(data => {
+        fb.getInfo().then(data => {
           let user = {
             facebook: data.id,
             name: data.name,
