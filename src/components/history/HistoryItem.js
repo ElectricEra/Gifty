@@ -6,7 +6,7 @@ export const HistoryItem = (props) => {
     	<div className="card-panel row">
     		<div className="col s12">
     			<p>You wanted to find present for <b>{props.name}</b>. It's 
-    			{props.gender=="male"? " his" : " her"} <b>{props.age}</b>'s birthday!.
+    			{props.gender=="male"? " his" : " her"} <b>{props.age}</b>'s anniversary!
     			You were ready to spend <b>{props.price}$</b> on a present</p>
     			<p>Your friend likes <b>{props.tags.reduce((a, b) => a + ", " +b)}</b></p>
     		</div>

@@ -138,8 +138,10 @@ html {
 }
 
 .carousel .carousel-item img.helper-my-image {
-	height: 120px;
-	width: auto;
+	max-width:100%;
+	max-height:100%;
+	width:auto;
+	height:auto;
 }
 
 

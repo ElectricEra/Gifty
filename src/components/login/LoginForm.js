@@ -119,15 +119,15 @@ class LoginForm extends React.Component {
           {currentForm === 'signIn' ?
            <div className="sign-toggle">
              <Text txtPosition="center">
-               Dont have an have account?
-               <span className="sign-toggle-text" id="signIn" onClick={this.handleChangeForm}>Sign up</span>
+               Don't have an have account?
+               <span className="sign-toggle-text" id="signIn" onClick={this.handleChangeForm}> Sign up</span>
              </Text>
            </div>
            :
            <div className="sign-toggle">
              <Text txtPosition="center">
                Already have an have account?
-               <span className="sign-toggle-text" id="signUp" onClick={this.handleChangeForm}>Sign in</span>
+               <span className="sign-toggle-text" id="signUp" onClick={this.handleChangeForm}> Sign in</span>
              </Text>
            </div>
           }
