@@ -2,9 +2,9 @@ module.exports.findIdeas = function(queryObject) {
   var ideas;
 
   return MongoClient.connect(url).then(function(db) {    
-  ideas = db.collection('ideas').find(queryObject).toArray();   
-  db.close();
-  return ideas;
+    ideas = db.collection('ideas').find(queryObject).toArray();   
+    db.close();
+    return ideas;
   });
 
 }

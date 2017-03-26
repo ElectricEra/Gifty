@@ -48,8 +48,8 @@ class FriendListContainer extends React.Component {
       })
   }
 
-  handleFriend(id) {
-    fb.getQuery(id, this.refs.price.value).then(query => {
+  handleFriend(id, picture) {
+    fb.getQuery(id, picture, this.refs.price.value).then(query => {
       this.props.getGifts(query);
       this.props.firstEntrance();
       this.props.addToHistory(query);

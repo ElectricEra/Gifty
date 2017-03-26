@@ -7,11 +7,7 @@ import fb from '../../facebook/fbApi';
 class FacebookLogin extends React.Component {
   constructor(props) {
     super(props);
-  }
-
-  componentDidMount() {
-
-  }
+  }  
 
   login() {
   	FB.init({
