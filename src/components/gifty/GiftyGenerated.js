@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux';
 import GiftList from './GiftList';
 import { resetGift, updateUser } from '../../actions/index';
-  
+
 class GiftyGenerated extends React.Component {
 
   componentWillUnmount() {
@@ -14,7 +14,7 @@ class GiftyGenerated extends React.Component {
 
   componentWillMount() {
     if(this.props.logStatus.loggedIn === false) {
-      browserHistory.push('/app');
+      // browserHistory.push('/app');
     } else {
       this.props.updateUser(this.props.user);
     }
