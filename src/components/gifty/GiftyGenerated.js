@@ -14,7 +14,7 @@ class GiftyGenerated extends React.Component {
 
   componentWillMount() {
     if(this.props.logStatus.loggedIn === false) {
-      // browserHistory.push('/app');
+      browserHistory.push('/app');
     } else {
       this.props.updateUser(this.props.user);
     }
