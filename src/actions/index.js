@@ -17,6 +17,7 @@ export const SIGN_UP_FAILED   = 'SIGN_UP_FAILED';
 export const SIGN_UP_SUCCESS  = 'SIGN_UP_SUCCESS';
 export const LOGGED_OUT       = 'LOGGED_OUT';
 export const ADD_TO_HISTORY   = 'ADD_TO_HISTORY';
+export const GIFT_PROCESS     = 'GIFT_PROCESS';
 
 
 
@@ -29,10 +30,17 @@ export function generateGifts(description) {
 
 export function getGifts(personDescription) {
   const url = '/submit';
-  const request = axios.post(url, personDescription);
-  return {
-    type:  GET_GIFTS,
-    payload: request
+  if (personDescription) {
+    const request = axios.post(url, personDescription);
+    return {
+      type:  GET_GIFTS,
+      payload: request
+    }
+  } else {
+    return {
+      type:  GET_GIFTS,
+      payload: {data:[]} 
+    }
   }
 }
 
@@ -198,5 +206,12 @@ export function updateUser(user){
           settings: user.settings
         }
       ).then(() => console.log('update'))
+  }
+}
+
+export function giftProcess(data) {
+  return {
+    type: GIFT_PROCESS,
+    payload: data
   }
 }

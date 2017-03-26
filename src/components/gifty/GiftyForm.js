@@ -3,7 +3,7 @@ import {IndexLink, Link, browserHistory} from 'react-router';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'
 import { generateGifts, addToHistory } from '../../actions/index'
-import { getGifts,  firstEntrance} from '../../actions/index'
+import { getGifts, firstEntrance, giftProcess } from '../../actions/index'
 import { Field, reduxForm, getFormValues } from 'redux-form'
 import { validate } from '../../utils/utils_gifty/index'
 
@@ -21,12 +21,18 @@ class GiftyForm extends React.Component {
 
   handleGenerate(event) {
     let description = processValues(this.props.values);
+    this.props.giftProcess("GENERATING");
     this.props.getGifts(description);
     this.props.firstEntrance();
     this.props.addToHistory(description);
-    console.log(description);
-    console.log('Form submited');
+    //console.log(description);
+    //console.log('Form submited');
     browserHistory.push('/generated');
+  }
+
+  componentWillMount() {
+    console.log("CompWillMount")
+    this.props.giftProcess("WAIT");
   }
 
   handleChange(event) {
@@ -142,7 +148,7 @@ function processValues(values) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ getGifts, firstEntrance, addToHistory }, dispatch);
+  return bindActionCreators({ getGifts, firstEntrance, addToHistory, giftProcess }, dispatch);
 }
 
 function mapStateToProps(state) {

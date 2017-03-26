@@ -4,19 +4,37 @@ import { BasicWrapper } from '../materialize';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux';
 import GiftList from './GiftList';
-import { resetGift, updateUser } from '../../actions/index';
+import { getGifts, resetGift, updateUser, giftProcess } from '../../actions/index';
 
 class GiftyGenerated extends React.Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {}
+  }
 
   componentWillUnmount() {
     this.props.resetGift();
   }
 
   componentWillMount() {
-    if(this.props.logStatus.loggedIn === false) {
+    if (this.props.giftProcessState === "WAIT") {
       browserHistory.push('/app');
-    } else {
+    }
+
+    if(this.props.logStatus.loggedIn === true) {
       this.props.updateUser(this.props.user);
+    }
+
+    if (this.props.giftProcessState === "GENERATING") {
+      this.props.getGifts(false);
+    }
+  }
+
+  componentWillReceiveProps() {
+    if (this.props.gifts.length !== 0) {
+      this.props.giftProcess("WAIT");
     }
   }
 
@@ -30,11 +48,11 @@ class GiftyGenerated extends React.Component {
 };
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ resetGift, updateUser }, dispatch);
+  return bindActionCreators({ getGifts, resetGift, updateUser, giftProcess }, dispatch);
 }
 
-function mapStateToProps({ user, gifts, logStatus }) {
-  return { user, gifts, logStatus };
+function mapStateToProps({ user, gifts, logStatus, giftProcessState }) {
+  return { user, gifts, logStatus, giftProcessState };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(GiftyGenerated);

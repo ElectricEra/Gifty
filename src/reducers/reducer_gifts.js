@@ -9,6 +9,8 @@ export default (state = [], action) => {
       return action.payload;
       break;
     case GET_GIFTS:
+      console.log("reducer gifts");
+      console.log(action.payload);
       return action.payload.data;
       break;
   }
