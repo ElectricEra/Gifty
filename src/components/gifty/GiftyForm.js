@@ -31,7 +31,6 @@ class GiftyForm extends React.Component {
   }
 
   componentWillMount() {
-    console.log("CompWillMount")
     this.props.giftProcess("WAIT");
   }
 

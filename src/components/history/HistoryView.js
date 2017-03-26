@@ -26,7 +26,7 @@ class HistoryView extends React.Component {
     if(this.props.logStatus.loggedIn === false) {
       browserHistory.push('/app');
     }
-    console.log("CompWillMount")
+    
     this.props.giftProcess("WAIT");
   }
 

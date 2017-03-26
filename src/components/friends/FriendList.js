@@ -3,7 +3,7 @@ import {IndexLink, Link, browserHistory} from 'react-router';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { addFriends } from '../../actions/index';
-import { getGifts, firstEntrance, addToHistory, updateUser } from '../../actions/index';
+import { giftProcess, getGifts, firstEntrance, addToHistory, updateUser } from '../../actions/index';
 
 import {DefaultBoxWrapper, Logo} from '../materialize';
 import {Row} from '../materialize';
@@ -31,7 +31,9 @@ class FriendListContainer extends React.Component {
      this.updateFriends();
     } else {
       fb.initFb().then(() =>  this.updateFriends());
-    }      
+    }
+
+    this.props.giftProcess("WAIT");    
   }
 
   updateFriends(){
@@ -50,6 +52,7 @@ class FriendListContainer extends React.Component {
 
   handleFriend(id, picture) {
     fb.getQuery(id, picture, this.refs.price.value).then(query => {
+      this.props.giftProcess("GENERATING");
       this.props.getGifts(query);
       this.props.firstEntrance();
       this.props.addToHistory(query);
@@ -87,7 +90,7 @@ class FriendListContainer extends React.Component {
 
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ addFriends, getGifts, firstEntrance, addToHistory, updateUser }, dispatch);
+  return bindActionCreators({ giftProcess, addFriends, getGifts, firstEntrance, addToHistory, updateUser }, dispatch);
 }
 
 function mapStateToProps({ user, logStatus }) {
