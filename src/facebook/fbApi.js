@@ -106,7 +106,7 @@ export default (function () {
 		return result;
 	};
 
-	function getQuery(id, price){
+	function getQuery(id, picture, price){
 		return new Promise(function(resolve, reject){
 			FB.api(
 			  '/'+id,
@@ -163,8 +163,8 @@ export default (function () {
 			  			price = +price;
 			  		}
 			  		
-			  		console.log({age, name, gender, price, tags});
-			  		resolve({age, name, gender, price, tags});
+			  		console.log({age, picture, name, gender, price, tags});
+			  		resolve({age, name, picture, gender, price, tags});
 			  	}
 			);
 

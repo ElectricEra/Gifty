@@ -12,7 +12,7 @@ export default function(props) {
         if (!user.birthday){
 
           return (          
-            <div key={user.id} className="card-panel row friend" onClick={props.handleFriend.bind(null, user.id)} >
+            <div key={user.id} className="card-panel row friend" onClick={props.handleFriend.bind(null, user.id, user.picture.data.url)} >
               <div className='center'>
                 <img src={user.picture.data.url} alt="pic" className="circle" />
                 <h5>{user.name}</h5>
@@ -22,7 +22,7 @@ export default function(props) {
 
         }
         return (          
-          <div key={user.id} className="card-panel row friend" onClick={props.handleFriend.bind(null, user.id)} >
+          <div key={user.id} className="card-panel row friend" onClick={props.handleFriend.bind(null, user.id, user.picture.data.url)} >
             <div className='center'>
               <img src={user.picture.data.url} alt="pic" className="circle" />
               <h5>{user.name}</h5>
