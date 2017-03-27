@@ -1,26 +1,34 @@
 import axios from 'axios';
 
-export const GENERATE_GIFTS   = 'GENERATE_GIFTS';
-export const GET_GIFTS        = 'GET_GIFTS';
-export const ADD_FRIENDS      = 'ADD_FRIENDS';
-export const CHANGE_SIGN_IN   = 'CHANGE_SIGN_IN';
-export const CHANGE_SIGN_UP   = 'CHANGE_SIGN_UP';
-export const GIFT_RESET       = 'GIFT_RESET';
-export const FIRST_ENTRANCE   = 'FIRST_ENTRANCE';
-export const LOG_IN           = 'LOG_IN';
-export const LOG_OUT          = 'LOG_OUT';
-export const SIGN_UP          = 'SIGN_UP';
-export const CREATE_USER      = 'CREATE_USER';
-export const LOG_IN_SUCCESS   = 'LOG_IN_SUCCESS';
-export const LOG_IN_FAILED    = 'LOG_IN_FAILED';
-export const SIGN_UP_FAILED   = 'SIGN_UP_FAILED';
-export const SIGN_UP_SUCCESS  = 'SIGN_UP_SUCCESS';
-export const LOGGED_OUT       = 'LOGGED_OUT';
-export const ADD_TO_HISTORY   = 'ADD_TO_HISTORY';
-export const GIFT_PROCESS     = 'GIFT_PROCESS';
-export const LAST_PATH        = 'LAST_PATH';
+export const GENERATE_GIFTS      = 'GENERATE_GIFTS';
+export const GET_GIFTS           = 'GET_GIFTS';
+export const ADD_FRIENDS         = 'ADD_FRIENDS';
+export const CHANGE_SIGN_IN      = 'CHANGE_SIGN_IN';
+export const CHANGE_SIGN_UP      = 'CHANGE_SIGN_UP';
+export const GIFT_RESET          = 'GIFT_RESET';
+export const FIRST_ENTRANCE      = 'FIRST_ENTRANCE';
+export const LOG_IN              = 'LOG_IN';
+export const LOG_OUT             = 'LOG_OUT';
+export const SIGN_UP             = 'SIGN_UP';
+export const CREATE_USER         = 'CREATE_USER';
+export const LOG_IN_SUCCESS      = 'LOG_IN_SUCCESS';
+export const LOG_IN_FAILED       = 'LOG_IN_FAILED';
+export const SIGN_UP_FAILED      = 'SIGN_UP_FAILED';
+export const SIGN_UP_SUCCESS     = 'SIGN_UP_SUCCESS';
+export const LOGGED_OUT          = 'LOGGED_OUT';
+export const ADD_TO_HISTORY      = 'ADD_TO_HISTORY';
+export const GIFT_PROCESS        = 'GIFT_PROCESS';
+export const LAST_PATH           = 'LAST_PATH';
+export const DELETE_FROM_HISTORY = 'DELETE_FROM_HISTORY'
 
 
+export function deleteFromHistory(data) {
+  console.log(data);
+  return {
+    type: DELETE_FROM_HISTORY,
+    payload: data
+  }
+}
 
 export function generateGifts(description) {
   return {
@@ -193,6 +201,7 @@ export function addToHistory(data) {
     payload: data
   }
 }
+
 
 export function updateUser(user){
   console.log(user);

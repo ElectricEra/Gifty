@@ -112,7 +112,8 @@ function processValues(values) {
     age: 0,
     gender:'',
     price: 0,
-    tags:[]
+    tags:[],
+    picture: './images/cat-1.jpg'
   };
 
   for (let prop in values) {
