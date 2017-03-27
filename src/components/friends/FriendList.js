@@ -23,7 +23,7 @@ class FriendListContainer extends React.Component {
   }
   
   componentWillMount() {
-    if(this.props.logStatus.loggedIn === false) {
+    if(this.props.logStatus.loggedIn !== 'facebook') {
       browserHistory.push('/app');
     }
 
@@ -36,16 +36,14 @@ class FriendListContainer extends React.Component {
 
   updateFriends(){
     fb.checkLogin().then(() => {
-        fb.getFriends()
-          .then(data => {
-            this.props.addFriends(data);
-            this.setState({found: data});
-            this.handleSearch({target:{value:''}});
-          })
-          .then(() => {
-            this.props.updateUser(this.props.user)
-          });
-      })
+      fb.getFriends()
+        .then(data => {
+          this.props.addFriends(data);
+        })
+        .then(() => {
+          this.props.updateUser(this.props.user)
+        });
+    })
   }
 
   handleFriend(id, picture) {

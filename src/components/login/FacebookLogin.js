@@ -10,14 +10,7 @@ class FacebookLogin extends React.Component {
   }  
 
   login() {
-  	FB.init({
-      appId      : '381020565615954',
-      xfbml      : true,
-      cookie     : true,
-      version    : 'v2.8'
-    });
-  	FB.login((response) => {
-      if(response.status === 'connected'){
+    fb.login().then(() => {
         fb.getInfo().then(data => {
           let user = {
             facebook: data.id,
@@ -26,11 +19,7 @@ class FacebookLogin extends React.Component {
           }
           this.props.logInCreator(user);
         });       
-      };
-    },
-  		{scope: 'email,publish_actions,user_about_me,user_birthday,user_friends,user_games_activity,user_likes,user_posts,user_actions.books,user_actions.fitness,user_events,user_actions.music'});
-
-
+      });
   }
 
   render() {
