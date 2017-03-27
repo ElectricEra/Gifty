@@ -5,7 +5,7 @@ import {IndexLink, Link, browserHistory} from 'react-router';
 import { connect } from 'react-redux';
 
 import { HistoryCollection } from './HistoryCollection'
-import { giftProcess, getGifts, saveLastPath } from '../../actions/index'
+import { giftProcess, getGifts } from '../../actions/index'
 
 class HistoryView extends React.Component {
 
@@ -16,8 +16,7 @@ class HistoryView extends React.Component {
 	}
 
 	generateOldGifts(index) {
-    this.props.saveLastPath(browserHistory.getCurrentLocation().pathname)\
-    this.props.giftProcess("GENERATING");
+    this.props.giftProcess(true);
     this.props.getGifts(this.props.user.history[index]);
     browserHistory.push('/generated');
 	}
@@ -41,7 +40,7 @@ class HistoryView extends React.Component {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ getGifts, giftProcess, saveLastPath }, dispatch);
+  return bindActionCreators({ getGifts, giftProcess }, dispatch);
 }
 
 function mapStateToProps({ user, logStatus, prevPath }) {

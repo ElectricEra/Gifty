@@ -216,10 +216,3 @@ export function giftProcess(data) {
     payload: data
   }
 }
-
-export function saveLastPath(data) {
-  return {
-    type: LAST_PATH,
-    payload: data
-  }
-}

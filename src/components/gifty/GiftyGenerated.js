@@ -16,29 +16,29 @@ class GiftyGenerated extends React.Component {
 
   componentWillUnmount() {
     this.props.resetGift();
+    this.props.giftProcess(false);
   }
 
   componentWillMount() {
-    this.props.saveLastPath(browserHistory.getCurrentLocation().pathname);
-    
-    if (this.props.giftProcessState === "WAIT" || this.props.prevPath === "/generated") {
+    if (!this.props.giftProcessState) {
       browserHistory.push('/app');
     }
 
-    if(this.props.logStatus.loggedIn === true) {
+    if(this.props.logStatus.loggedIn) {
       this.props.updateUser(this.props.user);
     }
 
-    if (this.props.giftProcessState === "GENERATING") {
-
+    if (this.props.giftProcessState) {
       this.props.getGifts(false);
+      this.props.giftProcess(false);
     }
   }
 
-  componentWillReceiveProps() {
-    if (this.props.gifts.length !== 0) {
-      this.props.giftProcess("WAIT");
+  componentWillReceiveProps(nextProps) {
+    if (!this.props.gifts.length) {
+      this.props.giftProcess(false);
     }
+    
   }
 
   render() {
