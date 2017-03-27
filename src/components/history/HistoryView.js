@@ -25,8 +25,6 @@ class HistoryView extends React.Component {
     if(this.props.logStatus.loggedIn === false) {
       browserHistory.push('/app');
     }
-
-    this.props.giftProcess("WAIT");
   }
 
 	render() {

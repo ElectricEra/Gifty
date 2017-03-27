@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 export default function(props) {
   const monthNames = ["January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December"

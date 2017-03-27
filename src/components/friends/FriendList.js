@@ -31,9 +31,7 @@ class FriendListContainer extends React.Component {
      this.updateFriends();
     } else {
       fb.initFb().then(() =>  this.updateFriends());
-    }
-
-    this.props.giftProcess(false);    
+    }   
   }
 
   updateFriends(){

@@ -30,12 +30,6 @@ class GiftyForm extends React.Component {
     browserHistory.push('/generated');
   }
 
-  componentWillMount() {
-    this.props.giftProcess(false);
-
-    //this.props.saveLastPath(browserHistory.getCurrentLocation().pathname);
-  }
-
   handleChange(event) {
 
   }
