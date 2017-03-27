@@ -23,7 +23,7 @@ class FriendListContainer extends React.Component {
   }
   
   componentWillMount() {
-    if(this.props.logStatus.loggedIn === false) {
+    if(this.props.logStatus.loggedIn !== 'facebook') {
       browserHistory.push('/app');
     }
 

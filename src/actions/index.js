@@ -145,18 +145,17 @@ export function loggedOut() {
 
 export function logInCreator(email, password) {
     console.log('LOG IN CREATOR');
-    const logInSuccessStatus = {
-      loggedIn: true,
-      shouldRedirect: true
-    }
 
     return (dispatch) => {
       axios.post('/login', {email, password})
         .then((response) => {
           if(response.data === false) {
             dispatch(logInFailed({ errorMessage: 'Wrong email or password' }))
+          } else if(response.data[0].facebook){            
+            dispatch(logInSuccess({ loggedIn: 'facebook', shouldRedirect: true }))
+            dispatch(logIn(response.data[0]));
           } else {
-            dispatch(logInSuccess(logInSuccessStatus))
+            dispatch(logInSuccess({ loggedIn: true, shouldRedirect: true }));
             dispatch(logIn(response.data[0]));
           }
         })
