@@ -8,7 +8,7 @@ const initialState = {
     picture: '',
     friends: [],
     history: [],
-    theme: underfined
+    theme: undefined
 };
 
 export default (state = initialState, action) => {
