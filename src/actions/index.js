@@ -18,6 +18,7 @@ export const SIGN_UP_SUCCESS  = 'SIGN_UP_SUCCESS';
 export const LOGGED_OUT       = 'LOGGED_OUT';
 export const ADD_TO_HISTORY   = 'ADD_TO_HISTORY';
 export const GIFT_PROCESS     = 'GIFT_PROCESS';
+export const LAST_PATH        = 'LAST_PATH';
 
 
 

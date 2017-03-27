@@ -21,7 +21,7 @@ class GiftyForm extends React.Component {
 
   handleGenerate(event) {
     let description = processValues(this.props.values);
-    this.props.giftProcess("GENERATING");
+    this.props.giftProcess(true);
     this.props.getGifts(description);
     this.props.firstEntrance();
     this.props.addToHistory(description);
@@ -31,7 +31,9 @@ class GiftyForm extends React.Component {
   }
 
   componentWillMount() {
-    this.props.giftProcess("WAIT");
+    this.props.giftProcess(false);
+
+    //this.props.saveLastPath(browserHistory.getCurrentLocation().pathname);
   }
 
   handleChange(event) {

@@ -33,7 +33,7 @@ class FriendListContainer extends React.Component {
       fb.initFb().then(() =>  this.updateFriends());
     }
 
-    this.props.giftProcess("WAIT");    
+    this.props.giftProcess(false);    
   }
 
   updateFriends(){
@@ -51,8 +51,8 @@ class FriendListContainer extends React.Component {
   }
 
   handleFriend(id, picture) {
-    fb.getQuery(id, picture, this.refs.price.value).then(query => {
-      this.props.giftProcess("GENERATING");
+    fb.getQuery(id, picture, this.refs.price.value).then(query => { 
+      this.props.giftProcess(true);
       this.props.getGifts(query);
       this.props.firstEntrance();
       this.props.addToHistory(query);

@@ -16,9 +16,8 @@ class HistoryView extends React.Component {
 	}
 
 	generateOldGifts(index) {
-    this.props.giftProcess("GENERATING");
+    this.props.giftProcess(true);
     this.props.getGifts(this.props.user.history[index]);
-    console.log('Form submited');
     browserHistory.push('/generated');
 	}
 
@@ -26,7 +25,7 @@ class HistoryView extends React.Component {
     if(this.props.logStatus.loggedIn === false) {
       browserHistory.push('/app');
     }
-    
+
     this.props.giftProcess("WAIT");
   }
 
@@ -44,8 +43,8 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({ getGifts, giftProcess }, dispatch);
 }
 
-function mapStateToProps({ user, logStatus }) {
-  return { user, logStatus };
+function mapStateToProps({ user, logStatus, prevPath }) {
+  return { user, logStatus, prevPath };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(HistoryView);
