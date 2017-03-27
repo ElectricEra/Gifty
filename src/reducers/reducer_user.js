@@ -1,4 +1,4 @@
-import { LOG_IN, LOG_OUT, CREATE_USER, ADD_FRIENDS, ADD_TO_HISTORY } from '../actions/index';
+import { LOG_IN, LOG_OUT, CREATE_USER, ADD_FRIENDS, ADD_TO_HISTORY, DELETE_FROM_HISTORY } from '../actions/index';
 
 const initialState = {
     name: undefined,
@@ -35,6 +35,12 @@ export default (state = initialState, action) => {
     case ADD_TO_HISTORY:      
       return Object.assign({}, state, {history: [action.payload,...state.history].slice(0,10)});
       break;
+
+    case DELETE_FROM_HISTORY:
+      var tempArr = [...state.history];
+      tempArr.splice(action.payload,1);
+      return Object.assign({}, state, {history: tempArr});
+      break; 
 
   }
   return state;

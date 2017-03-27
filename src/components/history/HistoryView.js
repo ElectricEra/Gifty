@@ -5,7 +5,7 @@ import {IndexLink, Link, browserHistory} from 'react-router';
 import { connect } from 'react-redux';
 
 import { HistoryCollection } from './HistoryCollection'
-import { giftProcess, getGifts } from '../../actions/index'
+import { giftProcess, getGifts, deleteFromHistory } from '../../actions/index'
 
 class HistoryView extends React.Component {
 
@@ -13,7 +13,12 @@ class HistoryView extends React.Component {
 		super(props);
 
 		this.generateOldGifts = this.generateOldGifts.bind(this);
+    this.deleteFromHistoryHandler = this.deleteFromHistoryHandler.bind(this);
 	}
+
+  deleteFromHistoryHandler(index) {
+    this.props.deleteFromHistory(index);
+  }
 
 	generateOldGifts(index) {
     this.props.giftProcess(true);
@@ -31,18 +36,19 @@ class HistoryView extends React.Component {
 	  return (
   		<DefaultBoxWrapper>
   			<HistoryCollection history={this.props.user.history} 
-  				generateOldGifts={this.generateOldGifts} />
+  				generateOldGifts={this.generateOldGifts}
+          deleteFromHistoryHandler={this.deleteFromHistoryHandler} />
   		</DefaultBoxWrapper>
 	  )
   }
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ getGifts, giftProcess }, dispatch);
+  return bindActionCreators({ getGifts, giftProcess, deleteFromHistory }, dispatch);
 }
 
-function mapStateToProps({ user, logStatus, prevPath }) {
-  return { user, logStatus, prevPath };
+function mapStateToProps({ user, logStatus }) {
+  return { user, logStatus };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(HistoryView);
