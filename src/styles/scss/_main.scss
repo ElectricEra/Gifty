@@ -228,4 +228,22 @@ a.navbar-hamburger {
 .radio-error {
 	margin-top: 20px;
 	text-align: left;
+}
+
+.my-theme-example {
+	width: 30%;
+	height: 40px;
+	margin: 10px 5px;
+	line-height: 40px;
+	float: left
+}
+
+:export {
+          theme_0: $theme_0;
+          theme_1: $theme_1;
+          theme_2: $theme_2;
+          theme_3: $theme_3;
+          theme_4: $theme_4;
+          theme_5: $theme_5;
+          
 }	
