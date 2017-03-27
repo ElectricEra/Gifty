@@ -1,4 +1,4 @@
-import { LOG_IN, LOG_OUT, CREATE_USER, ADD_FRIENDS, ADD_TO_HISTORY, DELETE_FROM_HISTORY } from '../actions/index';
+import { LOG_IN, LOG_OUT, CREATE_USER, ADD_FRIENDS, ADD_TO_HISTORY, DELETE_FROM_HISTORY, THEME } from '../actions/index';
 
 const initialState = {
     name: undefined,
@@ -8,7 +8,7 @@ const initialState = {
     picture: '',
     friends: [],
     history: [],
-    settings: []
+    theme: underfined
 };
 
 export default (state = initialState, action) => {
@@ -41,6 +41,10 @@ export default (state = initialState, action) => {
       tempArr.splice(action.payload,1);
       return Object.assign({}, state, {history: tempArr});
       break; 
+
+    case THEME: 
+    return Object.assign({}, state, { theme: action.payload });
+    break;
 
   }
   return state;
