@@ -214,7 +214,7 @@ export function updateUser(user){
           facebook: user.facebook,
           friends: user.friends,
           history: user.history,
-          settings: user.settings
+          theme: user.theme
         }
       ).then(() => console.log('update'))
   }
