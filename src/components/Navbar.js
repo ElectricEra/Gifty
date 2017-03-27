@@ -2,9 +2,8 @@ import React from "react";
 import {IndexLink, Link} from 'react-router';
 import {NavbarWrapper, BasicWrapper} from './materialize';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux'
-import { logOutCreator } from '../actions/index'
-
+import { bindActionCreators } from 'redux';
+import { logOutCreator } from '../actions/index';
 
 class Navbar extends React.Component {
   constructor(props) {
@@ -31,11 +30,11 @@ class Navbar extends React.Component {
   }
 
   render() {
-    const { logStatus, user } = this.props;
+    const { logStatus, user} = this.props;
 
     return logStatus.loggedIn === true ? (
-      <div className="navbar">
-        <NavbarWrapper>
+      <div className="navbar" >
+        <NavbarWrapper style={{background: user.theme}}>
             <Link to="app" className="brand-logo">
               <img className="logo" src="images/gifty-white.svg" alt="Gifty"/>
             </Link>
@@ -60,7 +59,7 @@ class Navbar extends React.Component {
               <a href="#!name"><span className="white-text name">{user.name}</span></a>
               <a href="#!email"><span className="white-text email">{user.email}</span></a>
             </div></li>
-            <li><Link to="app">Gifty</Link></li>
+            <li><Link to="app" >Gifty</Link></li>
             <li><Link to="profile">Profile</Link></li>
             <li><Link to="history">History</Link></li>
             <li><Link to="friends">Friends</Link></li>
@@ -70,8 +69,8 @@ class Navbar extends React.Component {
           </ul>
         </div>
     ) : (
-      <div className="navbar">
-        <NavbarWrapper>
+      <div className="navbar" style={{background: user.theme}}>
+        <NavbarWrapper style={{background:user.theme}}>
             <Link to="app" className="brand-logo">
               <img className="logo" src="images/gifty-white.svg" alt="Gifty"/>
             </Link>
@@ -83,14 +82,14 @@ class Navbar extends React.Component {
               <li><Link to="login">Log in</Link></li>
             </ul>
         </NavbarWrapper>
-        <ul id="slide-out" className="side-nav" onClick={this.handleHideSideNav}>
+        <ul id="slide-out" className="side-nav" onClick={this.handleHideSideNav} >
             <li><div className="userView">
               <div className="background">
                 <img src="images/menu-bg.png" />
               </div>
               <Link to="login" className="side-nav-login"><span className="white-text">Log In</span></Link>
             </div></li>
-            <li><Link to="app">Gifty</Link></li>
+            <li><Link to="app" >Gifty</Link></li>
             <li><div className="divider"></div></li>
         </ul>
       </div>
@@ -98,10 +97,12 @@ class Navbar extends React.Component {
   }
 };
 
-function mapStateToProps(state) {
+function mapStateToProps(state) { 
   return {
     logStatus: state.logStatus,
-    user: state.user
+    user: state.user,
+    
+    
   }
 }
 
