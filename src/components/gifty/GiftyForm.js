@@ -44,8 +44,13 @@ class GiftyForm extends React.Component {
     )
   }
 
-  renderRadioField ({ input, label, id}) {
-    return <RadioInput {...input} id={id} >{label}</RadioInput>
+  renderRadioField ({ input, label, id, checked, meta: { touched, error }}) {
+    return (
+    <span>
+    <RadioInput {...input} id={id} >{label}</RadioInput>
+    {touched && error && <span className="field-error col s12 radio-error">{error}</span>}
+    </span>
+    )
   }
 
   renderCheckbox ({ input, label, id }) {
