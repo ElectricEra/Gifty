@@ -21,18 +21,13 @@ class GiftyForm extends React.Component {
 
   handleGenerate(event) {
     let description = processValues(this.props.values);
-    this.props.giftProcess("GENERATING");
+    this.props.giftProcess(true);
     this.props.getGifts(description);
     this.props.firstEntrance();
     this.props.addToHistory(description);
     //console.log(description);
     //console.log('Form submited');
     browserHistory.push('/generated');
-  }
-
-  componentWillMount() {
-    console.log("CompWillMount")
-    this.props.giftProcess("WAIT");
   }
 
   handleChange(event) {
@@ -117,7 +112,8 @@ function processValues(values) {
     age: 0,
     gender:'',
     price: 0,
-    tags:[]
+    tags:[],
+    picture: './images/cat-1.jpg'
   };
 
   for (let prop in values) {
