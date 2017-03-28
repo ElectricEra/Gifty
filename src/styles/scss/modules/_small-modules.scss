@@ -29,7 +29,7 @@
 .submit-button {
 	background: $buttonBackground;
 	margin-top: 20px;
-	width: 130px;
+	width: 150px;
 }
 
 .submit-button:hover {
@@ -120,7 +120,8 @@ div.userView {
 }
 
 
-.facebooklogin {
+img.facebooklogin {
+	width: 300px;
 	cursor: pointer;
 }
 
