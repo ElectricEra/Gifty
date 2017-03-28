@@ -113,7 +113,8 @@ div.userView {
   border-radius: 20px;
   cursor: pointer;
   img {
-    border-radius: 50%;
+  	margin-top: 15px;
+  	border-radius: 50%;
     padding: 2px;
     border: 2px solid $themeColor;
   }
