@@ -216,6 +216,7 @@ export function updateUser(user){
     axios.post('/update', {
           email: user.email, 
           facebook: user.facebook,
+          picture: user.picture,
           friends: user.friends,
           history: user.history,
           theme: user.theme

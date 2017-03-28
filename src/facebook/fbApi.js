@@ -54,7 +54,7 @@ export default (function () {
 	function getInfo() {
 
 		return new Promise(function(resolve, reject){
-			FB.api('/me', 'GET', {fields: 'name,id,picture.width(150).height(150),friends'}, function(response) {
+			FB.api('/me', 'GET', {fields: 'name,id,picture.width(300).height(300),friends'}, function(response) {
 				resolve(response);			
 			});		
 		});

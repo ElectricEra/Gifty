@@ -1,7 +1,7 @@
 import React from "react";
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { logInCreator } from '../../actions/index';
+import { logInCreator, updateUser } from '../../actions/index';
 import fb from '../../facebook/fbApi';
 
 class FacebookLogin extends React.Component {
@@ -18,6 +18,7 @@ class FacebookLogin extends React.Component {
             picture: data.picture.data.url
           }
           this.props.logInCreator(user);
+          this.props.updateUser(user);
         });
       });
   }
@@ -34,7 +35,8 @@ class FacebookLogin extends React.Component {
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
-    logInCreator
+    logInCreator,
+    updateUser
   }, dispatch)
 }
 
