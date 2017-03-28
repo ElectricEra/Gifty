@@ -37,22 +37,6 @@ export function generateGifts(description) {
   }
 }
 
-export function getGifts(personDescription) {
-  const url = '/submit';
-  if (personDescription) {
-    const request = axios.post(url, personDescription);
-    return {
-      type:  GET_GIFTS,
-      payload: request
-    }
-  } else {
-    return {
-      type:  GET_GIFTS,
-      payload: {data:[]} 
-    }
-  }
-}
-
 export function addFriends(data) {
   return {
     type:  ADD_FRIENDS,
@@ -142,6 +126,35 @@ export function loggedOut() {
   }
 }
 
+export function giftProcess(data) {
+  return {
+    type: GIFT_PROCESS,
+    payload: data
+  }
+}
+
+export function addToHistory(data) {
+  return {
+    type: ADD_TO_HISTORY,
+    payload: data
+  }
+}
+
+export function getGifts(personDescription) {
+  const url = '/submit';
+  if (personDescription) {
+    const request = axios.post(url, personDescription);
+    return {
+      type:  GET_GIFTS,
+      payload: request
+    }
+  } else {
+    return {
+      type:  GET_GIFTS,
+      payload: {data:[]}
+    }
+  }
+}
 
 export function logInCreator(email, password) {
     console.log('LOG IN CREATOR');
@@ -151,7 +164,7 @@ export function logInCreator(email, password) {
         .then((response) => {
           if(response.data === false) {
             dispatch(logInFailed({ errorMessage: 'Wrong email or password' }))
-          } else if(response.data[0].facebook){            
+          } else if(response.data[0].facebook){
             dispatch(logInSuccess({ loggedIn: 'facebook', shouldRedirect: true }))
             dispatch(logIn(response.data[0]));
           } else {
@@ -194,33 +207,18 @@ export function logOutCreator() {
   }
 }
 
-export function addToHistory(data) {
-  return {
-    type: ADD_TO_HISTORY,
-    payload: data
-  }
-}
-
 
 export function updateUser(user){
   console.log(user);
 
   return (dispatch) => {
-    axios.post('/update', 
-        {
+    axios.post('/update', {
           email: user.email, 
           facebook: user.facebook,
           friends: user.friends,
           history: user.history,
           settings: user.settings
-        }
-      ).then(() => console.log('update'))
-  }
-}
-
-export function giftProcess(data) {
-  return {
-    type: GIFT_PROCESS,
-    payload: data
+        })
+      .then(() => console.log('update'))
   }
 }

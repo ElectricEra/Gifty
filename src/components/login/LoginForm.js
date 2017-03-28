@@ -34,10 +34,6 @@ class LoginForm extends React.Component {
     }
   }
 
-  componentDidMount() {
-    // console.log(this.props.logStatus);
-  }
-
   handleInputChange(event) {
     console.log('changed');
   }
@@ -48,22 +44,17 @@ class LoginForm extends React.Component {
   }
 
   handleLogIn() {
-    let email;
-    let password;
-
-    email = this.props.values.email;
-    password = this.props.values.password;
+    let email = this.props.values.email;
+    let password = this.props.values.password;
+    
     this.props.logInCreator(email, password)
   }
 
   handleSignUp() {
-    let name;
-    let email;
-    let password;
+    let name = this.props.values.name;
+    let email = this.props.values.email;
+    let password = this.props.values.password;
 
-    name = this.props.values.name;
-    email = this.props.values.email;
-    password = this.props.values.password;
     this.props.signUpCreator(name, email, password);
   }
 
@@ -119,7 +110,7 @@ class LoginForm extends React.Component {
           {currentForm === 'signIn' ?
            <div className="sign-toggle">
              <Text txtPosition="center">
-               Don't have an have account?
+               Dont have an have account?
                <span className="sign-toggle-text" id="signIn" onClick={this.handleChangeForm}> Sign up</span>
              </Text>
            </div>

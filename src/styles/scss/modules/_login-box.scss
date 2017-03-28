@@ -1,0 +1,12 @@
+.my-login-box {
+	max-width: 400px;
+	min-height: 600px;
+	margin: 50px auto 100px;
+	box-shadow: $shadow;
+
+	@media (max-width: 450px) {
+		margin: 0 auto;
+		box-shadow: none;
+		padding-bottom: 100px;
+	}
+}
