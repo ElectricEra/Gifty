@@ -25,7 +25,7 @@ export default function(props) {
             <div className='center'>
               <img src={user.picture.data.url} alt="pic" className="circle" />
               <h5>{user.name}</h5>
-              <p>Birtday: {+user.birthday.slice(3, 5)} {monthNames[user.birthday.slice(0, 2) - 1]}</p>
+              <p>Birthday: {+user.birthday.slice(3, 5)} {monthNames[user.birthday.slice(0, 2) - 1]}</p>
             </div>
           </div>
         );
