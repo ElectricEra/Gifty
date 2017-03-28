@@ -53,7 +53,6 @@ class ProfileThemesContainer extends React.Component {
 					<ProfileTheme id="theme_2" style= {{background: styles.theme_2}} onClick={this.handleClick} />
 					<ProfileTheme id="theme_3" style= {{background: styles.theme_3}} onClick={this.handleClick} />
 					<ProfileTheme id="theme_5" style= {{background: styles.theme_5}} onClick={this.handleClick} />
-					<ProfileTheme id="theme_4" style= {{background: styles.theme_4}} onClick={this.handleClick} />
 					<ProfileTheme id="theme_0" style= {{background: styles.theme_0}} onClick={this.handleClick} />
 					</div>
 				</div>
@@ -63,6 +62,7 @@ class ProfileThemesContainer extends React.Component {
 }
 
 /*
+<ProfileTheme id="theme_4" style= {{background: styles.theme_4}} onClick={this.handleClick} />
 
 */
 
