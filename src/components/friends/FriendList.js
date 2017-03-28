@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 import { addFriends } from '../../actions/index';
 import { giftProcess, getGifts, firstEntrance, addToHistory, updateUser } from '../../actions/index';
 
-import {DefaultBoxWrapper, Logo} from '../materialize';
+import {Logo} from '../materialize';
 import {Row} from '../materialize';
 import FriendView from './FriendView';
 import fb from '../../facebook/fbApi';
@@ -68,7 +68,7 @@ class FriendListContainer extends React.Component {
   render() {
     return (
       
-        <DefaultBoxWrapper>
+        <div className="col s12 l8 offset-l2">
           <Logo imgSrc="images/gift.png" />
           <Row>
             <div className='input-field col s9'>
@@ -79,7 +79,7 @@ class FriendListContainer extends React.Component {
             </div>
           </Row>
             <FriendView friends={this.state.found} handleFriend={this.handleFriend} />
-        </DefaultBoxWrapper>
+        </div>        
     
     )}
 };
