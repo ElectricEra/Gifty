@@ -34,10 +34,6 @@ class FriendListContainer extends React.Component {
     }   
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.setState({found: nextProps.user.friends});
-  }
-
   updateFriends(){
     fb.checkLogin().then(() => {
       fb.getFriends()
