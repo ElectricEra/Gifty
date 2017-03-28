@@ -59,7 +59,7 @@ class Navbar extends React.Component {
                   <div className="background">
                     <img src="images/menu-bg.png" />
                   </div>
-                  <a href="#!user"><img className="circle" src="images/user-1.jpg" /></a>
+                  <a href="#!user"><img className="circle" src="images/user-2.jpg" /></a>
                   <a href="#!name"><span className="white-text name">{user.name}</span></a>
                   <a href="#!email"><span className="white-text email">{user.email}</span></a>
                 </div></li>
@@ -102,7 +102,7 @@ class Navbar extends React.Component {
                   <div className="background">
                     <img src="images/menu-bg.png" />
                   </div>
-                  <a href="#!user"><img className="circle" src="images/user-1.jpg" /></a>
+                  <a href="#!user"><img className="circle" src="images/user-2.jpg" /></a>
                   <a href="#!name"><span className="white-text name">{user.name}</span></a>
                   <a href="#!email"><span className="white-text email">{user.email}</span></a>
                 </div></li>

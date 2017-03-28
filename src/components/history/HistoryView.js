@@ -34,11 +34,11 @@ class HistoryView extends React.Component {
 
 	render() {
 	  return (
-  		<div>
+  		<BasicWrapper>
   			<HistoryCollection history={this.props.user.history}
   				generateOldGifts={this.generateOldGifts}
           deleteFromHistoryHandler={this.deleteFromHistoryHandler} />
-  		</div>
+  		</BasicWrapper>
 	  )
   }
 }

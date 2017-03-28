@@ -2,10 +2,7 @@ import React from 'react';
 import { browserHistory } from 'react-router'
 import { connect } from 'react-redux'
 import { Row } from '../materialize';
-import ProfileInfo from './ProfileInfo';
-import ProfilePresents from './ProfilePresents';
 import ProfileThemesContainer from './ProfileThemesContainer';
-import ProfileHelp from './ProfileHelp';
 
 class ProfileView extends React.Component {
 	constructor(props) {
@@ -23,22 +20,29 @@ class ProfileView extends React.Component {
 
 	  return (
   		<Row>
-			<div className="col s12 m2 l2"></div>
-			<div className="col s12 m8 l8 profile">
-					<div className="card">
-						<div className="card-image">
-							<img src="images/user-1.jpg" />
-							<span className="card-title">{user.name}</span>
-							<a className="btn-floating halfway-fab waves-effect waves-light red"><i className="material-icons">mode_edit</i></a>
-						</div>
-						<div className="card-content">
-							<p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+				<div className="col s12 m12 l12 profile">
+					<div className="profile-info">
+						<img
+							src={user.picture ? user.picture : "images/user-2.jpg"}
+							className="profile-info-picture"/>
+
+						<p className="profile-info-name">{user.name}</p>
+						<div className="card">
+							<div className="profile-info-stats">
+								<i className="large material-icons">list</i>
+								<i className="large material-icons">perm_identity</i>
+								<i className="large material-icons">done</i>
+							</div>
+
+							<div className="profile-info-stats">
+								<span className="stats">Hstory: 54</span>
+								<span className="stats">Friend: 10</span>
+								<span className="stats">Gifts: 40</span>
+							</div>
 						</div>
 					</div>
 					<ProfileThemesContainer/>
-					<ProfileHelp/>
 				</div>
-
   		</Row>
 	  )
   }

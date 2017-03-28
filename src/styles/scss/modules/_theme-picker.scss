@@ -1,0 +1,29 @@
+.theme-picker {
+  width: 100%;
+
+  .theme-picker-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    .theme-picker-item {
+      border-radius: 50%;
+      cursor: pointer;
+      width: 50px;
+    	height: 50px;
+    	margin: 20px 5px;
+      transition: 0.5s;
+
+      &:hover {
+        height: 100px;
+        width: 100px;
+      }
+    }
+  }
+
+  .theme-picker-label {
+    padding: 20px;
+    font-size: 20px;
+  }
+
+}

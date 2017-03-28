@@ -1,0 +1,45 @@
+.profile-info {
+  margin: 50px 0;
+
+  .profile-info-picture {
+    display: block;
+    margin: 0 auto;
+    padding: 2px;
+    min-width: 280px;
+    border-radius: 50%;
+    border: 4px solid $themeColor;
+    transition: 0.5s;
+
+    &:hover {
+      box-shadow: $shadow;
+    }
+  }
+
+  .profile-info-name {
+    text-align: center;
+    font-size: 24px;
+  }
+
+  .profile-info-stats {
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    i {
+      background: $themeColor;
+      color: #fff;
+      margin: 10px;
+    }
+
+    .stats {
+      float: left;
+      width: 85px;
+      text-align: center;
+    }
+  }
+
+  .card {
+    padding: 20px;
+  }
+}
