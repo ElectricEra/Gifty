@@ -46,6 +46,8 @@ app.post('/submit',function(req,res){
     Promise.all(results).then((results) => {
       res.end(JSON.stringify(results))
     });
+  }).catch(function(error){
+    console.log('ebay response mistake, it happens')
   });
 
 });
