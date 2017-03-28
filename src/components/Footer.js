@@ -1,16 +1,13 @@
 import React from "react";
-import {BasicWrapper} from './materialize';
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux';
+import {BasicWrapper} from './materialize'
 
-
-class Footer extends React.Component {
+export default class Footer extends React.Component {
   constructor(props) {
     super(props);
   }
   render() {
     return (
-      <footer className="page-footer" style={{background:this.props.user.theme}}>
+      <footer className="page-footer">
         <BasicWrapper>
           <p>© 2017 EPAM FrontendLab6</p>
         </BasicWrapper>
@@ -18,9 +15,3 @@ class Footer extends React.Component {
     );
   }
 };
-const mapStateToProps = function(state) {
-  return {
-     user: state.user,
-  };
-}
-export default connect(mapStateToProps)(Footer);

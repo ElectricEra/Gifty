@@ -19,8 +19,7 @@ export const LOGGED_OUT          = 'LOGGED_OUT';
 export const ADD_TO_HISTORY      = 'ADD_TO_HISTORY';
 export const GIFT_PROCESS        = 'GIFT_PROCESS';
 export const LAST_PATH           = 'LAST_PATH';
-export const DELETE_FROM_HISTORY = 'DELETE_FROM_HISTORY';
-export const THEME               = 'THEME';
+export const DELETE_FROM_HISTORY = 'DELETE_FROM_HISTORY'
 
 
 export function deleteFromHistory(data) {
@@ -218,15 +217,8 @@ export function updateUser(user){
           facebook: user.facebook,
           friends: user.friends,
           history: user.history,
-          theme: user.theme
+          settings: user.settings
         })
       .then(() => console.log('update'))
-  }
-}
-
-export function updateTheme(data) {
-  return {
-    type:  THEME,
-    payload: data
   }
 }

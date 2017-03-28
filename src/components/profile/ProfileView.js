@@ -4,8 +4,6 @@ import { connect } from 'react-redux'
 import { Row } from '../materialize';
 import ProfileInfo from './ProfileInfo';
 import ProfilePresents from './ProfilePresents';
-import ProfileThemesContainer from './ProfileThemesContainer';
-import ProfileHelp from './ProfileHelp';
 
 class ProfileView extends React.Component {
 	constructor(props) {
@@ -35,8 +33,6 @@ class ProfileView extends React.Component {
 							<p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
 						</div>
 					</div>
-					<ProfileThemesContainer/>
-					<ProfileHelp/>
 				</div>
 
   		</Row>
