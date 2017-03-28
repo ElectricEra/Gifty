@@ -38,7 +38,7 @@ class Navbar extends React.Component {
 
         return  (
           <div className="navbar">
-            <NavbarWrapper>
+            <NavbarWrapper style={{background:user.theme}}>
                 <Link to="app" className="brand-logo">
                   <img className="logo" src="images/gifty-white.svg" alt="Gifty"/>
                 </Link>
@@ -79,7 +79,7 @@ class Navbar extends React.Component {
 
         return  (
           <div className="navbar">
-            <NavbarWrapper>
+            <NavbarWrapper style={{background: user.theme}}>
                 <Link to="app" className="brand-logo">
                   <img className="logo" src="images/gifty-white.svg" alt="Gifty"/>
                 </Link>
