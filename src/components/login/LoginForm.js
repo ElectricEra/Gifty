@@ -23,13 +23,13 @@ class LoginForm extends React.Component {
   }
 
   componentWillMount() {
-    if(this.props.logStatus.loggedIn === true) {
+    if(this.props.logStatus.loggedIn !== false) {
       browserHistory.push('/app');
     }
   }
 
   componentDidUpdate() {
-    if(this.props.logStatus.loggedIn === true) {
+    if(this.props.logStatus.loggedIn !== false) {
       browserHistory.push('/app');
     }
   }
