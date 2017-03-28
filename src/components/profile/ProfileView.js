@@ -27,6 +27,8 @@ class ProfileView extends React.Component {
 							className="profile-info-picture"/>
 
 						<p className="profile-info-name">{user.name}</p>
+						<p className="profile-info-email">{user.email}</p>
+
 						<div className="card">
 							<div className="profile-info-stats">
 								<i className="large material-icons">list</i>

@@ -46,14 +46,16 @@ class ProfileThemesContainer extends React.Component {
 	render() {
 	  return (
 	  	<div className="center theme-picker">
-					<p className="col s12 m12 l12 theme-picker-label"></p>
 					<div className="col s12 m12 l12 theme-picker-list">
+					<div className="card">
+					<p className="col s12 m12 l12 theme-picker-label">Choose a theme color</p>
 		  		<ProfileTheme id="theme_1" style= {{background: styles.theme_1}} onClick={this.handleClick} />
 					<ProfileTheme id="theme_2" style= {{background: styles.theme_2}} onClick={this.handleClick} />
 					<ProfileTheme id="theme_3" style= {{background: styles.theme_3}} onClick={this.handleClick} />
 					<ProfileTheme id="theme_5" style= {{background: styles.theme_5}} onClick={this.handleClick} />
 					<ProfileTheme id="theme_4" style= {{background: styles.theme_4}} onClick={this.handleClick} />
 					<ProfileTheme id="theme_0" style= {{background: styles.theme_0}} onClick={this.handleClick} />
+					</div>
 				</div>
 			</div>
 	  )
