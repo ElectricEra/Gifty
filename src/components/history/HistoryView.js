@@ -1,5 +1,5 @@
 import React from 'react';
-import { DefaultBoxWrapper } from '../materialize';
+import { DefaultBoxWrapper, BasicWrapper, Row } from '../materialize';
 import { bindActionCreators } from 'redux'
 import {IndexLink, Link, browserHistory} from 'react-router';
 import { connect } from 'react-redux';
@@ -34,11 +34,11 @@ class HistoryView extends React.Component {
 
 	render() {
 	  return (
-  		<DefaultBoxWrapper>
-  			<HistoryCollection history={this.props.user.history} 
+  		<div>
+  			<HistoryCollection history={this.props.user.history}
   				generateOldGifts={this.generateOldGifts}
           deleteFromHistoryHandler={this.deleteFromHistoryHandler} />
-  		</DefaultBoxWrapper>
+  		</div>
 	  )
   }
 }

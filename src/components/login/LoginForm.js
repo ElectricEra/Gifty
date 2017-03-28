@@ -46,7 +46,7 @@ class LoginForm extends React.Component {
   handleLogIn() {
     let email = this.props.values.email;
     let password = this.props.values.password;
-    
+
     this.props.logInCreator(email, password)
   }
 

@@ -42,7 +42,7 @@ class Navbar extends React.Component {
                 <Link to="app" className="brand-logo">
                   <img className="logo" src="images/gifty-white.svg" alt="Gifty"/>
                 </Link>
-                <Link to="#" data-activates="slide-out" className="button-collapse">
+                <Link to="#" data-activates="slide-out" className="navbar-hamburger button-collapse">
                   &#9776;
                 </Link>
 
@@ -73,7 +73,7 @@ class Navbar extends React.Component {
               </ul>
             </div>
         )
-        
+
         break;
       case true:
 
@@ -83,7 +83,10 @@ class Navbar extends React.Component {
                 <Link to="app" className="brand-logo">
                   <img className="logo" src="images/gifty-white.svg" alt="Gifty"/>
                 </Link>
-                <Link to="#" data-activates="slide-out" className="button-collapse">
+                <Link
+                  to="#"
+                  data-activates="slide-out"
+                  className="navbar-hamburger button-collapse">
                   &#9776;
                 </Link>
 
@@ -112,11 +115,11 @@ class Navbar extends React.Component {
               </ul>
             </div>
         )
-        
+
         break;
 
       default:
-      
+
         return (
           <div className="navbar">
             <NavbarWrapper>

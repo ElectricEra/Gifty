@@ -1,0 +1,46 @@
+.history {
+  margin: 50px 0;
+  padding: 0;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.5s;
+
+}
+
+.history-user-picture {
+  margin: 0;
+  margin-top: 20px;
+
+  img {
+    border-radius: 50%;
+    padding: 2px;
+    border: 2px solid $themeColor;
+  }
+}
+
+.history-user-info {
+  margin: 0;
+  font-size: 18px;
+
+  p {
+    text-align: left;
+  }
+
+  @media (max-width: 600px) {
+    p {
+      text-align: center;
+    }
+  }
+}
+
+.history-delete-item {
+  font-size: 80px;
+
+  &:hover {
+    color: red;
+  }
+
+  @media (max-width: 600px) {
+    font-size: 24px;
+  }
+}

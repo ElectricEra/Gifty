@@ -7,7 +7,7 @@ import fb from '../../facebook/fbApi';
 class FacebookLogin extends React.Component {
   constructor(props) {
     super(props);
-  }  
+  }
 
   login() {
     fb.login().then(() => {
@@ -18,13 +18,12 @@ class FacebookLogin extends React.Component {
             picture: data.picture.data.url
           }
           this.props.logInCreator(user);
-        });       
+        });
       });
   }
 
   render() {
     return (
-
       <div onClick={() => this.login()} className='center' >
       	<img alt='facebooklogin' src='images/facebookLogin.png' className='facebooklogin' />
       </div>

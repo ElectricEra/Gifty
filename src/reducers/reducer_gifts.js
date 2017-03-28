@@ -16,6 +16,3 @@ export default (state = [], action) => {
   }
   return state;
 }
-
-
-//return [].concat(state, ...action.payload.data);

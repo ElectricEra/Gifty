@@ -1,7 +1,17 @@
 nav {
 	background: $navbarBackground;
+
+	.navbar {
+
+	}
 }
 
 div#sidenav-overlay {
 		background: none;
+}
+
+
+a.navbar-hamburger {
+	font-size: 24px;
+	margin-left: 0;
 }
