@@ -21,6 +21,10 @@ export const GIFT_PROCESS        = 'GIFT_PROCESS';
 export const LAST_PATH           = 'LAST_PATH';
 export const DELETE_FROM_HISTORY = 'DELETE_FROM_HISTORY';
 export const THEME               = 'THEME';
+export const INC_FRIENDS         = 'INC_FRIENDS';
+export const INC_GIFTS           = 'INC_GIFTS';
+export const INC_HISTORY         = 'INC_HISTORY';
+
 
 
 export function deleteFromHistory(data) {
@@ -141,6 +145,27 @@ export function addToHistory(data) {
   }
 }
 
+export function incFriends(stat) {
+  return {
+    type: INC_FRIENDS,
+    payload: stat
+  }
+}
+
+export function incGifts(stat) {
+  return {
+    type: INC_GIFTS,
+    payload: stat
+  }
+}
+
+export function incHistory(stat) {
+  return {
+    type: INC_HISTORY,
+    payload: stat
+  }
+}
+
 export function getGifts(personDescription) {
   const url = '/submit';
   if (personDescription) {
@@ -214,7 +239,7 @@ export function updateUser(user){
 
   return (dispatch) => {
     axios.post('/update', {
-          email: user.email, 
+          email: user.email,
           facebook: user.facebook,
           picture: user.picture,
           friends: user.friends,
