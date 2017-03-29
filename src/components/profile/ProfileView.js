@@ -20,16 +20,23 @@ class ProfileView extends React.Component {
     }
 	}
 
-	giftForMe() {		
-		fb.checkLogin().then(() => {
-			fb.getQuery(this.props.user.facebook, '').then(query => {
-				this.props.giftProcess(true);
-				this.props.getGifts(query);
-				this.props.firstEntrance();
-				this.props.addToHistory(query);
-				browserHistory.push('/generated');
+	giftForMe() {
+
+		if(this.props.logStatus.loggedIn === 'facebook'){
+
+			fb.checkLogin().then(() => {
+				fb.getQuery(this.props.user.facebook, '').then(query => {
+					this.props.giftProcess(true);
+					this.props.getGifts(query);
+					this.props.firstEntrance();
+					this.props.addToHistory(query);
+					browserHistory.push('/generated');
+				});
 			});
-		});
+
+		} else {
+			browserHistory.push('/app');
+		}
 	}
 
 	render() {
