@@ -31,9 +31,9 @@ class ProfileView extends React.Component {
 
 						<div className="card">
 							<div className="profile-info-stats">
-								<i className="large material-icons">list</i>
-								<i className="large material-icons">perm_identity</i>
-								<i className="large material-icons">done</i>
+								<i className="material-icons">list</i>
+								<i className="material-icons">perm_identity</i>
+								<i className="material-icons">done</i>
 							</div>
 
 							<div className="profile-info-stats">

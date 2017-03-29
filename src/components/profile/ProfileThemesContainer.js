@@ -8,7 +8,7 @@ import { updateUser } from '../../actions/index';
 import { IndexLink, Link, browserHistory } from 'react-router';
 
 class ProfileThemesContainer extends React.Component {
-
+  
 	constructor(props) {
 		super(props);
 		this.handleClick = this.handleClick.bind(this)

@@ -68,7 +68,7 @@ class Navbar extends React.Component {
                 <li><Link to="app">Gifty</Link></li>
                 <li><Link to="profile">Profile</Link></li>
                 <li><Link to="history">History</Link></li>
-                <li><Link to="friends">Friends</Link></li>
+                {logStatus.loggedIn === 'facebook' ? <li><Link to="friends">Friends</Link></li> : null}
                 <li><div className="divider"></div></li>
                 <li><Link className="waves-effect" to="app" onClick={this.handleLogOut}>Log out</Link></li>
               </ul>
