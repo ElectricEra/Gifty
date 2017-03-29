@@ -1,8 +1,13 @@
 import React from 'react';
-import { browserHistory } from 'react-router'
-import { connect } from 'react-redux'
+import { browserHistory } from 'react-router';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
 import { Row } from '../materialize';
 import ProfileThemesContainer from './ProfileThemesContainer';
+
+import { giftProcess, getGifts, firstEntrance, addToHistory, updateUser } from '../../actions/index';
+import fb from '../../facebook/fbApi';
 
 class ProfileView extends React.Component {
 	constructor(props) {
@@ -15,6 +20,18 @@ class ProfileView extends React.Component {
     }
 	}
 
+	giftForMe() {		
+		fb.checkLogin().then(() => {
+			fb.getQuery(this.props.user.facebook, '').then(query => {
+				this.props.giftProcess(true);
+				this.props.getGifts(query);
+				this.props.firstEntrance();
+				this.props.addToHistory(query);
+				browserHistory.push('/generated');
+			});
+		});
+	}
+
 	render() {
 		const { user } = this.props;
 
@@ -24,7 +41,8 @@ class ProfileView extends React.Component {
 					<div className="profile-info">
 						<img
 							src={user.picture ? user.picture : "images/user-2.jpg"}
-							className="profile-info-picture"/>
+							className="profile-info-picture"
+							onClick={() => this.giftForMe()}/>
 
 						<p className="profile-info-name">{user.name}</p>
 						<p className="profile-info-email">{user.email}</p>
@@ -57,7 +75,11 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps)(ProfileView);
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ giftProcess, getGifts, firstEntrance, addToHistory }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProfileView);
 
 
 	// <div className="col offset-s3 s6 l5">

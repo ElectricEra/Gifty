@@ -118,28 +118,27 @@ export default (function () {
 		return result;
 	};
 
-	function getQuery(id, picture, price){
+	function getQuery(id, price){
 		return new Promise(function(resolve, reject){
 			FB.api(
 			  '/'+id,
 			  'GET',
-			  {fields:"id,name,gender,birthday,sports,games,about,likes,music,books,devices,feed"},
-			  function(response) {
+			  {fields:"id,name,picture.width(100).height(100),gender,birthday,sports,games,about,likes,music,books,devices,feed"},
+			  function(response) {			  		
 			  		var tags = [],
 			  			age = new Date().getFullYear() - new Date(response.birthday).getFullYear();
 			  		
 			  		const gender = response.gender,
-			  			name = response.name;
+			  			name = response.name,
+			  			picture = response.picture.data.url;
 			  		
 			  		if(response.sports){
 			  			tags.push('sport');
 			  		};
 			  		if(response.games){
-			  			console.log(response.games)
 			  			tags.push('gaming');
 			  		};
 			  		if(response.music){
-			  			console.log(response.music)
 			  			tags.push('music');
 			  		};
 			  		if(response.books){
@@ -175,7 +174,6 @@ export default (function () {
 			  			price = +price;
 			  		}
 			  		
-			  		console.log({age, picture, name, gender, price, tags});
 			  		resolve({age, name, picture, gender, price, tags});
 			  	}
 			);
