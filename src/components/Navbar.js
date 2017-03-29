@@ -55,7 +55,7 @@ class Navbar extends React.Component {
             <ul id="slide-out" className="side-nav" onClick={this.handleHideSideNav}>
                 <li><div className="userView">
                   <div className="background">
-                    <img src="images/menu-bg.png" />
+                    <img src="images/sidenav-bg.png" />
                   </div>
                   <a href="#!user">
                     <img
@@ -90,9 +90,9 @@ class Navbar extends React.Component {
             <ul id="slide-out" className="side-nav" onClick={this.handleHideSideNav}>
                 <li><div className="userView">
                   <div className="background">
-                    <img src="images/menu-bg.png" />
+                    <img src="images/sidenav-bg.png" />
                   </div>
-                  <Link to="login" className="side-nav-login"><span className="white-text">Log In</span></Link>
+                  <Link to="login" className="white-text side-nav-login">Log In</Link>
                 </div></li>
                 <li><Link to="app">Gifty</Link></li>
                 <li><div className="divider"></div></li>
