@@ -46,7 +46,7 @@
 	height: 200px;
 	width: 220px;
 	margin: 1rem auto;
-	margin-top: 50px;
+	margin-top: 105px;
 }
 
 .my-present-holder {
@@ -72,13 +72,17 @@
 	height:auto;
 }
 
+.carousel .carousel-item {
+	height:auto;
+}
+
 .input-field input[type=text].invalid {
    border-bottom: 1px solid red;
    box-shadow: 0 1px 0 0 red;
 }
 
 .carousel {
-	height: 300px;
+	height: 400px;
 }
 
 .my-select-none {
