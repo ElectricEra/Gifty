@@ -29,15 +29,7 @@ app.post('/submit',function(req,res){
   var sort = filter.modCriteriaFormToObj(req.body);
   var query = filter.modObjForQueryToDB(sort);
 
-  db.findIdeas({$or: query}).then((ideas) => {
-    if(ideas.length === 0){
-      res.end(JSON.stringify([
-        {
-          name: 'not found, try to rise the price', 
-          img: 'public/images/gifts/not-found.svg'
-        }
-      ]))
-    }
+  db.findIdeas({$or: query}).then((ideas) => {    
     var results = [];
     var sorted = filter.filterGeneratedIdeas(sort, ideas, 5);
     sorted.forEach((idea) => {
@@ -47,7 +39,12 @@ app.post('/submit',function(req,res){
       res.end(JSON.stringify(results))
     });
   }).catch(function(error){
-    console.log('ebay response mistake, it happens')
+      res.end(JSON.stringify([
+        {
+          name: 'not found, try to rise the price', 
+          img: 'public/images/gifts/not-found.svg'
+        }
+      ]))
   });
 
 });
