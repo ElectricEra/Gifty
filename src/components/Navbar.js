@@ -33,10 +33,8 @@ class Navbar extends React.Component {
   render() {
     const { logStatus, user } = this.props;
 
-    switch(logStatus.loggedIn) {
-      case 'facebook':
+    return logStatus.loggedIn !== false ? (
 
-        return  (
           <div className="navbar">
             <NavbarWrapper style={{background:user.theme}}>
                 <Link to="app" className="brand-logo">
@@ -47,17 +45,17 @@ class Navbar extends React.Component {
                 </Link>
 
                 <ul id="nav-mobile" className="right hide-on-med-and-down">
+                  <li><Link to="app">Gifty</Link></li>
                   <li><Link to="profile">Profile</Link></li>
                   <li><Link to="history">History</Link></li>
-                  <li><Link to="friends">Friends</Link></li>
-                  <li><Link to="settings">Settings</Link></li>
+                  {logStatus.loggedIn === 'facebook' ? <li><Link to="friends">Friends</Link></li> : null}
                   <li><Link to="login" onClick={this.handleLogOut}>Log out</Link></li>
                 </ul>
             </NavbarWrapper>
             <ul id="slide-out" className="side-nav" onClick={this.handleHideSideNav}>
                 <li><div className="userView">
                   <div className="background">
-                    <img src="images/menu-bg.png" />
+                    <img src="images/sidenav-bg.png" />
                   </div>
                   <a href="#!user">
                     <img
@@ -71,69 +69,11 @@ class Navbar extends React.Component {
                 <li><Link to="profile">Profile</Link></li>
                 <li><Link to="history">History</Link></li>
                 <li><Link to="friends">Friends</Link></li>
-                <li><Link to="settings">Settings</Link></li>
                 <li><div className="divider"></div></li>
                 <li><Link className="waves-effect" to="app" onClick={this.handleLogOut}>Log out</Link></li>
               </ul>
             </div>
-        )
-
-        break;
-      case true:
-
-        return  (
-          <div className="navbar">
-            <NavbarWrapper style={{background: user.theme}}>
-                <Link to="app" className="brand-logo">
-                  <img className="logo" src="images/gifty-white.svg" alt="Gifty"/>
-                </Link>
-                <Link
-                  to="#"
-                  data-activates="slide-out"
-                  className="navbar-hamburger button-collapse">
-                  &#9776;
-                </Link>
-
-                <ul id="nav-mobile" className="right hide-on-med-and-down">
-                  <li><Link to="app">Gifty</Link></li>
-                  <li><Link to="profile">Profile</Link></li>
-                  {
-                    logStatus.loggedIn === 'facebook' ?
-                    <li><Link to="friends">Friends</Link></li> :
-                    null
-                  }
-                  <li><Link to="history">History</Link></li>
-                  <li><Link to="login" onClick={this.handleLogOut}>Log out</Link></li>
-                </ul>
-            </NavbarWrapper>
-            <ul id="slide-out" className="side-nav" onClick={this.handleHideSideNav}>
-                <li><div className="userView">
-                  <div className="background">
-                    <img src="images/menu-bg.png" />
-                  </div>
-                  <a href="#!user">
-                    <img
-                      className="circle"
-                      src={logStatus.loggedIn === 'facebook' ? user.picture : "images/user-2.jpg"} />
-                  </a>
-                  <a href="#!name"><span className="white-text name">{user.name}</span></a>
-                  <a href="#!email"><span className="white-text email">{user.email}</span></a>
-                </div></li>
-                <li><Link to="app">Gifty</Link></li>
-                <li><Link to="profile">Profile</Link></li>
-                <li><Link to="history">History</Link></li>
-                <li><Link to="settings">Settings</Link></li>
-                <li><div className="divider"></div></li>
-                <li><Link className="waves-effect" to="app" onClick={this.handleLogOut}>Log out</Link></li>
-              </ul>
-            </div>
-        )
-
-        break;
-
-      default:
-
-        return (
+        ) : (
           <div className="navbar">
             <NavbarWrapper>
                 <Link to="app" className="brand-logo">
@@ -150,16 +90,16 @@ class Navbar extends React.Component {
             <ul id="slide-out" className="side-nav" onClick={this.handleHideSideNav}>
                 <li><div className="userView">
                   <div className="background">
-                    <img src="images/menu-bg.png" />
+                    <img src="images/sidenav-bg.png" />
                   </div>
-                  <Link to="login" className="side-nav-login"><span className="white-text">Log In</span></Link>
+                  <Link to="login" className="white-text side-nav-login">Log In</Link>
                 </div></li>
                 <li><Link to="app">Gifty</Link></li>
                 <li><div className="divider"></div></li>
             </ul>
           </div>
         )
-    }
+
   }
 };
 
@@ -181,6 +121,64 @@ export default connect(mapStateToProps, mapDispatchToProps)(Navbar);
 
 
 /*
+break;
+case true:
+
+return  (
+  <div className="navbar">
+    <NavbarWrapper style={{background: user.theme}}>
+        <Link to="app" className="brand-logo">
+          <img className="logo" src="images/gifty-white.svg" alt="Gifty"/>
+        </Link>
+        <Link
+          to="#"
+          data-activates="slide-out"
+          className="navbar-hamburger button-collapse">
+          &#9776;
+        </Link>
+
+        <ul id="nav-mobile" className="right hide-on-med-and-down">
+          <li><Link to="app">Gifty</Link></li>
+          <li><Link to="profile">Profile</Link></li>
+          {
+            logStatus.loggedIn === 'facebook' ?
+            <li><Link to="friends">Friends</Link></li> :
+            null
+          }
+          <li><Link to="history">History</Link></li>
+          <li><Link to="login" onClick={this.handleLogOut}>Log out</Link></li>
+        </ul>
+    </NavbarWrapper>
+    <ul id="slide-out" className="side-nav" onClick={this.handleHideSideNav}>
+        <li><div className="userView">
+          <div className="background">
+            <img src="images/menu-bg.png" />
+          </div>
+          <a href="#!user">
+            <img
+              className="circle"
+              src={logStatus.loggedIn === 'facebook' ? user.picture : "images/user-2.jpg"} />
+          </a>
+          <a href="#!name"><span className="white-text name">{user.name}</span></a>
+          <a href="#!email"><span className="white-text email">{user.email}</span></a>
+        </div></li>
+        <li><Link to="app">Gifty</Link></li>
+        <li><Link to="profile">Profile</Link></li>
+        <li><Link to="history">History</Link></li>
+        <li><Link to="settings">Settings</Link></li>
+        <li><div className="divider"></div></li>
+        <li><Link className="waves-effect" to="app" onClick={this.handleLogOut}>Log out</Link></li>
+      </ul>
+    </div>
+)
+
+break;
+
+default:
+
+return (
+
+)
 <ul className="side-nav" id="mobile-demo">
 <li><a href="profile">Profile</a></li>
 <li><Link to="history">History</Link></li>
