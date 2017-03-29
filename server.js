@@ -26,20 +26,15 @@ app.get('*', function (request, response){
 
 app.post('/submit',function(req,res){
 
-  var sort = filter.modCriteriaFormToObj(req.body);
-  var query = filter.modObjForQueryToDB(sort);
+  var sort = filter.modCriteriaFormToObj(req.body),
+    query = filter.modObjForQueryToDB(sort),
+    errorCounter = 0,
+    ideasNumber = 0;
 
-  db.findIdeas({$or: query}).then((ideas) => {
-    if(ideas.length === 0){
-      res.end(JSON.stringify([
-        {
-          name: 'not found, try to rise the price', 
-          img: 'public/images/gifts/not-found.svg'
-        }
-      ]))
-    }
+  db.findIdeas({$or: query}).then((ideas) => {    
     var results = [];
     var sorted = filter.filterGeneratedIdeas(sort, ideas, 5);
+    ideasNumber = sorted.length - 1;
     sorted.forEach((idea) => {
       results.push(searchEbay(idea, sort.price));
     });
@@ -47,7 +42,16 @@ app.post('/submit',function(req,res){
       res.end(JSON.stringify(results))
     });
   }).catch(function(error){
-    console.log('ebay response mistake, it happens')
+      if(errorCounter === ideasNumber){
+        res.end(JSON.stringify([
+          {
+            name: 'gift not found, please try again', 
+            img: 'public/images/gifts/not-found.svg'
+          }
+        ]))
+      } else {
+        errorCounter++
+      }
   });
 
 });
@@ -56,6 +60,8 @@ app.post('/register',function(req,res){
 
   db.registerUser(req.body).then((user) => {
     res.end(JSON.stringify(user));
+  }).catch(function(error){
+      res.end(false);
   });
 
 });
@@ -64,6 +70,8 @@ app.post('/login',function(req,res){
 
   db.loginUser(req.body).then((user) => {
     res.end(JSON.stringify(user));
+  }).catch(function(error){
+      res.end(false);
   });
 
 });
@@ -72,10 +80,12 @@ app.post('/update',function(req,res){
   
   db.updateUser(req.body).then((user) => {
     res.end(JSON.stringify(user));
+  }).catch(function(error){
+      res.end(false);
   }); 
 
-})
+});
 
 app.listen(3000,function(){
   console.log("Started on PORT 3000");
-})
+});

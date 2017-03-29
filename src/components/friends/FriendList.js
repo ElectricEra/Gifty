@@ -55,6 +55,12 @@ class FriendListContainer extends React.Component {
       this.props.giftProcess(true);
       this.props.getGifts(query);
       this.props.firstEntrance();
+      let date = new Date();
+      query.date = {
+        day: date.getDate(),
+        month: date.getMonth(),
+        year: date.getFullYear()
+      }
       this.props.addToHistory(query);
       browserHistory.push('/generated');
     })
@@ -75,11 +81,11 @@ class FriendListContainer extends React.Component {
         <div className="col s12 l8 offset-l2">
           <Logo imgSrc="images/gift.png" />
           <Row>
-            <div className='input-field col s9'>
+            <div className='input-field col s12 l9'>
               <input type="text" placeholder="Search" onChange={this.handleSearch} />
             </div>
-            <div className='input-field col s3'>
-              <input type="number" placeholder='Max price' ref='price' />
+            <div className='input-field col s12 l3'>
+              <input type="number" placeholder='Max price (in $)' ref='price' defaultValue='100' />
             </div>
           </Row>
             <FriendView friends={this.state.found} handleFriend={this.handleFriend} />

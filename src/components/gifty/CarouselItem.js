@@ -12,6 +12,7 @@ export const CarouselItem = (props) => {
 	    		}
 	    	</div>
 	  	</a>
+	  	<p className="center my-select">{$.trim(props.name).substring(0, 30).split(" ").slice(0, -1).join(" ")}</p>
 	  	<p className="center my-select-none">{props.price}$</p>
 		</div>
   )

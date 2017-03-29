@@ -89,7 +89,7 @@ class GiftyForm extends React.Component {
               id="price"
               type="number"
               component={this.renderTextField}
-              label="Price"/>
+              label="Price (in $)"/>
 
             <SmallWrapper>
               <Field name="sport" id="sport" component={this.renderCheckbox} label="Sport" />
@@ -111,14 +111,22 @@ class GiftyForm extends React.Component {
     )}
 };
 
+let Cats = ['./images/cat-1.jpg', './images/Small-cat-shaurma.jpg'];
+
 function processValues(values) {
+  let date = new Date()
   let description = {
     name: '',
     age: 0,
     gender:'',
     price: 0,
     tags:[],
-    picture: './images/cat-1.jpg'
+    picture: Cats[Math.floor(Math.random()*Cats.length)],
+    date: {
+      day: date.getDate(),
+      month: date.getMonth(),
+      year: date.getYear()
+    }
   };
 
   for (let prop in values) {

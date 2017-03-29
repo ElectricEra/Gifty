@@ -32,7 +32,7 @@ export default (state = initialState, action) => {
       return Object.assign({}, state, {friends: action.payload});
       break;
 
-    case ADD_TO_HISTORY:      
+    case ADD_TO_HISTORY:    
       return Object.assign({}, state, {history: [action.payload,...state.history].slice(0,10)});
       break;
 
