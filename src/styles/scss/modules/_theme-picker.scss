@@ -1,0 +1,32 @@
+.theme-picker {
+  width: 100%;
+
+  .theme-picker-list {
+    padding: 0;
+
+    .theme-picker-item {
+      display: inline-block;
+      border-radius: 50%;
+      cursor: pointer;
+      width: 50px;
+    	height: 50px;
+    	margin: 20px 5px;
+      transition: 0.5s;
+
+      // &:hover {
+      //   height: 100px;
+      //   width: 100px;
+      // }
+    }
+  }
+
+  .theme-picker-label {
+    font-size: 20px;
+  }
+
+  .card {
+    width: 100%;
+    margin-bottom: 50px;
+  }
+
+}

@@ -24,13 +24,14 @@ export default (state = initialState, action) => {
     case SIGN_UP_SUCCESS:
       console.log('SIGN_UP_SUCCESS');
       return Object.assign({}, state, action.payload);
+      break;
 
     case SIGN_UP_FAILED:
       console.log('SIGN_UP_FAILED');
       return Object.assign({}, state, action.payload);
       break;
 
-    case LOGGED_OUT:            
+    case LOGGED_OUT:
       console.log('LOGGED OUT');
       return Object.assign({}, initialState);
       break;

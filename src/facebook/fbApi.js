@@ -23,6 +23,18 @@ export default (function () {
 		});
 	};
 
+	function login(){
+		return new Promise(function(resolve, reject){
+			FB.login((response) => {
+				if (response.status === 'connected') {
+					resolve(true);
+				}	
+			},
+  				{scope: 'email,publish_actions,user_about_me,user_birthday,user_friends,user_games_activity,user_likes,user_posts,user_actions.books,user_actions.fitness,user_events,user_actions.music'});
+		});
+	}
+	
+
 	function checkInit() {
 	    return typeof (FB) != 'undefined' && window.fbAsyncInit.hasRun;
 	};
@@ -42,7 +54,7 @@ export default (function () {
 	function getInfo() {
 
 		return new Promise(function(resolve, reject){
-			FB.api('/me', 'GET', {fields: 'name,id,picture.width(150).height(150),friends'}, function(response) {
+			FB.api('/me', 'GET', {fields: 'name,id,picture.width(300).height(300),friends'}, function(response) {
 				resolve(response);			
 			});		
 		});
@@ -173,6 +185,7 @@ export default (function () {
 	};
  
   return {
+  	login,
     getQuery,
     getInfo,
     getFriends,

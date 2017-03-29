@@ -1,23 +1,16 @@
 import React from "react";
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { logInCreator } from '../../actions/index';
+import { logInCreator, updateUser } from '../../actions/index';
 import fb from '../../facebook/fbApi';
 
 class FacebookLogin extends React.Component {
   constructor(props) {
     super(props);
-  }  
+  }
 
   login() {
-  	FB.init({
-      appId      : '381020565615954',
-      xfbml      : true,
-      cookie     : true,
-      version    : 'v2.8'
-    });
-  	FB.login((response) => {
-      if(response.status === 'connected'){
+    fb.login().then(() => {
         fb.getInfo().then(data => {
           let user = {
             facebook: data.id,
@@ -25,19 +18,15 @@ class FacebookLogin extends React.Component {
             picture: data.picture.data.url
           }
           this.props.logInCreator(user);
-        });       
-      };
-    },
-  		{scope: 'email,publish_actions,user_about_me,user_birthday,user_friends,user_games_activity,user_likes,user_posts,user_actions.books,user_actions.fitness,user_events,user_actions.music'});
-
-
+          this.props.updateUser(user);
+        });
+      });
   }
 
   render() {
     return (
-
       <div onClick={() => this.login()} className='center' >
-      	<img alt='facebooklogin' src='images/facebookLogin.png' className='facebooklogin' />
+      	<img alt='facebooklogin' src='images/facebookSignIn.png' className='facebooklogin' />
       </div>
 
     )}
@@ -46,7 +35,8 @@ class FacebookLogin extends React.Component {
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
-    logInCreator
+    logInCreator,
+    updateUser
   }, dispatch)
 }
 

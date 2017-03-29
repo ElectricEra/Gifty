@@ -1,0 +1,57 @@
+$bodyBackground: null !default;
+$bodyColor: null !default;
+$footerBackground: null !default;
+$navbarColor: null !default;
+$footerColor: null !default;
+$buttonBackground: null !default;
+$shadow: null !default;
+$themeColor: null !default;
+$buttonHoverBackground: null !default;
+
+
+* {
+	box-sizing: border-box;
+}
+
+html {
+	height: 100%;
+
+	body {
+		background: $bodyBackground;
+		min-height: 100%;
+		margin: 0;
+		padding: 0;
+	}
+}
+
+footer {
+	color: $footerColor;
+	width: 100%;
+	position: fixed;
+	bottom: 0;
+	background: $footerBackground;
+	z-index: 100;
+		p {
+		padding: 0;
+		margin: 0;
+	}
+}
+
+.radio-error {
+	margin-top: 20px;
+	text-align: left;
+}
+
+.my-theme-example {
+	
+}
+
+:export {
+          theme_0: $theme_0;
+          theme_1: $theme_1;
+          theme_2: $theme_2;
+          theme_3: $theme_3;
+          theme_4: $theme_4;
+          theme_5: $theme_5;
+
+}

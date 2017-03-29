@@ -6,7 +6,10 @@ export const CarouselItem = (props) => {
 		<div className="carousel-item card-panel">
 	  	<a href={props.url} target="_blank">
 	  		<div className="my-image-wrapper">
-	    		<img src={props.img} className="helper-my-image my-select-none" />
+	  			{props.img !== "http://thumbs1.ebaystatic.com/pict/04040_0.jpg" ? 
+	    			<img src={props.img} className="helper-my-image my-select-none" /> :
+	    			<img src="../images/giftBlurry.png" className="helper-my-image my-select-none" />
+	    		}
 	    	</div>
 	  	</a>
 	  	<p className="center my-select-none">{props.price}$</p>

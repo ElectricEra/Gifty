@@ -3,7 +3,7 @@ import {IndexLink, Link, browserHistory} from 'react-router';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'
 import { generateGifts, addToHistory } from '../../actions/index'
-import { getGifts,  firstEntrance} from '../../actions/index'
+import { getGifts, firstEntrance, giftProcess } from '../../actions/index'
 import { Field, reduxForm, getFormValues } from 'redux-form'
 import { validate } from '../../utils/utils_gifty/index'
 
@@ -21,11 +21,12 @@ class GiftyForm extends React.Component {
 
   handleGenerate(event) {
     let description = processValues(this.props.values);
+    this.props.giftProcess(true);
     this.props.getGifts(description);
     this.props.firstEntrance();
     this.props.addToHistory(description);
-    console.log(description);
-    console.log('Form submited');
+    //console.log(description);
+    //console.log('Form submited');
     browserHistory.push('/generated');
   }
 
@@ -43,8 +44,13 @@ class GiftyForm extends React.Component {
     )
   }
 
-  renderRadioField ({ input, label, id}) {
-    return <RadioInput {...input} id={id} >{label}</RadioInput>
+  renderRadioField ({ input, label, id, checked, meta: { touched, error }}) {
+    return (
+    <span>
+    <RadioInput {...input} id={id} >{label}</RadioInput>
+    {touched && error && <span className="field-error col s12 radio-error">{error}</span>}
+    </span>
+    )
   }
 
   renderCheckbox ({ input, label, id }) {
@@ -111,7 +117,8 @@ function processValues(values) {
     age: 0,
     gender:'',
     price: 0,
-    tags:[]
+    tags:[],
+    picture: './images/cat-1.jpg'
   };
 
   for (let prop in values) {
@@ -142,7 +149,7 @@ function processValues(values) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ getGifts, firstEntrance, addToHistory }, dispatch);
+  return bindActionCreators({ getGifts, firstEntrance, addToHistory, giftProcess }, dispatch);
 }
 
 function mapStateToProps(state) {

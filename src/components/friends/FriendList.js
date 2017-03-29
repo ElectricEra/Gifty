@@ -3,9 +3,9 @@ import {IndexLink, Link, browserHistory} from 'react-router';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { addFriends } from '../../actions/index';
-import { getGifts, firstEntrance, addToHistory, updateUser } from '../../actions/index';
+import { giftProcess, getGifts, firstEntrance, addToHistory, updateUser } from '../../actions/index';
 
-import {DefaultBoxWrapper, Logo} from '../materialize';
+import {Logo} from '../materialize';
 import {Row} from '../materialize';
 import FriendView from './FriendView';
 import fb from '../../facebook/fbApi';
@@ -23,7 +23,7 @@ class FriendListContainer extends React.Component {
   }
   
   componentWillMount() {
-    if(this.props.logStatus.loggedIn === false) {
+    if(this.props.logStatus.loggedIn !== 'facebook') {
       browserHistory.push('/app');
     }
 
@@ -31,25 +31,28 @@ class FriendListContainer extends React.Component {
      this.updateFriends();
     } else {
       fb.initFb().then(() =>  this.updateFriends());
-    }      
+    }   
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({found: nextProps.user.friends});
   }
 
   updateFriends(){
     fb.checkLogin().then(() => {
-        fb.getFriends()
-          .then(data => {
-            this.props.addFriends(data);
-            this.setState({found: data});
-            this.handleSearch({target:{value:''}});
-          })
-          .then(() => {
-            this.props.updateUser(this.props.user)
-          });
-      })
+      fb.getFriends()
+        .then(data => {
+          this.props.addFriends(data);
+        })
+        .then(() => {
+          this.props.updateUser(this.props.user)
+        });
+    })
   }
 
   handleFriend(id, picture) {
-    fb.getQuery(id, picture, this.refs.price.value).then(query => {
+    fb.getQuery(id, picture, this.refs.price.value).then(query => { 
+      this.props.giftProcess(true);
       this.props.getGifts(query);
       this.props.firstEntrance();
       this.props.addToHistory(query);
@@ -69,7 +72,7 @@ class FriendListContainer extends React.Component {
   render() {
     return (
       
-        <DefaultBoxWrapper>
+        <div className="col s12 l8 offset-l2">
           <Logo imgSrc="images/gift.png" />
           <Row>
             <div className='input-field col s9'>
@@ -80,14 +83,14 @@ class FriendListContainer extends React.Component {
             </div>
           </Row>
             <FriendView friends={this.state.found} handleFriend={this.handleFriend} />
-        </DefaultBoxWrapper>
+        </div>        
     
     )}
 };
 
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ addFriends, getGifts, firstEntrance, addToHistory, updateUser }, dispatch);
+  return bindActionCreators({ giftProcess, addFriends, getGifts, firstEntrance, addToHistory, updateUser }, dispatch);
 }
 
 function mapStateToProps({ user, logStatus }) {
