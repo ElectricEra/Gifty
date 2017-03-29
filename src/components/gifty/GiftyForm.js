@@ -112,13 +112,19 @@ class GiftyForm extends React.Component {
 };
 
 function processValues(values) {
+  let date = new Date()
   let description = {
     name: '',
     age: 0,
     gender:'',
     price: 0,
     tags:[],
-    picture: './images/cat-1.jpg'
+    picture: './images/cat-1.jpg',
+    date: {
+      day: date.getDate(),
+      month: date.getMonth(),
+      year: date.getYear()
+    }
   };
 
   for (let prop in values) {
