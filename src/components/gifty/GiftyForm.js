@@ -111,6 +111,8 @@ class GiftyForm extends React.Component {
     )}
 };
 
+let Cats = ['./images/cat-1.jpg', './images/Small-cat-shaurma.jpg'];
+
 function processValues(values) {
   let date = new Date()
   let description = {
@@ -119,7 +121,7 @@ function processValues(values) {
     gender:'',
     price: 0,
     tags:[],
-    picture: './images/cat-1.jpg',
+    picture: Cats[Math.floor(Math.random()*Cats.length)],
     date: {
       day: date.getDate(),
       month: date.getMonth(),
