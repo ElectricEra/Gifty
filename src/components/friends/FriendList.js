@@ -55,6 +55,12 @@ class FriendListContainer extends React.Component {
       this.props.giftProcess(true);
       this.props.getGifts(query);
       this.props.firstEntrance();
+      let date = new Date();
+      query.date = {
+        day: date.getDate(),
+        month: date.getMonth(),
+        year: date.getFullYear()
+      }
       this.props.addToHistory(query);
       browserHistory.push('/generated');
     })
