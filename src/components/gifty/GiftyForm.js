@@ -89,7 +89,7 @@ class GiftyForm extends React.Component {
               id="price"
               type="number"
               component={this.renderTextField}
-              label="Price"/>
+              label="Price (in $)"/>
 
             <SmallWrapper>
               <Field name="sport" id="sport" component={this.renderCheckbox} label="Sport" />
