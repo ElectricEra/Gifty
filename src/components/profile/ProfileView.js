@@ -10,9 +10,6 @@ import { giftProcess, getGifts, firstEntrance, addToHistory, updateUser } from '
 import fb from '../../facebook/fbApi';
 
 class ProfileView extends React.Component {
-	constructor(props) {
-		super(props);
-	}
 
 	componentWillMount() {
 		if(this.props.logStatus.loggedIn === false) {
@@ -61,16 +58,19 @@ class ProfileView extends React.Component {
 						<p className="profile-info-email">{user.email}</p>
 
 						<div className="card">
-							<div className="profile-info-stats">
-								<i className="material-icons">list</i>
-								<i className="material-icons">perm_identity</i>
-								<i className="material-icons">done</i>
-							</div>
+							<div className="row center section-description-text"><b>Your lifetime stats</b></div>
+							<div className="row">
+								<div className="profile-info-stats">
+									<i className="material-icons">list</i>
+									<i className="material-icons">perm_identity</i>
+									<i className="material-icons">done</i>
+								</div>
 
-							<div className="profile-info-stats">
-								<span className="stats">Hstory: 54</span>
-								<span className="stats">Friend: 10</span>
-								<span className="stats">Gifts: 40</span>
+								<div className="profile-info-stats">
+									<span className="stats">History: 54</span>
+									<span className="stats">Friend: 10</span>
+									<span className="stats">Gifts: 40</span>
+								</div>
 							</div>
 						</div>
 					</div>

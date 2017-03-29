@@ -63,48 +63,55 @@ class GiftyForm extends React.Component {
     return (
       <LoginWrapper>
         <Logo imgSrc="images/gift.png" />
+        <p className="center"><b>For who you are trying to find a gift?</b></p>
+        <p className="center"><b>Describe a person so we can help you!</b></p>
         <Row>
           <Form onSubmit={handleSubmit(this.handleGenerate)}>
-            <Field
-              name="name"
-              id="name"
-              type="text"
-              component={this.renderTextField}
-              label="Name"/>
-            
-            <div className="center" >  
-              <Field name="male" id="male" component={this.renderRadioField} label="Male"  />
+            <div className="row">
+              <Field
+                name="name"
+                id="name"
+                type="text"
+                component={this.renderTextField}
+                label="Name"/>
+              
+              <div className="center" >  
+                <Field name="male" id="male" component={this.renderRadioField} label="Male"  />
+              </div>
+              <Field name="female" id="female" component={this.renderRadioField} label="Female" />
+              
+              <Field
+                name="age"
+                id="age"
+                type="number"
+                component={this.renderTextField}
+                label="Age"/>
+
+              <Field
+                name="price"
+                id="price"
+                type="number"
+                component={this.renderTextField}
+                label="How much are you ready to spend? (in $)"/>
+
             </div>
-            <Field name="female" id="female" component={this.renderRadioField} label="Female" />
-            
-            <Field
-              name="age"
-              id="age"
-              type="number"
-              component={this.renderTextField}
-              label="Age"/>
+            <div className="row">
+              <p className="center"><b>What this person likes?</b></p>
+              <SmallWrapper>
+                <Field name="sport" id="sport" component={this.renderCheckbox} label="Sport" />
+                <Field name="travel" id="travel" component={this.renderCheckbox} label="Travel" />
+                <Field name="gadgets" id="gadgets" component={this.renderCheckbox} label="Gadgets" />
+                <Field name="reading" id="reading" component={this.renderCheckbox} label="Reading" />
+              </SmallWrapper>
+              <SmallWrapper>
+                <Field name="gaming" id="gaming" component={this.renderCheckbox} label="Gaming" />
+                <Field name="music" id="music" component={this.renderCheckbox} label="Music" />
+                <Field name="art" id="art" component={this.renderCheckbox} label="Art" />
+                <Field name="cooking" id="cooking" component={this.renderCheckbox} label="Cooking" />
+              </SmallWrapper>
 
-            <Field
-              name="price"
-              id="price"
-              type="number"
-              component={this.renderTextField}
-              label="Price (in $)"/>
-
-            <SmallWrapper>
-              <Field name="sport" id="sport" component={this.renderCheckbox} label="Sport" />
-              <Field name="travel" id="travel" component={this.renderCheckbox} label="Travel" />
-              <Field name="gadgets" id="gadgets" component={this.renderCheckbox} label="Gadgets" />
-              <Field name="reading" id="reading" component={this.renderCheckbox} label="Reading" />
-            </SmallWrapper>
-            <SmallWrapper>
-              <Field name="gaming" id="gaming" component={this.renderCheckbox} label="Gaming" />
-              <Field name="music" id="music" component={this.renderCheckbox} label="Music" />
-              <Field name="art" id="art" component={this.renderCheckbox} label="Art" />
-              <Field name="cooking" id="cooking" component={this.renderCheckbox} label="Cooking" />
-            </SmallWrapper>
-
-            <SubmitButton disabled={submitting}>Generate</SubmitButton>
+              <SubmitButton disabled={submitting}>Generate</SubmitButton>
+            </div>
           </Form>
          </Row>
        </LoginWrapper>
@@ -125,7 +132,7 @@ function processValues(values) {
     date: {
       day: date.getDate(),
       month: date.getMonth(),
-      year: date.getYear()
+      year: date.getFullYear()
     }
   };
 
