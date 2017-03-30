@@ -74,6 +74,10 @@ class LoginForm extends React.Component {
     return (
       <LoginWrapper>
         <Logo imgSrc="images/gift.png" />
+        {currentForm === 'signUp' ?
+          <p className="sign-label">Sign Up</p> :
+          <p className="sign-label">Log in</p>
+        }
         <Row>
           <Form onSubmit={ currentForm === 'signIn' ?
                            handleSubmit(this.handleLogIn) :
