@@ -92,10 +92,10 @@ class Navbar extends React.Component {
                   <div className="background">
                     <img src="images/sidenav-bg.png" />
                   </div>
-                  <Link to="login" className="white-text side-nav-login">Log In</Link>
                 </div></li>
                 <li><Link to="app">Gifty</Link></li>
                 <li><div className="divider"></div></li>
+                <li><Link to="login">Log in</Link></li>
             </ul>
           </div>
         )
@@ -120,7 +120,11 @@ export default connect(mapStateToProps, mapDispatchToProps)(Navbar);
 
 
 
+
 /*
+<Link to="login" className="white-text side-nav-login">Log In</Link>
+
+
 break;
 case true:
 

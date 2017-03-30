@@ -70,13 +70,13 @@ class GiftyForm extends React.Component {
               id="name"
               type="text"
               component={this.renderTextField}
-              label="Name"/>
-            
-            <div className="center" >  
+              label="Friend's Name"/>
+
+            <div className="center" >
               <Field name="male" id="male" component={this.renderRadioField} label="Male"  />
             </div>
             <Field name="female" id="female" component={this.renderRadioField} label="Female" />
-            
+
             <Field
               name="age"
               id="age"
@@ -111,9 +111,9 @@ class GiftyForm extends React.Component {
     )}
 };
 
-let Cats = ['./images/cat-1.jpg', './images/Small-cat-shaurma.jpg'];
 
 function processValues(values) {
+  const Cats = ['./images/cat-1.jpg', './images/Small-cat-shaurma.jpg'];
   let date = new Date()
   let description = {
     name: '',

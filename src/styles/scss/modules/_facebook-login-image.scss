@@ -1,0 +1,8 @@
+img.facebooklogin {
+	max-width: 280px;
+	cursor: pointer;
+
+	@media (max-width: 500px) {
+		width: 200px;
+	}
+}
