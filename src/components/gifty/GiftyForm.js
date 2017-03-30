@@ -112,15 +112,16 @@ class GiftyForm extends React.Component {
 
               <SubmitButton disabled={submitting}>Generate</SubmitButton>
             </div>
+
           </Form>
          </Row>
        </LoginWrapper>
     )}
 };
 
-let Cats = ['./images/cat-1.jpg', './images/Small-cat-shaurma.jpg'];
 
 function processValues(values) {
+  const Cats = ['./images/cat-1.jpg', './images/Small-cat-shaurma.jpg'];
   let date = new Date()
   let description = {
     name: '',

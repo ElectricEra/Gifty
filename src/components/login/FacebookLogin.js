@@ -26,7 +26,7 @@ class FacebookLogin extends React.Component {
   render() {
     return (
       <div onClick={() => this.login()} className='center' >
-      	<img alt='facebooklogin' src='images/facebookSignIn.png' className='facebooklogin' />
+      	<img alt='facebooklogin' src='images/fbLogin.png' className='facebooklogin' />
       </div>
 
     )}
